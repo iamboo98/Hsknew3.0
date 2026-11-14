@@ -1454,6 +1454,31 @@ button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
 .rkli-s{font-size:12px;font-weight:700;white-space:nowrap;color:var(--muted)}.rkli.cur .rkli-s{color:var(--c2)}.rkli.done .rkli-s{color:#1f9e74}
 @media (max-width:520px){.rkli{grid-template-columns:auto 1fr;padding:10px}.rkli-s{grid-column:2}}
 </style>
+<style id="ntcss">
+.ntbtn{position:relative}
+.ntbtn i{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;padding:0 4px;border-radius:99px;background:#e5533d;color:#fff;font-style:normal;font-size:10.5px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 2px var(--surface)}
+.ntbtn i[hidden]{display:none}
+#ntPanel{position:fixed;z-index:60;left:50%;top:50%;right:auto;transform:translate(-50%,-50%);width:min(440px,calc(100vw - 32px));max-height:min(86vh,760px);overflow:auto;box-shadow:0 0 0 100vmax rgba(20,15,10,.42),0 24px 60px rgba(0,0,0,.3)}
+@media (max-width:899px){#ntPanel{top:auto;bottom:0;left:0;transform:none;width:100%;border-radius:22px 22px 0 0;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}}
+.ntset{display:flex;flex-direction:column;gap:12px;padding:12px;border-radius:16px;background:var(--surface-2)}
+.ntperm{font-size:12px;line-height:1.45}
+.ntlist{display:flex;flex-direction:column;gap:6px}
+.nti{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;position:relative}
+.nti.unread{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:color-mix(in srgb,var(--accent) 6%,var(--surface))}
+.nti.unread::after{content:"";position:absolute;top:14px;right:12px;width:8px;height:8px;border-radius:50%;background:#e5533d}
+.ntic{font-size:24px;line-height:1}
+.ntt{min-width:0;padding-right:12px}.ntt b{display:block;font-size:14px}.ntt small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}.ntt em{font-style:normal;font-size:11px;color:var(--muted)}
+#ntBanner{position:fixed;left:50%;transform:translateX(-50%);top:calc(var(--hh,60px) + env(safe-area-inset-top,0px) + 10px);z-index:55;display:flex;align-items:center;gap:10px;width:min(560px,calc(100vw - 24px));padding:10px 12px 10px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-h);font-size:14px;animation:ntIn .35s cubic-bezier(.2,1.3,.4,1)}
+#ntBanner span{flex:1}
+.ntx{border:0;background:none;color:var(--muted);font-size:15px;cursor:pointer;padding:4px}
+@keyframes ntIn{from{transform:translate(-50%,-20px);opacity:0}}
+.wnpop .wncard{background:var(--surface);color:var(--ink);border-radius:24px;max-width:460px;width:100%;max-height:86vh;overflow:auto;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.35);animation:rkPop .45s cubic-bezier(.2,1.3,.4,1)}
+.wnhead{display:flex;gap:14px;align-items:center;margin-bottom:12px}.wnic{font-size:40px}.wnhead small{display:block;color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.04em}.wnhead b{font-size:19px;line-height:1.25}
+.wnlist{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:10px}
+.wnlist li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:var(--surface-2)}.wnlist li span{font-size:22px}.wnlist li p{margin:0;font-size:14px;line-height:1.45}
+.bar .logo{min-width:0}.bar .logo>span:last-child{min-width:0}.bar .logo small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:420px){.bar .logo small{max-width:34vw}.bar .lvsw button{min-width:24px}}
+</style>
 <header class="bar">
   <div class="wrap">
     <button class="backbtn" id="backBtn" aria-label="Quay lại" title="Quay lại" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -1851,6 +1876,7 @@ function renderMe(){
   <div class="card melist">
     <div class="mrow"><span class="mi">📖</span><span class="mt">Cấp độ đang học<small>Mỗi cấp có tiến độ riêng</small></span><div class="seg"><button data-lv="1" aria-pressed="${HSKLV===1}">HSK 1</button><button data-lv="2" aria-pressed="${HSKLV===2}">HSK 2</button></div></div>
     <button class="mrow" data-go="rank"><span class="mi">🏆</span><span class="mt">Bảng xếp hạng tuần<small>Thi đua XP cùng bạn bè · vinh danh mỗi tuần</small></span><span class="chev">›</span></button>
+    <button class="mrow" data-me="notif"><span class="mi">🔔</span><span class="mt">Thông báo & nhắc học<small>${RM.on?"Nhắc lúc "+RM.time+" mỗi ngày":"Đang tắt nhắc học"} · có gì mới</small></span><span class="chev">›</span></button>
     <button class="mrow" data-me="settings"><span class="mi">⚙️</span><span class="mt">Cài đặt<small>Giao diện, cỡ chữ, tốc độ đọc, giọng đọc, mục tiêu</small></span><span class="chev">›</span></button>
     <button class="mrow" data-me="backup"><span class="mi">💾</span><span class="mt">Sao lưu / Chuyển máy<small>Chuyển tiến độ sang điện thoại mới</small></span><span class="chev">›</span></button>
     ${ac?`<button class="mrow" data-me="acct"><span class="mi">👤</span><span class="mt">Tài khoản<small>Đồng bộ, đăng xuất</small></span><span class="chev">›</span></button>`:''}
@@ -3906,6 +3932,90 @@ function rankList(){const cur=rankIdx(store.xp||0);
     return `<div class="rkli ${st}" style="--c1:${x[2]};--c2:${x[3]}">${rankEmblem(st==='cur'?cur:k*3+(st==='done'?2:0),50)}<div class="rkli-t"><b>${x[0]} <span class="zh">${x[1]}</span></b><small>${[0,1,2].map(d=>`${RKDIV[d]}: ${RKXP[k*3+d].toLocaleString('vi')}`).join(' · ')} XP</small></div><span class="rkli-s">${st==='done'?'✓ Đã đạt':st==='cur'?'Đang ở đây':'🔒 '+lo.toLocaleString('vi')+' XP'}</span></div>`}).join('')}</div>`}
 /* bỏ hệ thống huy hiệu: không chấm, không hiện thông báo */
 checkBadges=function(){};
+
+/* ================= THÔNG BÁO · NHẮC HỌC · CÓ GÌ MỚI ================= */
+const APP_VER='3.1';
+const CHANGELOG=[
+  {v:'3.1',d:'15/11/2026',t:'Bản cập nhật lớn: Trò chơi, Xếp hạng, Danh hiệu',ic:'🎉',items:[
+    ['🎮','Khu trò chơi mới với 7 trò: lật thẻ, đúng/sai 45 giây, nghe chọn chữ, nối từ, ghép chữ, săn thanh điệu, phi tiêu.'],
+    ['🏆','Bảng xếp hạng tuần cùng bạn bè, bục vinh danh top 3 và Đền vinh danh các tuần.'],
+    ['🎖️','Hệ thống danh hiệu mới 8 bậc: Tân binh → Học đồ → Tú tài → Cử nhân → Tiến sĩ → Hàn lâm → Trạng nguyên → Tông sư.'],
+    ['🔔','Nhắc học mỗi ngày theo giờ bạn chọn và trung tâm thông báo.'],
+    ['🐼','Màn hình mở app mới: gấu trúc 学中文.']]},
+  {v:'3.0',d:'14/11/2026',t:'Giao diện mới & HSK 2',ic:'✨',items:[
+    ['📱','Giao diện mới gọn gàng: 5 mục chính, nút quay lại ở mọi trang con.'],
+    ['📗','Thêm toàn bộ HSK 2: 15 bài, từ mới, ngữ pháp, sổ tay bài tập, đề thi thử, file nghe.'],
+    ['☁️','Đăng nhập tài khoản: tiến độ tự đồng bộ, đổi điện thoại không mất.'],
+    ['💾','Sao lưu / Chuyển máy bằng file hoặc mã.']]}];
+let RM={on:false,time:'20:00',upd:true};try{Object.assign(RM,JSON.parse(localStorage.getItem('hsk-remind')||'{}'))}catch(e){}
+const rmSave=()=>{try{localStorage.setItem('hsk-remind',JSON.stringify(RM))}catch(e){};syncMeta()};
+let NT={items:[],read:{}};try{Object.assign(NT,JSON.parse(localStorage.getItem('hsk-notif')||'{}'))}catch(e){}
+const ntSave=()=>{try{NT.items=NT.items.slice(0,40);localStorage.setItem('hsk-notif',JSON.stringify(NT))}catch(e){}};
+function ntAdd(id,ic,title,body,go){if(NT.items.some(x=>x.id===id))return;NT.items.unshift({id,ic,title,body,go,at:Date.now()});ntSave();ntBadge()}
+function ntAll(){const cl=CHANGELOG.map(c=>({id:'ver'+c.v,ic:c.ic,title:'Cập nhật '+c.v+' · '+c.t,body:c.items.map(x=>x[0]+' '+x[1]).join('\n'),go:'whatsnew:'+c.v,at:new Date(c.d.split('/').reverse().join('-')+'T08:00:00').getTime()}));
+  return [...NT.items,...cl].sort((a,b)=>b.at-a.at)}
+const ntUnread=()=>ntAll().filter(x=>!NT.read[x.id]).length;
+function ntBadge(){const b=document.getElementById('ntBtn');if(!b)return;const n=ntUnread();b.querySelector('i').textContent=n>9?'9+':n;b.querySelector('i').hidden=!n}
+const swReg=()=>('serviceWorker' in navigator)?navigator.serviceWorker.getRegistration().catch(()=>null):Promise.resolve(null);
+const lastStudyDay=()=>{const ks=Object.keys(store.days||{}).filter(k=>store.days[k]>0).sort();return ks[ks.length-1]||''};
+async function syncMeta(){try{if(!('caches' in window))return;const c=await caches.open('hsk-meta');let m={};const r=await c.match('/__meta');if(r)m=await r.json();
+  Object.assign(m,{on:RM.on,time:RM.time,lastStudy:lastStudyDay(),streak:streak()});await c.put('/__meta',new Response(JSON.stringify(m),{headers:{'content-type':'application/json'}}))}catch(e){}}
+async function sysNotify(title,body,tag){try{if(!('Notification' in window)||Notification.permission!=='granted')return false;const reg=await swReg();
+  if(reg&&reg.showNotification){await reg.showNotification(title,{body,icon:'icon-192.png',badge:'icon-192.png',tag,data:{url:'./#home'}});return true}
+  new Notification(title,{body,icon:'icon-192.png',tag});return true}catch(e){return false}}
+function afterTime(){const [h,m]=(RM.time||'20:00').split(':').map(Number);const n=new Date();return n.getHours()*60+n.getMinutes()>=h*60+m}
+async function remindTick(){const today=dkey(new Date());
+  if(streak()>0&&todayXP()===0&&new Date().getHours()>=18)ntAdd('streak'+today,'🔥','Chuỗi '+streak()+' ngày sắp mất!','Hôm nay bạn chưa học. Ôn vài thẻ nhớ để giữ chuỗi nhé.','cards');
+  if(!RM.on||!afterTime()||todayXP()>0||localStorage.getItem('hsk-rm-day')===today)return;
+  localStorage.setItem('hsk-rm-day',today);
+  const body=streak()>0?`Giữ chuỗi ${streak()} ngày nhé — chỉ cần 5 phút ôn thẻ nhớ.`:'Hôm nay bạn chưa học. Vào ôn vài từ mới nào!';
+  ntAdd('rm'+today,'⏰','Đến giờ học rồi! 🐼',body,'home');
+  if(document.visibilityState==='hidden')sysNotify('学中文 · Đến giờ học rồi! 🐼',body,'study-reminder');else showBanner('⏰ Đến giờ học rồi! '+body,'Học ngay','home')}
+function showBanner(text,btn,go,reload){let b=document.getElementById('ntBanner');if(b)b.remove();b=document.createElement('div');b.id='ntBanner';
+  b.innerHTML=`<span>${esc(text)}</span>${btn?`<button class="btn sm pri" id="ntBGo">${esc(btn)}</button>`:''}<button class="ntx" id="ntBX" aria-label="Đóng">✕</button>`;document.body.appendChild(b);
+  b.querySelector('#ntBX').onclick=()=>b.remove();const g=b.querySelector('#ntBGo');if(g)g.onclick=()=>{b.remove();if(reload)location.reload();else go&&go!=='home'?go2(go):go2('home')}}
+function go2(t){if(t.startsWith('whatsnew:'))return whatsNew(t.slice(9));if(t==='cards'){try{fc.src='tb';fc.lessons=LESSONS.map(L=>L.id);fc.pick='unk';buildDeck();fc._built=true}catch(e){}}go(t)}
+function whatsNew(v){const c=CHANGELOG.find(x=>x.v===v)||CHANGELOG[0];NT.read['ver'+c.v]=1;ntSave();ntBadge();
+  const el=document.createElement('div');el.className='achpop wnpop';
+  el.innerHTML=`<div class="wncard"><div class="wnhead"><span class="wnic">${c.ic}</span><div><small>Phiên bản ${c.v} · ${c.d}</small><b>${esc(c.t)}</b></div></div><ul class="wnlist">${c.items.map(([i,t])=>`<li><span>${i}</span><p>${esc(t)}</p></li>`).join('')}</ul><div class="row" style="justify-content:flex-end;gap:8px">${!RM.on?'<button class="btn sm" data-wnrm>🔔 Bật nhắc học</button>':''}<button class="btn sm pri" data-wnok>Khám phá ngay</button></div></div>`;
+  document.body.appendChild(el);el.addEventListener('click',e=>{if(e.target===el||e.target.closest('[data-wnok]'))el.remove();if(e.target.closest('[data-wnrm]')){el.remove();openNotif()}})}
+function openNotif(){let p=document.getElementById('ntPanel');if(!p){p=document.createElement('div');p.id='ntPanel';p.className='settings';document.body.appendChild(p)}
+  const perm=('Notification' in window)?Notification.permission:'unsupported';
+  const L=ntAll();
+  p.innerHTML=`<div class="sethead"><b>🔔 Thông báo</b><button class="setx" data-ntclose aria-label="Đóng">✕</button></div>
+  <div class="ntset"><div class="srow"><span><b>Nhắc học mỗi ngày</b><br><small class="muted">Nhắc nếu đến giờ mà hôm nay chưa học</small></span><div class="seg"><button data-rmon="1" aria-pressed="${RM.on}">Bật</button><button data-rmon="0" aria-pressed="${!RM.on}">Tắt</button></div></div>
+  <div class="srow"><span>Giờ nhắc</span><input type="time" id="rmTime" value="${RM.time}" class="search" style="max-width:130px"></div>
+  <div class="srow"><span>Báo khi có bản cập nhật</span><div class="seg"><button data-rmupd="1" aria-pressed="${RM.upd}">Bật</button><button data-rmupd="0" aria-pressed="${!RM.upd}">Tắt</button></div></div>
+  <small class="muted ntperm">${perm==='granted'?'✅ Đã cho phép thông báo trên thiết bị này.':perm==='denied'?'⚠️ Trình duyệt đang chặn thông báo. Mở cài đặt trang web để cho phép, nếu không app chỉ nhắc khi đang mở.':perm==='unsupported'?'Thiết bị này không hỗ trợ thông báo hệ thống — app sẽ nhắc ngay trong app.':'Khi bật, trình duyệt sẽ hỏi quyền gửi thông báo.'}<br>Mẹo: cài app lên màn hình chính (Thêm vào Màn hình chính) để nhận nhắc tốt nhất.</small></div>
+  <div class="ntlist">${L.length?L.map(x=>`<button class="nti ${NT.read[x.id]?'':'unread'}" data-nti="${esc(x.id)}" data-ntgo="${esc(x.go||'')}"><span class="ntic">${x.ic}</span><span class="ntt"><b>${esc(x.title)}</b><small>${esc((x.body||'').split('\n')[0])}</small><em>${new Date(x.at).toLocaleDateString('vi')}</em></span></button>`).join(''):'<p class="muted">Chưa có thông báo nào.</p>'}</div>
+  ${L.some(x=>!NT.read[x.id])?'<button class="btn sm" data-ntall style="align-self:flex-end">Đánh dấu đã đọc hết</button>':''}`;
+  p.hidden=false}
+async function setRemind(on){RM.on=on;if(on&&'Notification' in window&&Notification.permission==='default'){try{await Notification.requestPermission()}catch(e){}}
+  if(on){try{const reg=await swReg();if(reg&&reg.periodicSync){const st=await navigator.permissions.query({name:'periodic-background-sync'}).catch(()=>({state:'denied'}));if(st.state==='granted')await reg.periodicSync.register('study-reminder',{minInterval:6*3600*1000})}}catch(e){}}
+  rmSave();toast(on?'Đã bật nhắc học lúc '+RM.time+' mỗi ngày.':'Đã tắt nhắc học.');openNotif()}
+document.addEventListener('click',e=>{const t=e.target;
+  if(t.closest('#ntBtn')||t.closest('[data-me="notif"]')){openNotif();return}
+  const p=document.getElementById('ntPanel');
+  if(t.closest('[data-ntclose]')){p.hidden=true;return}
+  const on=t.closest('[data-rmon]');if(on){setRemind(on.dataset.rmon==='1');return}
+  const up=t.closest('[data-rmupd]');if(up){RM.upd=up.dataset.rmupd==='1';rmSave();openNotif();return}
+  if(t.closest('[data-ntall]')){ntAll().forEach(x=>NT.read[x.id]=1);ntSave();ntBadge();openNotif();return}
+  const it=t.closest('[data-nti]');if(it){NT.read[it.dataset.nti]=1;ntSave();ntBadge();p.hidden=true;const g=it.dataset.ntgo;if(g)go2(g);return}
+  if(p&&!p.hidden&&!t.closest('#ntPanel'))p.hidden=true});
+document.addEventListener('change',e=>{if(e.target.id==='rmTime'){RM.time=e.target.value||'20:00';rmSave();localStorage.removeItem('hsk-rm-day');toast('Giờ nhắc: '+RM.time)}});
+addEventListener('keydown',e=>{if(e.key==='Escape'){const p=document.getElementById('ntPanel');if(p)p.hidden=true}});
+(function ntInit(){const g=document.getElementById('gearBtn');if(g&&!document.getElementById('ntBtn')){const b=document.createElement('button');b.id='ntBtn';b.className='hbtn ntbtn';b.title='Thông báo';b.setAttribute('aria-label','Thông báo');
+    b.innerHTML='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i hidden></i>';g.parentElement.insertBefore(b,g)}
+  ntBadge();
+  {const _s=save;save=function(){_s();clearTimeout(save._m);save._m=setTimeout(syncMeta,1500)}}
+  syncMeta();setInterval(remindTick,60000);setTimeout(remindTick,5000);
+  addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){remindTick();swReg().then(r=>r&&r.update().catch(()=>{}))}else{syncMeta();swReg().then(r=>r&&r.active&&r.active.postMessage({type:'remind-check'}))}});
+  if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!had)return;ntAdd('upd'+Date.now().toString().slice(0,8),'🆕','Đã có bản cập nhật mới','Tải lại app để dùng phiên bản mới nhất.','');if(RM.upd)showBanner('🆕 Đã có bản cập nhật mới của app.','Tải lại',null,true)});
+    setInterval(()=>swReg().then(r=>r&&r.update().catch(()=>{})),30*60000)}
+  let seen='';try{seen=localStorage.getItem('hsk-ver')||''}catch(e){}
+  if(seen!==APP_VER){try{localStorage.setItem('hsk-ver',APP_VER)}catch(e){}if(RM.upd)setTimeout(()=>{if(!document.querySelector('#authGate:not([hidden])'))whatsNew(APP_VER);else{const iv=setInterval(()=>{if(!document.querySelector('#authGate:not([hidden])')){clearInterval(iv);whatsNew(APP_VER)}},1000)}},3400)}
+})();
 
 fromHash();try{history.replaceState({d:0},"","#"+hashOf())}catch(e){}render();
 (function(){var s=document.getElementById('splash');if(!s)return;var w=Math.max(0,2600-(Date.now()-(window.__spT0||0)));setTimeout(function(){s.classList.add('out');setTimeout(function(){s.remove()},600)},w)})();
