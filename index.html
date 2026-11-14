@@ -1584,6 +1584,52 @@ button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
   body.kb.gfocus .gplay{padding-top:8px;padding-bottom:8px}
 }
 </style>
+<style id="excss">
+.exentry{display:flex;align-items:center;gap:14px;width:100%;margin:0 0 16px;padding:16px;text-align:left;font:inherit;color:var(--ink);cursor:pointer;border:2px solid color-mix(in srgb,#d9262e 40%,var(--line));background:linear-gradient(110deg,color-mix(in srgb,#d9262e 10%,var(--surface)),var(--surface) 65%)}
+.exentry .exeic{font-size:34px}.exentry b{display:block;font-size:16px}.exentry small{color:var(--muted);font-size:13px}.exentry em{font-style:normal;color:#d9262e;font-weight:700}.exentry .chev{margin-left:auto;font-size:22px;color:var(--muted)}
+.exfmt{padding:16px}.exfh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}.exfh b{font-size:16px}.exfh span{font-size:13px;color:var(--muted);font-weight:600}
+.exsec{padding:10px 0;border-top:1px solid var(--line)}.exsech{display:flex;align-items:center;gap:8px}.exsech small{margin-left:auto;color:var(--muted)}
+.exsec ol{margin:6px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:4px}.exsec li .zh{font-size:14.5px}.exsec li small{display:block;color:var(--muted);font-size:12.5px}
+.exbad{display:inline-block;font-size:12px;font-weight:700;color:#fff;border-radius:8px;padding:2px 8px;background:#3478f6}.exbad.read{background:#1f9e74}.exbad.write{background:#d9262e}
+.exnote{font-size:12.5px;margin:10px 0 0}
+.exacts{margin:16px 0}.exacts .btn.big{flex:1;justify-content:center;padding:14px}
+.exhist{padding:4px}.exhr{display:flex;align-items:center;gap:12px;padding:10px}.exhr+.exhr{border-top:1px solid var(--line)}
+.exsc{font-size:22px;font-weight:900;min-width:70px}.exsc small{font-size:12px;color:var(--muted);font-weight:600}.exsc.ok{color:#1f9e74}.exsc.no{color:#d9262e}
+.exhm{flex:1;min-width:0}.exhm b{display:block;font-size:14px}.exhm small{font-size:12px;color:var(--muted)}
+.exbar0{position:sticky;top:calc(var(--hh,60px) + env(safe-area-inset-top,0px));z-index:6;display:flex;align-items:center;gap:8px;padding:8px 10px;margin:0 0 10px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.exclock{font-variant-numeric:tabular-nums;font-weight:800;font-size:17px;padding:4px 10px;border-radius:10px;background:var(--surface-2)}.exclock.warn{background:#d9262e;color:#fff;animation:exBl 1s steps(2) infinite}@keyframes exBl{50%{opacity:.6}}
+.exsecs{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto}.exsecs button{border:0;background:none;font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);padding:6px 10px;border-radius:10px;cursor:pointer;white-space:nowrap}.exsecs button.on{background:var(--accent-soft);color:var(--accent)}
+.exq{padding:16px}.exph{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:600}
+.exinst{margin:8px 0 6px;padding:10px 12px;border-radius:12px;background:var(--surface-2)}.exinst .zh{display:block;font-size:15px}.exinst small{color:var(--muted);font-size:12.5px}
+.exn{font-weight:800;font-size:15px;margin:10px 0 8px}
+.explay{display:flex;align-items:center;gap:10px;width:100%;padding:12px 16px;border-radius:16px;border:2px solid #3478f6;background:color-mix(in srgb,#3478f6 8%,var(--surface));color:var(--ink);font:inherit;cursor:pointer;margin-bottom:12px}
+.explay span{font-size:26px}.explay b{font-size:16px}.explay small{margin-left:auto;color:var(--muted);font-size:12.5px}.explay.playing{animation:lsPulse 1.2s ease-in-out infinite}
+.exstem{padding:14px;border-radius:14px;border:1px solid var(--line);margin-bottom:12px;text-align:center}.exstem .zh{font-size:22px;line-height:1.7}.exstem .py{font-size:13px;color:var(--muted)}
+.exq2{margin-top:8px;font-size:17px!important;color:var(--accent)}
+.expy{display:inline-flex;flex-direction:column;align-items:center;vertical-align:bottom;margin:0 2px}.expy small{font-size:13px;color:var(--accent);font-family:inherit;line-height:1.1}
+.expy input{width:2.2em;height:1.6em;text-align:center;font-size:22px;border:0;border-bottom:3px solid var(--accent);background:var(--surface-2);border-radius:6px 6px 0 0;color:var(--ink);font-family:inherit}
+.exopts{display:flex;flex-direction:column;gap:8px}
+.exopts.pics{display:grid;grid-template-columns:repeat(3,1fr)}.exopts.pics.shared{grid-template-columns:repeat(3,1fr)}
+.exopts.shared:not(.pics){display:grid;grid-template-columns:1fr 1fr}
+.exo{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:12px 12px 12px 40px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;min-height:52px;justify-content:center}
+.exo .zh{font-size:18px}.exo small{font-size:12px;color:var(--muted)}
+.exl{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;background:var(--surface-2);color:var(--muted)}
+.exopts.pics .exo{align-items:center;padding:16px 8px 10px;aspect-ratio:1}.exopts.pics .exl{top:8px;left:8px;transform:none}.exem{font-size:clamp(34px,10vw,52px);line-height:1}
+.exo.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--surface))}.exo.sel .exl{background:var(--accent);color:#fff}
+.exnav{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:16px}
+.exgrid{margin-top:12px;padding:14px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}.exgs+.exgs{margin-top:10px}.exgs b{font-size:13px}
+.exgs>div{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin-top:6px}
+.exgs button{height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);font:inherit;font-weight:700;font-size:13px;color:var(--muted);cursor:pointer}
+.exgs button.done{background:var(--accent);color:#fff;border-color:var(--accent)}.exgs button.cur{box-shadow:0 0 0 2px var(--ink)}.exgs button.flag{border-color:#f0a000;border-width:2px}
+.exres{padding:18px}.exres.ok{border-top:5px solid #1f9e74}.exres.no{border-top:5px solid #d9262e}
+.exresh{display:flex;align-items:center;gap:16px;margin-bottom:14px}.exbig{font-size:46px;font-weight:900;line-height:1}.exbig small{font-size:16px;color:var(--muted)}.exres.ok .exbig{color:#1f9e74}.exres.no .exbig{color:#d9262e}
+.exresh b{display:block;font-size:17px}.exresh small{color:var(--muted);font-size:13px}
+.exbars{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}.exbar{display:grid;grid-template-columns:90px 1fr 34px 60px;align-items:center;gap:8px;font-size:13.5px}
+.exbt{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}.exbt i{display:block;height:100%;background:linear-gradient(90deg,#3478f6,#1f9e74);border-radius:99px}.exbar small{color:var(--muted)}
+.exrev{display:flex;flex-direction:column;gap:8px}.exri{display:flex;gap:10px;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);border-left:4px solid #1f9e74}.exri.no{border-left-color:#d9262e}
+.exrn{font-weight:800;min-width:26px;color:var(--muted)}.exri small{font-size:11.5px;color:var(--muted)}.exri .zh{font-size:16px;margin:2px 0}.exra{font-size:13.5px}.exrx{font-size:12.5px;margin-top:2px}
+@media (max-width:420px){.exbar0{gap:5px;padding:6px}.exclock{font-size:15px;padding:4px 7px}.exsecs button{padding:6px 7px;font-size:12.5px}.exbar0 .btn.sm{padding:6px 9px}}
+</style>
 <header class="bar">
   <div class="wrap">
     <button class="backbtn" id="backBtn" aria-label="Quay lại" title="Quay lại" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -1875,9 +1921,9 @@ function segment(s){
 let route={view:'home',lesson:1,tab:'overview'};
 const TABS=[['overview','Tổng quan'],['texts','Bài khoá'],['vocab','Từ mới'],['grammar','Ngữ pháp'],['write','Tập viết'],['game','Trò chơi'],['practice','Bài tập'],['summary','Tổng kết']];
 const ROOTS=['home','lessons','hub','wbhome','me'];
-const SECOF={home:'home',lessons:'lessons',lesson:'lessons',hub:'hub',vocab:'hub',cards:'hub',quiz:'hub',tones:'hub',write:'hub',game:'hub',prspeak:'hub',prmake:'hub',prorder:'hub',prtr:'hub',prpara:'hub',wbext:'hub',wbhome:'wbhome',wb:'wbhome',me:'me',rank:'me'};
-const VTITLE={vocab:['Từ vựng','词语表'],cards:['Thẻ nhớ','闪卡'],quiz:['Kiểm tra nhanh','小测验'],tones:['Phát âm','发音'],write:['Tập viết chữ Hán','写汉字'],game:['Trò chơi','游戏'],prspeak:['Luyện nói','跟读 · 说话'],prmake:['Đặt câu','造句'],prorder:['Sắp xếp câu','连词成句'],prtr:['Dịch câu','翻译'],prpara:['Đoạn văn','短文'],wbext:['Từ mở rộng','拓展词语'],rank:['Bảng xếp hạng tuần','排行榜']};
-const VIEWS=['home','lessons','hub','me','wbhome','vocab','cards','quiz','tones','write','game','prspeak','prmake','prorder','prtr','prpara','wbext','rank'];
+const SECOF={home:'home',lessons:'lessons',lesson:'lessons',hub:'hub',vocab:'hub',cards:'hub',quiz:'hub',tones:'hub',write:'hub',game:'hub',prspeak:'hub',prmake:'hub',prorder:'hub',prtr:'hub',prpara:'hub',wbext:'hub',wbhome:'wbhome',wb:'wbhome',me:'me',rank:'me',exam:'wbhome'};
+const VTITLE={vocab:['Từ vựng','词语表'],cards:['Thẻ nhớ','闪卡'],quiz:['Kiểm tra nhanh','小测验'],tones:['Phát âm','发音'],write:['Tập viết chữ Hán','写汉字'],game:['Trò chơi','游戏'],prspeak:['Luyện nói','跟读 · 说话'],prmake:['Đặt câu','造句'],prorder:['Sắp xếp câu','连词成句'],prtr:['Dịch câu','翻译'],prpara:['Đoạn văn','短文'],wbext:['Từ mở rộng','拓展词语'],rank:['Bảng xếp hạng tuần','排行榜'],exam:['Thi thử chuẩn HSK 3.0','模拟考试']};
+const VIEWS=['home','lessons','hub','me','wbhome','vocab','cards','quiz','tones','write','game','prspeak','prmake','prorder','prtr','prpara','wbext','rank','exam'];
 function normView(v){return v==='ach'?'me':v==='prhome'?'hub':v}
 function hashOf(){return route.view==='game'&&route.g?'game-'+route.g:route.view==='lesson'?'bai-'+route.lesson:route.view==='wb'?'bt-'+wbr.l:route.view}
 let navDepth=0;
@@ -1921,7 +1967,7 @@ function render(){
   requestAnimationFrame(()=>document.documentElement.style.setProperty('--hh',document.querySelector('.bar').offsetHeight+'px'));
   document.body.classList.toggle('notone',!store.tone);
   const ap=$('#app');const vk=route.view+'|'+(route.lesson||'')+'|'+(route.view==='wb'?wbr.l:'');if(render._last!==vk){render._last=vk;ap.classList.remove('pg-in');void ap.offsetWidth;ap.classList.add('pg-in');clearTimeout(render._t);render._t=setTimeout(()=>ap.classList.remove('pg-in'),700)}
-  ({home:renderHome,lessons:renderLessons,hub:renderHub,me:renderMe,rank:renderRank,lesson:renderLesson,vocab:renderVocab,cards:renderCards,quiz:renderQuiz,tones:renderTones,wb:renderWB,wbhome:renderWBHome,wbext:()=>{vsrc='ext';renderVocab()},prhome:renderPrHome,prspeak:renderPrSpeak,prmake:renderPrMake,prorder:renderPrOrder,prtr:renderPrTr,prpara:renderPrTr,ach:renderAch,write:renderWrite,game:renderGame}[route.view]||renderHome)();
+  ({home:renderHome,lessons:renderLessons,hub:renderHub,me:renderMe,rank:renderRank,exam:renderExam,lesson:renderLesson,vocab:renderVocab,cards:renderCards,quiz:renderQuiz,tones:renderTones,wb:renderWB,wbhome:renderWBHome,wbext:()=>{vsrc='ext';renderVocab()},prhome:renderPrHome,prspeak:renderPrSpeak,prmake:renderPrMake,prorder:renderPrOrder,prtr:renderPrTr,prpara:renderPrTr,ach:renderAch,write:renderWrite,game:renderGame}[route.view]||renderHome)();
 }
 
 /* ---------- LESSONS (lộ trình) ---------- */
@@ -2723,7 +2769,7 @@ document.addEventListener('click',e=>{
   const wl=t.closest('[data-wbopen]');if(wl){wbr.l=+wl.dataset.wbopen;wbr.tab=wl.dataset.wbt||'book';go('wb');return}
 });
 
-function renderWBHome(){
+function renderWBHome(){setTimeout(()=>{if(route.view==='wbhome'&&!document.querySelector('.exentry'))app.insertAdjacentHTML('afterbegin',exEntry())},0);
   const done=Object.keys(store.wb).filter(k=>k!=='mock');
   const avg=done.length?Math.round(done.reduce((a,k)=>a+store.wb[k],0)/done.length):null;
   const testCount=WB.filter(w=>w.test).length;
@@ -4193,8 +4239,13 @@ function gCatch(){const st=$('#mgStage');const P=pickWords(24);let target=null,l
   requestAnimationFrame(loop)}
 
 /* ================= THÔNG BÁO · NHẮC HỌC · CÓ GÌ MỚI ================= */
-const APP_VER='3.2';
+const APP_VER='3.3';
 const CHANGELOG=[
+  {v:'3.3',d:'15/11/2026',t:'Thi thử chuẩn HSK 3.0 — đề mới mỗi lần',ic:'📝',items:[
+    ['📝','Bài thi mô phỏng đúng cấu trúc HSK 3.0: HSK 1 gồm 40 câu (Nghe 20 · Đọc 20, 40 phút), HSK 2 gồm 60 câu (Nghe 25 · Đọc 25 · Viết 10, 60 phút).'],
+    ['🎲','Mỗi lần bấm là một đề mới, có thể làm lại đúng đề cũ.'],
+    ['⏱️','Đồng hồ đếm ngược, mỗi câu nghe tối đa 2 lần, đánh dấu câu, bảng chọn câu nhanh, lưu bài đang làm dở.'],
+    ['📊','Chấm điểm tự động theo từng phần, xem lại đáp án và lời giải, lưu lịch sử điểm.']]},
   {v:'3.2',d:'15/11/2026',t:'Thêm 7 trò chơi vận dụng — tổng cộng 14 trò',ic:'🎮',items:[
     ['✏️','Điền từ vào câu: câu thật trong bài khoá bị khuyết một từ.'],
     ['💬','Đối đáp hội thoại: chọn câu đáp đúng như khi nói chuyện thật.'],
@@ -4282,6 +4333,180 @@ addEventListener('keydown',e=>{if(e.key==='Escape'){const p=document.getElementB
   let seen='';try{seen=localStorage.getItem('hsk-ver')||''}catch(e){}
   if(seen!==APP_VER){try{localStorage.setItem('hsk-ver',APP_VER)}catch(e){}if(RM.upd)setTimeout(()=>{if(!document.querySelector('#authGate:not([hidden])'))whatsNew(APP_VER);else{const iv=setInterval(()=>{if(!document.querySelector('#authGate:not([hidden])')){clearInterval(iv);whatsNew(APP_VER)}},1000)}},3400)}
 })();
+
+/* ================= BÀI THI MÔ PHỎNG CHUẨN HSK 3.0 ================= */
+const EXW1=[["不〔？董〕", "不懂", "忄", ["冫", "纟", "十"], "bù dǒng"], ["〔？合〕他", "给他", "纟", ["冫", "忄", "十"], "gěi tā"], ["两〔？欠〕", "两次", "冫", ["纟", "忄", "十"], "liǎng cì"], ["很〔？元〕", "很远", "辶", ["攵", "刂", "十"], "hěn yuǎn"], ["〔孝？〕室", "教室", "攵", ["辶", "刂", "十"], "jiàoshì"], ["〔另？〕去", "别去", "刂", ["攵", "辶", "十"], "bié qù"], ["〔？关〕你", "送你", "辶", ["宀", "氵", "十"], "sòng nǐ"], ["〔？先〕手", "洗手", "氵", ["辶", "宀", "十"], "xǐ shǒu"], ["写〔？元〕", "写完", "宀", ["辶", "氵", "十"], "xiěwán"], ["〔？井〕去", "进去", "辶", ["纟", "衤", "十"], "jìnqù"], ["〔？库〕子", "裤子", "衤", ["纟", "辶", "十"], "kùzi"], ["〔？工〕色", "红色", "纟", ["衤", "辶", "十"], "hóngsè"], ["〔？寺〕一下", "等一下", "⺮", ["冫", "女", "十"], "děng yíxià"], ["〔？乃〕茶", "奶茶", "女", ["⺮", "冫", "十"], "nǎichá"], ["〔？隹〕备", "准备", "冫", ["⺮", "女", "十"], "zhǔnbèi"], ["〔？夬〕乐", "快乐", "忄", ["辶", "月", "十"], "kuàilè"], ["〔？寸〕生日", "过生日", "辶", ["忄", "月", "十"], "guò shēngrì"], ["舒〔？艮〕", "舒服", "月", ["辶", "忄", "十"], "shūfu"], ["〔？主〕前", "往前", "彳", ["⺩", "⻊", "十"], "wǎng qián"], ["〔？包〕步", "跑步", "⻊", ["彳", "⺩", "十"], "pǎobù"], ["篮〔？求〕", "篮球", "⺩", ["彳", "⻊", "十"], "lánqiú"], ["虽〔肰？〕", "虽然", "灬", ["艹", "饣", "十"], "suīrán"], ["〔？化〕钱", "花钱", "艹", ["灬", "饣", "十"], "huā qián"], ["〔？反〕馆", "饭馆", "饣", ["灬", "艹", "十"], "fànguǎn"], ["走〔？各〕", "走路", "⻊", ["木", "方", "十"], "zǒulù"], ["这〔？羊〕", "这样", "木", ["⻊", "方", "十"], "zhèyàng"], ["〔亠？〕边", "旁边", "方", ["⻊", "木", "十"], "pángbiān"], ["写〔？昔〕", "写错", "钅", ["是", "⺮", "十"], "xiě cuò"], ["做〔？页〕", "做题", "是", ["钅", "⺮", "十"], "zuò tí"], ["〔？夭〕了", "笑了", "⺮", ["是", "钅", "十"], "xiào le"], ["头〔？冬〕", "头疼", "疒", ["纟", "艹", "十"], "tóu téng"], ["〔？圣〕常", "经常", "纟", ["艹", "疒", "十"], "jīngcháng"], ["〔？约〕店", "药店", "艹", ["纟", "疒", "十"], "yàodiàn"], ["〔？月〕天", "阴天", "阝", ["日", "木", "十"], "yīntiān"], ["大〔？娄〕", "大楼", "木", ["阝", "日", "十"], "dà lóu"], ["小〔？寸〕候", "小时候", "日", ["阝", "木", "十"], "xiǎoshíhou"], ["写一〔？毛〕", "写一笔", "⺮", ["讠", "阝", "十"], "xiě yì bǐ"], ["〔冄？〕样", "那样", "阝", ["讠", "⺮", "十"], "nàyàng"], ["告〔？斥〕", "告诉", "讠", ["阝", "⺮", "十"], "gàosu"], ["一〔？立〕", "一位", "亻", ["目", "⻊", "十"], "yí wèi"], ["眼〔？青〕", "眼睛", "目", ["亻", "⻊", "十"], "yǎnjing"], ["〔？兆〕舞", "跳舞", "⻊", ["目", "亻", "十"], "tiàowǔ"], ["门〔？示〕", "门票", "覀", ["木", "夕", "十"], "ménpiào"], ["〔？几〕场", "机场", "木", ["夕", "覀", "十"], "jīchǎng"], ["姓〔？口〕", "姓名", "夕", ["木", "覀", "十"], "xìngmíng"], ["〔邦？〕忙", "帮忙", "巾", ["灬", "纟", "亻", "十", "忄"], "bāngmáng"], ["〔？工〕色", "红色", "纟", ["灬", "亻", "巾", "十", "忄"], "hóngsè"], ["〔？旦〕是", "但是", "亻", ["灬", "纟", "巾", "十", "忄"], "dànshì"], ["不〔？董〕", "不懂", "忄", ["灬", "纟", "亻", "巾", "十"], "bù dǒng"], ["〔占？〕菜", "点菜", "灬", ["纟", "亻", "巾", "十", "忄"], "diǎn cài"]];
+const EXF={
+ 1:{name:'HSK 1',min:40,pass:120,secs:[
+   {k:'listen',t:'Nghe',zh:'听力',parts:[['L1pic',5,'听句子，选择正确的图片。','Nghe câu, chọn hình đúng.'],['L2qa',5,'听问题，选择正确的回答。','Nghe câu hỏi, chọn câu trả lời đúng.'],['L3dpic',5,'听对话，选择与对话内容一致的图片。','Nghe hội thoại, chọn hình phù hợp.'],['L4sq',5,'听句子和问题，选择正确答案。','Nghe câu và câu hỏi, chọn đáp án đúng.']]},
+   {k:'read',t:'Đọc',zh:'阅读',parts:[['R1pic',5,'看句子，选择与句子内容一致的图片。','Đọc câu, chọn hình phù hợp.'],['R2qa',5,'选择正确的回答。','Chọn câu trả lời phù hợp.'],['R3fill',5,'选择正确的词语填空。','Chọn từ đúng điền vào chỗ trống.'],['R4sq',5,'阅读句子和问题，选择正确答案。','Đọc câu và câu hỏi, chọn đáp án đúng.']]}]},
+ 2:{name:'HSK 2',min:60,pass:180,secs:[
+   {k:'listen',t:'Nghe',zh:'听力',parts:[['L1pic',5,'听一句话，选择正确的图片。','Nghe một câu, chọn hình đúng.'],['L2dpic',10,'听对话，选择最匹配的图片。','Nghe hội thoại, chọn hình phù hợp nhất.'],['L3dq',10,'听对话和问题，选择正确答案。','Nghe hội thoại và câu hỏi, chọn đáp án đúng.']]},
+   {k:'read',t:'Đọc',zh:'阅读',parts:[['R1pic',5,'看句子，选择与句子内容一致的图片。','Đọc câu, chọn hình phù hợp.'],['R3fill',5,'选择正确的词语填空。','Chọn từ đúng điền vào chỗ trống.'],['R2qa',10,'选择合适的句子，完成对话。','Chọn câu phù hợp để hoàn thành hội thoại.'],['R4sq',5,'阅读句子和问题，选择正确答案。','Đọc câu và câu hỏi, chọn đáp án đúng.']]},
+   {k:'write',t:'Viết',zh:'书写',parts:[['W1comp',5,'选择正确的部件，组成汉字。','Chọn bộ kiện đúng để ghép thành chữ Hán.'],['W2py',5,'根据拼音写汉字。','Viết chữ Hán theo pinyin.']]}]}};
+/* ---- dữ liệu dựng đề ---- */
+const CHPY={'一':'yī','二':'èr','两':'liǎng','三':'sān','四':'sì','五':'wǔ','六':'liù','七':'qī','八':'bā','九':'jiǔ','十':'shí','百':'bǎi','零':'líng','半':'bàn','点':'diǎn','分':'fēn','块':'kuài','钱':'qián','岁':'suì','月':'yuè','号':'hào','口':'kǒu','人':'rén','星':'xīng','期':'qī','天':'tiān'};
+const zhPy=s=>[...s].map(c=>CHPY[c]||'').filter(Boolean).join(' ');
+const EMO=[
+ ['苹果','píngguǒ','🍎','n','quả táo'],['猫','māo','🐱','n','con mèo'],['狗','gǒu','🐶','n','con chó'],['书','shū','📖','n','quyển sách'],['电脑','diànnǎo','💻','n','máy tính'],['手机','shǒujī','📱','n','điện thoại'],
+ ['茶','chá','🍵','n','trà'],['米饭','mǐfàn','🍚','n','cơm'],['水果','shuǐguǒ','🍉','n','hoa quả'],['衣服','yīfu','👕','n','quần áo'],['椅子','yǐzi','🪑','n','cái ghế'],['飞机','fēijī','✈️','n','máy bay'],
+ ['出租车','chūzūchē','🚕','n','taxi'],['医生','yīshēng','🧑‍⚕️','n','bác sĩ'],['老师','lǎoshī','🧑‍🏫','n','giáo viên'],['鱼','yú','🐟','n','con cá'],['鸡蛋','jīdàn','🥚','n','trứng gà'],['面条','miàntiáo','🍜','n','mì'],
+ ['饺子','jiǎozi','🥟','n','sủi cảo'],['咖啡','kāfēi','☕','n','cà phê'],['牛奶','niúnǎi','🥛','n','sữa'],['钱','qián','💰','n','tiền'],['手表','shǒubiǎo','⌚','n','đồng hồ'],['电视','diànshì','📺','n','ti vi'],
+ ['自行车','zìxíngchē','🚲','n','xe đạp'],['公交车','gōngjiāochē','🚌','n','xe buýt'],['地铁','dìtiě','🚇','n','tàu điện ngầm'],['火车','huǒchē','🚆','n','tàu hoả'],['包','bāo','👜','n','cái túi'],['药','yào','💊','n','thuốc'],
+ ['蛋糕','dàngāo','🎂','n','bánh ga-tô'],['水','shuǐ','💧','n','nước'],['医院','yīyuàn','🏥','p','bệnh viện'],['学校','xuéxiào','🏫','p','trường học'],['商店','shāngdiàn','🏪','p','cửa hàng'],['饭馆','fànguǎn','🍽️','p','nhà hàng'],
+ ['机场','jīchǎng','🛫','p','sân bay'],['家','jiā','🏠','p','nhà'],['超市','chāoshì','🛒','p','siêu thị'],
+ ['打电话','dǎ diànhuà','📞','v','gọi điện thoại'],['看书','kàn shū','📚','v','đọc sách'],['睡觉','shuìjiào','😴','v','ngủ'],['开车','kāichē','🚗','v','lái xe'],['跑步','pǎobù','🏃','v','chạy bộ'],['游泳','yóuyǒng','🏊','v','bơi'],
+ ['踢足球','tī zúqiú','⚽','v','đá bóng'],['唱歌','chàng gē','🎤','v','hát'],['跳舞','tiàowǔ','💃','v','nhảy múa'],['做饭','zuò fàn','🍳','v','nấu cơm'],['写字','xiě zì','✍️','v','viết chữ'],['买东西','mǎi dōngxi','🛍️','v','mua đồ'],
+ ['看电视','kàn diànshì','📺','v','xem ti vi'],['洗衣服','xǐ yīfu','🧺','v','giặt quần áo'],['工作','gōngzuò','💼','v','làm việc'],['喝茶','hē chá','🍵','v','uống trà'],
+ ['下雨','xià yǔ','🌧️','w','trời mưa'],['下雪','xià xuě','❄️','w','tuyết rơi'],['很热','hěn rè','🥵','w','trời nóng'],['很冷','hěn lěng','🥶','w','trời lạnh']];
+const W_PLACE=[['学校','xuéxiào'],['医院','yīyuàn'],['商店','shāngdiàn'],['饭馆','fànguǎn'],['机场','jīchǎng'],['火车站','huǒchēzhàn'],['公司','gōngsī'],['朋友家','péngyou jiā']];
+const W_PLACE2=[['超市','chāoshì'],['电影院','diànyǐngyuàn'],['咖啡店','kāfēidiàn'],['书店','shūdiàn']];
+const W_TIME=[['明天','míngtiān'],['今天下午','jīntiān xiàwǔ'],['星期六','xīngqīliù'],['明天上午','míngtiān shàngwǔ']];
+const W_REL=[['哥哥','gēge'],['姐姐','jiějie'],['妹妹','mèimei'],['弟弟','dìdi'],['儿子','érzi'],['女儿','nǚ\'ér']];
+const W_VEH=[['出租车','chūzūchē'],['飞机','fēijī'],['火车','huǒchē'],['公交车','gōngjiāochē'],['地铁','dìtiě']];
+const W_ACT=[['看书','kàn shū'],['看电视','kàn diànshì'],['喝茶','hē chá'],['打电话','dǎ diànhuà'],['睡觉','shuìjiào'],['做饭','zuò fàn'],['买东西','mǎi dōngxi'],['学习汉语','xuéxí Hànyǔ']];
+const W_ITEM=[['苹果','píngguǒ','斤','jīn'],['杯子','bēizi','个','gè'],['衣服','yīfu','件','jiàn'],['书','shū','本','běn'],['椅子','yǐzi','个','gè']];
+const W_WX=[['很热','hěn rè'],['很冷','hěn lěng'],['下雨了','xià yǔ le']];
+const W_NAME=[['小王','Xiǎo Wáng'],['小李','Xiǎo Lǐ'],['小明','Xiǎomíng'],['小雪','Xiǎoxuě']];
+let XR=Math.random;
+const xri=(a,b)=>a+Math.floor(XR()*(b-a+1));
+const xpick=a=>a[Math.floor(XR()*a.length)];
+const xshuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(XR()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function xseed(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const jz=parts=>parts.map(p=>p[0]).join(''),jp=parts=>parts.map(p=>p[1]).filter(Boolean).join(' ').replace(/ ([，。？！])/g,'$1');
+const P_=(z,p)=>[z,p];const PU=c=>[c,c];
+function others(list,cur,n,key=0){return xshuf(list.filter(x=>x[key]!==cur[key])).slice(0,n)}
+function opt3(list,cur,fmt){const o=xshuf([cur,...others(list,cur,2)]);return {opts:o.map(fmt),a:o.indexOf(cur)}}
+function timeZh(h,m){const hz=h===2?'两':n2zh(h);return m===30?hz+'点半':m?hz+'点'+(m<10?'零'+n2zh(m):n2zh(m))+'分':hz+'点'}
+/* câu hỏi theo mẫu: trả về {lines:[[who,zh,py]], q:[zh,py], opts:[[zh,py]], a} */
+function tplQ(lv,dialog){const K=['place','time','price','age','veh','act','wx','fam','day'].concat(lv===2?['cmp','why','place2']:[]);const k=xpick(K);
+  const say=(a,b)=>dialog?[['男',...a],['女',...b]]:[['',...b]];const subj=dialog?['女的','nǚ de']:['说话人','shuōhuàrén'];
+  if(k==='place'||k==='place2'){const L=k==='place2'?W_PLACE.concat(W_PLACE2):W_PLACE;const p=xpick(L),t=xpick(W_TIME);const o=opt3(L,p,x=>[x[0],x[1]]);
+    return {...o,lines:say([`你${t[0]}去哪儿？`,`nǐ ${t[1]} qù nǎr?`],[`我${t[0]}要去${p[0]}。`,`wǒ ${t[1]} yào qù ${p[1]}.`]),q:[`${subj[0]}${t[0]}要去哪儿？`,`${subj[1]} ${t[1]} yào qù nǎr?`]}}
+  if(k==='time'){const ts=new Set();while(ts.size<3)ts.add(xri(5,11)*100+xpick([0,15,30,45]));const L=[...ts].map(v=>[timeZh(Math.floor(v/100),v%100)]);L.forEach(x=>x.push(zhPy(x[0])));const c=L[0];const o=xshuf(L);const act=xpick([['起床','qǐchuáng'],['去学校','qù xuéxiào'],['吃早饭','chī zǎofàn'],['上班','shàngbān']]);
+    return {opts:o,a:o.indexOf(c),lines:say([`你每天几点${act[0]}？`,`nǐ měi tiān jǐ diǎn ${act[1]}?`],[`我每天${c[0]}${act[0]}。`,`wǒ měi tiān ${c[1]} ${act[1]}.`]),q:[`${subj[0]}每天几点${act[0]}？`,`${subj[1]} měi tiān jǐ diǎn ${act[1]}?`]}}
+  if(k==='price'){const it=xpick(W_ITEM);const ps=new Set();while(ps.size<3)ps.add(xri(3,40));const L=[...ps].map(n=>[n2zh(n)+'块',zhPy(n2zh(n)+'块')]);const c=L[0];const o=xshuf(L);
+    return {opts:o,a:o.indexOf(c),lines:say([`这${it[2]}${it[0]}多少钱？`,`zhè ${it[3]} ${it[1]} duōshao qián?`],[`这${it[2]}${it[0]}${c[0]}钱。`,`zhè ${it[3]} ${it[1]} ${c[1]} qián.`]),q:[`这${it[2]}${it[0]}多少钱？`,`zhè ${it[3]} ${it[1]} duōshao qián?`]}}
+  if(k==='age'){const r=xpick(W_REL);const ns=new Set();while(ns.size<3)ns.add(xri(3,30));const L=[...ns].map(n=>[n2zh(n)+'岁',zhPy(n2zh(n)+'岁')]);const c=L[0];const o=xshuf(L);
+    return {opts:o,a:o.indexOf(c),lines:say([`你${r[0]}今年多大了？`,`nǐ ${r[1]} jīnnián duō dà le?`],[`我${r[0]}今年${c[0]}了。`,`wǒ ${r[1]} jīnnián ${c[1]} le.`]),q:[`${subj[0]}的${r[0]}多大了？`,`${subj[1]} de ${r[1]} duō dà le?`]}}
+  if(k==='veh'){const v=xpick(W_VEH),p=xpick(W_PLACE);const o=opt3(W_VEH,v,x=>['坐'+x[0],'zuò '+x[1]]);
+    return {...o,lines:say([`你怎么去${p[0]}？`,`nǐ zěnme qù ${p[1]}?`],[`我坐${v[0]}去${p[0]}。`,`wǒ zuò ${v[1]} qù ${p[1]}.`]),q:[`${subj[0]}怎么去${p[0]}？`,`${subj[1]} zěnme qù ${p[1]}?`]}}
+  if(k==='act'){const a=xpick(W_ACT),r=xpick(W_REL);const o=opt3(W_ACT,a,x=>x.slice());
+    return {...o,lines:say([`你${r[0]}在做什么呢？`,`nǐ ${r[1]} zài zuò shénme ne?`],[`我${r[0]}在${a[0]}呢。`,`wǒ ${r[1]} zài ${a[1]} ne.`]),q:[`${subj[0]}的${r[0]}在做什么？`,`${subj[1]} de ${r[1]} zài zuò shénme?`]}}
+  if(k==='wx'){const w=xpick(W_WX);const o=xshuf(W_WX.slice());
+    return {opts:o,a:o.indexOf(w),lines:say([`今天天气怎么样？`,`jīntiān tiānqì zěnmeyàng?`],[`今天${w[0]}，我不想出去。`,`jīntiān ${w[1]}, wǒ bù xiǎng chūqu.`]),q:[`今天天气怎么样？`,`jīntiān tiānqì zěnmeyàng?`]}}
+  if(k==='fam'){const ns=xshuf([3,4,5,6]).slice(0,3);const L=ns.map(n=>[n2zh(n)+'口人',zhPy(n2zh(n)+'口人')]);const c=L[0];const o=xshuf(L);
+    return {opts:o,a:o.indexOf(c),lines:say([`你家有几口人？`,`nǐ jiā yǒu jǐ kǒu rén?`],[`我家有${c[0]}。`,`wǒ jiā yǒu ${c[1]}.`]),q:[`${subj[0]}家有几口人？`,`${subj[1]} jiā yǒu jǐ kǒu rén?`]}}
+  if(k==='day'){const ds=xshuf(['一','二','三','四','五','六','天']).slice(0,3);const L=ds.map(d=>['星期'+d,'xīngqī'+({一:'yī',二:'èr',三:'sān',四:'sì',五:'wǔ',六:'liù',天:'tiān'})[d]]);const c=L[0];const o=xshuf(L);const r=xpick(W_REL);
+    return {opts:o,a:o.indexOf(c),lines:say([`你哪天去看你${r[0]}？`,`nǐ nǎ tiān qù kàn nǐ ${r[1]}?`],[`${c[0]}我去看${r[0]}。`,`${c[1]} wǒ qù kàn ${r[1]}.`]),q:[`${subj[0]}哪天去看${r[0]}？`,`${subj[1]} nǎ tiān qù kàn ${r[1]}?`]}}
+  if(k==='cmp'){const [a,b]=xshuf(W_NAME);const adj=xpick([['高','gāo'],['忙','máng'],['大','dà']]);const L=[[a[0],a[1]],[b[0],b[1]],['一样'+adj[0],'yíyàng '+adj[1]]];const o=xshuf(L);
+    return {opts:o,a:o.indexOf(L[0]),lines:say([`${a[0]}和${b[0]}谁${adj[0]}？`,`${a[1]} hé ${b[1]} shéi ${adj[1]}?`],[`${a[0]}比${b[0]}${adj[0]}一点儿。`,`${a[1]} bǐ ${b[1]} ${adj[1]} yìdiǎnr.`]),q:[`谁更${adj[0]}？`,`shéi gèng ${adj[1]}?`]}}
+  const rs=[['下雨了','xià yǔ le'],['身体不舒服','shēntǐ bù shūfu'],['没有时间','méiyǒu shíjiān']];const r=xpick(rs),p=xpick(W_PLACE);const o=xshuf(rs.slice());
+  return {opts:o,a:o.indexOf(r),lines:say([`你昨天怎么没去${p[0]}？`,`nǐ zuótiān zěnme méi qù ${p[1]}?`],[`因为${r[0]}，所以我没去${p[0]}。`,`yīnwèi ${r[1]}, suǒyǐ wǒ méi qù ${p[1]}.`]),q:[`${subj[0]}为什么没去${p[0]}？`,`${subj[1]} wèi shénme méi qù ${p[1]}?`]}}
+/* câu có hình */
+function emoSent(e,dialog){const [z,p,,c]=e;const pk=a=>{const x=xpick(a);return ['',x[0],x[1]]};
+  if(c==='v')return dialog?[['男','你在做什么呢？','nǐ zài zuò shénme ne?'],['女',`我在${z}呢。`,`wǒ zài ${p} ne.`]]:[pk([[`他在${z}。`,`tā zài ${p}.`],[`我喜欢${z}。`,`wǒ xǐhuan ${p}.`]])];
+  if(c==='p')return dialog?[['女','你去哪儿？','nǐ qù nǎr?'],['男',`我去${z}。`,`wǒ qù ${p}.`]]:[['',`我们现在在${z}。`,`wǒmen xiànzài zài ${p}.`]];
+  if(c==='w')return dialog?[['男','外边天气怎么样？','wàibian tiānqì zěnmeyàng?'],['女',`外边${z}。`,`wàibian ${p}.`]]:[['',`今天${z}。`,`jīntiān ${p}.`]];
+  return dialog?[['女','这是什么？','zhè shì shénme?'],['男',`这是${z}。`,`zhè shì ${p}.`]]:[pk([[`这是我的${z}。`,`zhè shì wǒ de ${p}.`],[`我想买${z}。`,`wǒ xiǎng mǎi ${p}.`],[`桌子上有${z}。`,`zhuōzi shang yǒu ${p}.`]])]}
+function emoPy(line,e){if(line[2])return line[2];return ''}
+/* hội thoại hỏi–đáp lấy từ bài khoá */
+function qaPairs(){const P=[];LESSONS.forEach(L=>L.texts.forEach(t=>{for(let k=0;k+1<t.lines.length;k++){const a=t.lines[k],b=t.lines[k+1];if(a.sp&&b.sp&&a.sp!==b.sp&&/[？?]$/.test(a.zh)&&hanN(a.zh)>=3&&hanN(a.zh)<=16&&hanN(b.zh)>=2&&hanN(b.zh)<=13)P.push([a,b])}}));
+  const s=new Set();return P.filter(p=>!s.has(p[0].zh)&&s.add(p[0].zh))}
+function fillItems(n){const words=mgAll().filter(w=>hanN(w.zh)>=1&&hanN(w.zh)<=3);const lines=xshuf(ALL_LINES.filter(l=>l.vi&&hanN(l.zh)>=5&&hanN(l.zh)<=18));const used=new Set(),out=[];
+  for(const l of lines){if(out.length>=n)break;const c=xshuf(words.filter(w=>l.zh.includes(w.zh)&&!used.has(w.zh)&&hanN(w.zh)<hanN(l.zh)-1));if(!c.length)continue;const w=c.sort((a,b)=>hanN(b.zh)-hanN(a.zh))[0];used.add(w.zh);out.push([l,w])}
+  return out}
+function w2Items(n){const out=[],used=new Set();const words=mgAll();for(const l of xshuf(ALL_LINES.filter(l=>hanN(l.zh)>=5&&hanN(l.zh)<=16))){if(out.length>=n)break;
+  const c=xshuf(words.filter(w=>l.zh.includes(w.zh)&&hanN(w.zh)===[...w.zh].length));for(const w of c){let sy=[];try{sy=splitSyl(w.py)}catch(e){}if(sy.length!==[...w.zh].length)continue;const k=xri(0,sy.length-1);const ch=[...w.zh][k];if(used.has(ch))continue;used.add(ch);
+    const pos=l.zh.indexOf(w.zh)+k;out.push({sent:l.zh.slice(0,pos)+'（ ）'+l.zh.slice(pos+1),py:sy[k],a:ch,full:l.zh,vi:l.vi});break}}return out}
+/* ---- dựng một đề ---- */
+function buildExam(lv,seed){XR=xseed(seed);const F=EXF[lv];const Q=[];let n=0;const emo=xshuf(EMO.slice());let ei=0;const nextE=k=>{const e=emo[ei++%emo.length];return e};
+  const pairs=xshuf(qaPairs());let pi=0;
+  const add=(o)=>{o.n=++n;Q.push(o)};
+  for(const s of F.secs)for(const [pk,cnt,izh,ivi] of s.parts){const part={pk,izh,ivi,sec:s.k,from:n+1,to:n+cnt};
+    if(pk==='L1pic'){for(let i=0;i<cnt;i++){const e=nextE();const os=xshuf([e,...others(EMO.filter(x=>x[3]===e[3]),e,2)]);const ln=emoSent(e,false);
+      add({part,kind:'pic',audio:ln,opts:os.map(x=>({em:x[2],lab:x[0]+' · '+x[4]})),a:os.indexOf(e),exp:ln.map(x=>x[1]).join(' ')})}}
+    else if(pk==='L3dpic'||pk==='L2dpic'||pk==='R1pic'){const groups=pk==='L2dpic'?2:1;for(let g=0;g<groups;g++){const per=cnt/groups;const items=[];const used=[];
+        for(let i=0;i<per;i++){const e=nextE();used.push(e)}const extra=others(EMO,used[0],1).filter(x=>!used.includes(x));const pool=xshuf([...used,...extra.slice(0,1)]);const shared=pool.map(x=>({em:x[2],lab:x[0]+' · '+x[4]}));
+        used.forEach(e=>{const ln=emoSent(e,pk!=='R1pic');add(pk==='R1pic'?{part,kind:'shared',shared,text:ln[0][1],py:lv===1?ln[0][2]:'',a:pool.indexOf(e),exp:ln[0][1]+' → '+e[2]+' '+e[4]}:{part,kind:'shared',shared,audio:ln,a:pool.indexOf(e),exp:ln.map(x=>(x[0]?x[0]+'：':'')+x[1]).join(' ')+' → '+e[2]})})}}
+    else if(pk==='L2qa'){for(let i=0;i<cnt;i++){const [a,b]=pairs[pi++%pairs.length];const ds=xshuf(pairs.filter(p=>p[1].zh!==b.zh)).slice(0,2).map(p=>p[1]);const os=xshuf([b,...ds]);
+      add({part,kind:'mc',audio:[['',a.zh,a.py]],opts:os.map(x=>({t:x.zh,py:x.py})),a:os.indexOf(b),exp:`${a.zh} → ${b.zh} (${b.vi})`})}}
+    else if(pk==='R2qa'){const groups=cnt>5?2:1;for(let g=0;g<groups;g++){const ps=[];for(let i=0;i<5;i++)ps.push(pairs[pi++%pairs.length]);const extra=pairs[pi++%pairs.length];const pool=xshuf([...ps.map(p=>p[1]),extra[1]]);const shared=pool.map(x=>({t:x.zh,py:lv===1?x.py:''}));
+        ps.forEach(([a,b])=>add({part,kind:'shared',shared,text:a.zh,py:lv===1?a.py:'',a:pool.indexOf(b),exp:`${a.zh} → ${b.zh} (${b.vi})`}))}}
+    else if(pk==='L4sq'||pk==='R4sq'||pk==='L3dq'){for(let i=0;i<cnt;i++){const t=tplQ(lv,pk==='L3dq');const reading=pk==='R4sq';
+      add({part,kind:'mc',audio:reading?null:[...t.lines,['问',t.q[0],t.q[1]]],text:reading?t.lines.map(x=>x[1]).join(''):null,py:reading&&lv===1?t.lines.map(x=>x[2]).join(' '):'',q2:reading?'★'+t.q[0]:null,opts:t.opts.map(x=>({t:x[0],py:x[1]})),a:t.a,
+        exp:t.lines.map(x=>(x[0]?x[0]+'：':'')+x[1]).join(' ')+' 问：'+t.q[0]})}}
+    else if(pk==='R3fill'){const its=fillItems(cnt);const extra=xshuf(mgAll().filter(w=>!its.some(x=>x[1].zh===w.zh)&&hanN(w.zh)<=2))[0];const pool=xshuf([...its.map(x=>x[1]),extra]);const shared=pool.map(w=>({t:w.zh,py:w.py}));
+      its.forEach(([l,w])=>add({part,kind:'shared',shared,text:l.zh.replace(w.zh,'（　）'),py:'',a:pool.indexOf(w),exp:`${l.zh} — ${l.vi}`}))}
+    else if(pk==='W1comp'){xshuf(EXW1).slice(0,cnt).forEach(([d,word,ans,oth,wpy])=>{const os=xshuf([ans,...xshuf(oth).slice(0,3)]);add({part,kind:'comp',text:d,word,wpy,opts:os.map(c=>({t:c})),a:os.indexOf(ans),exp:`${word} — bộ kiện: ${ans}`})})}
+    else if(pk==='W2py'){w2Items(cnt).forEach(it=>add({part,kind:'input',text:it.sent,py:it.py,a:it.a,exp:`${it.full} — ${it.vi}`}))}
+  }
+  XR=Math.random;return Q}
+/* ---- trạng thái ---- */
+let EX=null;let EXTM=null;
+const exKey=()=>'hsk-exam-'+HSKLV;
+function exLoad(){try{return JSON.parse(localStorage.getItem(exKey())||'null')}catch(e){return null}}
+function exSave(){try{if(EX&&!EX.done)localStorage.setItem(exKey(),JSON.stringify({seed:EX.seed,ans:EX.ans,flag:EX.flag,t0:EX.t0,plays:EX.plays,i:EX.i}));else localStorage.removeItem(exKey())}catch(e){}}
+function exStart(seed,resume){seed=seed||Math.floor(Math.random()*2e9);const Q=buildExam(HSKLV,seed);EX={seed,Q,ans:{},flag:{},plays:{},i:0,t0:Date.now(),done:false,...(resume||{})};EX.Q=Q;exSave();exTick();renderExam()}
+function exLeft(){return Math.max(0,EXF[HSKLV].min*60000-(Date.now()-EX.t0))}
+function exTick(){clearInterval(EXTM);EXTM=setInterval(()=>{if(!EX||EX.done){clearInterval(EXTM);return}const el=document.getElementById('exClock');const l=exLeft();if(el){el.textContent=fmtMs(l);el.classList.toggle('warn',l<5*60000)}if(!l){exSubmit(true)}},1000)}
+const fmtMs=ms=>{const s=Math.ceil(ms/1000);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+async function exPlay(q){const k=q.n;EX.plays[k]=(EX.plays[k]||0);if(EX.plays[k]>=2){toast('Mỗi câu chỉ được nghe 2 lần như khi thi thật.');return}EX.plays[k]++;exSave();
+  const b=document.getElementById('exPlayBtn');if(b){b.classList.add('playing');b.querySelector('small').textContent=`Còn ${2-EX.plays[k]} lượt nghe`}
+  for(const [who,t] of q.audio){if(!EX||EX.Q[EX.i]!==q)break;await speak(t,{pitch:who==='男'?0.78:who==='女'?1.18:1,queue:false});await new Promise(r=>setTimeout(r,450))}
+  if(b)b.classList.remove('playing')}
+function exScore(){const F=EXF[HSKLV];const res={};F.secs.forEach(s=>res[s.k]={c:0,n:0});EX.Q.forEach(q=>{const r=res[q.part.sec];r.n++;const a=EX.ans[q.n];if(q.kind==='input'?String(a||'').trim()===q.a:a===q.a)r.c++});
+  let tot=0;Object.values(res).forEach(r=>{r.pts=Math.round(r.c/r.n*100);tot+=r.pts});return {res,tot,max:F.secs.length*100,pass:tot>=F.pass}}
+function exSubmit(auto){if(!EX||EX.done)return;if(!auto){const un=EX.Q.filter(q=>EX.ans[q.n]==null||EX.ans[q.n]==='').length;if(un&&!confirm(`Còn ${un} câu chưa làm. Nộp bài luôn?`))return}
+  EX.done=true;clearInterval(EXTM);const sc=exScore();EX.sc=sc;EX.dur=Date.now()-EX.t0;
+  store.examHist=store.examHist||[];store.examHist.unshift({seed:EX.seed,d:Date.now(),tot:sc.tot,max:sc.max,pass:sc.pass,res:Object.fromEntries(Object.entries(sc.res).map(([k,r])=>[k,r.pts])),dur:EX.dur});store.examHist=store.examHist.slice(0,30);
+  save();exSave();addXP(Math.round(sc.tot/10));if(sc.pass)try{confetti()}catch(e){}EX.view='result';renderExam();scrollTo({top:0})}
+/* ---- giao diện ---- */
+function renderExam(){const F=EXF[HSKLV];
+  if(!EX||EX.view==='lobby'){const cont=exLoad();const H=store.examHist||[];const best=H.length?Math.max(...H.map(h=>h.tot)):null;
+    app.innerHTML=`<div class="pghead"><div><div class="eyebrow">模拟考试 · Chuẩn HSK 3.0</div><h1>Thi thử ${F.name}</h1><p class="muted">Mỗi lần bấm là một đề mới, đúng cấu trúc đề thi ${F.name} theo chuẩn HSK 3.0, chấm điểm tự động.</p></div></div>
+    <section class="card exfmt"><div class="exfh"><b>Cấu trúc đề</b><span>${F.secs.reduce((a,s)=>a+s.parts.reduce((b,p)=>b+p[1],0),0)} câu · ${F.min} phút</span></div>
+      ${F.secs.map(s=>`<div class="exsec"><div class="exsech"><span class="exbad ${s.k}">${s.zh}</span><b>${s.t}</b><small>${s.parts.reduce((b,p)=>b+p[1],0)} câu</small></div><ol>${s.parts.map(p=>`<li><span class="zh">${p[2]}</span><small>${p[3]} · ${p[1]} câu</small></li>`).join('')}</ol></div>`).join('')}
+      <p class="muted exnote">Điểm mỗi phần quy về thang 100 · tổng ${F.secs.length*100} điểm · đạt từ <b>${F.pass}</b> điểm (60%). Phần nghe: mỗi câu được nghe tối đa 2 lần. Thang điểm là quy đổi để luyện tập, không phải điểm chính thức.</p></section>
+    <div class="row exacts">${cont?`<button class="btn pri big" data-exgo="resume">▶ Làm tiếp bài đang dở</button>`:''}<button class="btn ${cont?'':'pri'} big" data-exgo="new">📝 Bắt đầu đề mới</button></div>
+    ${H.length?`<h2 class="mesec">Lịch sử thi thử</h2><div class="card exhist">${H.map((h,i)=>`<div class="exhr"><span class="exsc ${h.pass?'ok':'no'}">${h.tot}<small>/${h.max}</small></span><span class="exhm"><b>${h.pass?'Đạt':'Chưa đạt'}</b><small>${new Date(h.d).toLocaleString('vi')} · ${Math.round(h.dur/60000)} phút · ${Object.entries(h.res).map(([k,v])=>({listen:'Nghe',read:'Đọc',write:'Viết'})[k]+' '+v).join(' · ')}</small></span><button class="btn sm" data-exgo="redo" data-seed="${h.seed}">Làm lại đề này</button></div>`).join('')}</div><p class="muted" style="font-size:13px">Điểm cao nhất: <b>${best}</b></p>`:''}`;return}
+  if(EX.view==='result'){const sc=EX.sc;const names={listen:'Nghe 听力',read:'Đọc 阅读',write:'Viết 书写'};
+    app.innerHTML=`<section class="card exres ${sc.pass?'ok':'no'}"><div class="exresh"><span class="exbig">${sc.tot}<small>/${sc.max}</small></span><div><b>${sc.pass?'🎉 Đạt — chúc mừng bạn!':'Chưa đạt — cố thêm chút nữa!'}</b><small>${F.name} · cần ${F.pass} điểm · làm trong ${Math.round(EX.dur/60000)} phút</small></div></div>
+      <div class="exbars">${Object.entries(sc.res).map(([k,r])=>`<div class="exbar"><span>${names[k]}</span><div class="exbt"><i style="width:${r.pts}%"></i></div><b>${r.pts}</b><small>${r.c}/${r.n} câu</small></div>`).join('')}</div>
+      <div class="row"><button class="btn pri" data-exgo="new">Đề mới</button><button class="btn" data-exgo="redo" data-seed="${EX.seed}">Làm lại đề này</button><button class="btn" data-exgo="lobby">Về trang thi thử</button></div></section>
+      <h2 class="mesec">Xem lại bài làm</h2><div class="exrev">${EX.Q.map(q=>{const a=EX.ans[q.n];const ok=q.kind==='input'?String(a||'').trim()===q.a:a===q.a;const opts=q.kind==='shared'?q.shared:q.opts;const lab=i=>i==null||i===''?'—':(q.kind==='input'?i:(opts[i].t||opts[i].em||'')+(opts[i].lab?' ('+opts[i].lab+')':''));
+        return `<div class="exri ${ok?'ok':'no'}"><span class="exrn">${q.n}</span><div><small>${q.part.ivi}</small><div class="zh">${esc(q.text||q.exp.split(' → ')[0])}</div><div class="exra">${ok?'✓':'✗ Bạn chọn: '+esc(lab(a))+' · '}Đáp án: <b>${esc(q.kind==='input'?q.a:lab(q.a))}</b></div><div class="muted exrx">${esc(q.exp)}</div></div></div>`}).join('')}</div>`;return}
+  /* đang làm bài */
+  const q=EX.Q[EX.i];const p=q.part;const secs=F.secs;const answered=EX.Q.filter(x=>EX.ans[x.n]!=null&&EX.ans[x.n]!=='').length;
+  const optsH=(list,sh)=>`<div class="exopts ${list[0]&&list[0].em?'pics':''} ${sh?'shared':''}">${list.map((o,i)=>`<button class="exo ${EX.ans[q.n]===i?'sel':''}" data-exa="${i}"><span class="exl">${'ABCDEF'[i]}</span>${o.em?`<span class="exem">${o.em}</span>`:`<span class="zh">${esc(o.t)}</span>${o.py?`<small class="py">${esc(o.py)}</small>`:''}`}</button>`).join('')}</div>`;
+  app.innerHTML=`<div class="exbar0"><span class="exclock" id="exClock">${fmtMs(exLeft())}</span><div class="exsecs">${secs.map(s=>`<button class="${s.k===p.sec?'on':''}" data-exsec="${s.k}">${s.t}</button>`).join('')}</div><button class="btn sm" data-exgo="grid">${answered}/${EX.Q.length}</button><button class="btn sm pri" data-exgo="submit">Nộp</button></div>
+  <section class="card exq"><div class="exph"><span class="exbad ${p.sec}">${({listen:'听力',read:'阅读',write:'书写'})[p.sec]}</span><span>第${p.from}—${p.to}题</span></div><div class="exinst"><span class="zh">${p.izh}</span><small>${p.ivi}</small></div>
+    <div class="exn">Câu ${q.n}${EX.flag[q.n]?' · 🚩':''}</div>
+    ${q.audio?`<button class="explay" id="exPlayBtn" data-exgo="play"><span>🔊</span><b>Nghe</b><small>Còn ${2-(EX.plays[q.n]||0)} lượt nghe</small></button>`:''}
+    ${q.text?`<div class="exstem ${q.kind}"><div class="zh">${q.kind==='input'?esc(q.text).replace('（ ）',`<span class="expy"><small>${esc(q.py)}</small><input id="exIn" maxlength="2" value="${esc(EX.ans[q.n]||'')}" autocomplete="off" placeholder="?"></span>`):esc(q.text)}</div>${q.py&&q.kind!=='input'?`<div class="py">${esc(q.py)}</div>`:''}${q.q2?`<div class="exq2 zh">${esc(q.q2)}</div>`:''}${q.kind==='comp'?`<small class="muted">${(q.wpy||exWordPy(q.word))?'Pinyin: <b class="py">'+esc(q.wpy||exWordPy(q.word))+'</b> · ':''}chọn bộ kiện thay cho dấu ？</small>`:''}</div>`:''}
+    ${q.kind==='input'?'<p class="muted" style="font-size:12.5px;text-align:center">Gõ chữ Hán bằng bộ gõ tiếng Trung (pinyin) của điện thoại.</p>':optsH(q.kind==='shared'?q.shared:q.opts,q.kind==='shared')}
+    <div class="exnav"><button class="btn" data-exnav="-1" ${EX.i?'':'disabled'}>← Câu trước</button><button class="btn sm" data-exgo="flag">${EX.flag[q.n]?'Bỏ đánh dấu':'🚩 Đánh dấu'}</button><button class="btn pri" data-exnav="1">${EX.i<EX.Q.length-1?'Câu sau →':'Xem lại & nộp'}</button></div></section>
+  <div class="exgrid" id="exGrid" hidden>${secs.map(s=>`<div class="exgs"><b>${s.t}</b><div>${EX.Q.filter(x=>x.part.sec===s.k).map(x=>`<button class="${EX.ans[x.n]!=null&&EX.ans[x.n]!==''?'done':''} ${x===q?'cur':''} ${EX.flag[x.n]?'flag':''}" data-exj="${EX.Q.indexOf(x)}">${x.n}</button>`).join('')}</div></div>`).join('')}</div>`;
+  const inp=$('#exIn');if(inp){inp.addEventListener('input',()=>{EX.ans[q.n]=inp.value.trim().slice(0,1);exSave()})}
+  if(q.audio&&!EX.plays[q.n])setTimeout(()=>{if(EX&&EX.Q[EX.i]===q&&!EX.done)exPlay(q)},500)}
+document.addEventListener('click',e=>{if(route.view!=='exam')return;const t=e.target;
+  const g=t.closest('[data-exgo]');if(g){const k=g.dataset.exgo;
+    if(k==='new'){stopSpeak();exStart();return}
+    if(k==='resume'){const c=exLoad();if(c)exStart(c.seed,c);return}
+    if(k==='redo'){stopSpeak();exStart(+g.dataset.seed);return}
+    if(k==='lobby'){EX=null;renderExam();return}
+    if(k==='play'){exPlay(EX.Q[EX.i]);return}
+    if(k==='submit'){exSubmit(false);return}
+    if(k==='flag'){const n=EX.Q[EX.i].n;EX.flag[n]=!EX.flag[n];exSave();renderExam();return}
+    if(k==='grid'){const gr=$('#exGrid');gr.hidden=!gr.hidden;return}}
+  const a=t.closest('[data-exa]');if(a&&EX&&!EX.done){EX.ans[EX.Q[EX.i].n]=+a.dataset.exa;exSave();a.parentElement.querySelectorAll('.exo').forEach(x=>x.classList.toggle('sel',x===a));const b=document.querySelector('[data-exgo="grid"]');if(b)b.textContent=EX.Q.filter(x=>EX.ans[x.n]!=null&&EX.ans[x.n]!=='').length+'/'+EX.Q.length;return}
+  const nv=t.closest('[data-exnav]');if(nv){stopSpeak();const d=+nv.dataset.exnav;if(d>0&&EX.i===EX.Q.length-1){$('#exGrid').hidden=false;$('#exGrid').scrollIntoView({behavior:'smooth'});return}EX.i=Math.max(0,Math.min(EX.Q.length-1,EX.i+d));exSave();renderExam();scrollTo({top:0});return}
+  const j=t.closest('[data-exj]');if(j){stopSpeak();EX.i=+j.dataset.exj;exSave();renderExam();scrollTo({top:0});return}
+  const sc=t.closest('[data-exsec]');if(sc){stopSpeak();EX.i=EX.Q.findIndex(x=>x.part.sec===sc.dataset.exsec);exSave();renderExam();scrollTo({top:0});return}
+});
+function exEntry(){const H=store.examHist||[];const c=exLoad();return `<button class="card exentry" data-go="exam"><span class="exeic">📝</span><span><b>Thi thử chuẩn HSK 3.0 · ${EXF[HSKLV].name}</b><small>${EXF[HSKLV].secs.reduce((a,s)=>a+s.parts.reduce((b,p)=>b+p[1],0),0)} câu · ${EXF[HSKLV].min} phút · đề mới mỗi lần · chấm điểm tự động${c?' · <em>đang làm dở</em>':H.length?' · cao nhất '+Math.max(...H.map(h=>h.tot))+' điểm':''}</small></span><span class="chev">›</span></button>`}
+
+function exWordPy(word){const w=WORDS.find(x=>x.zh===word);if(w)return w.py;const ps=[...word].map(c=>{const x=WORDS.find(y=>y.zh===c);return x?x.py:null});return ps.every(Boolean)?ps.join(' '):''}
 
 fromHash();try{history.replaceState({d:0},"","#"+hashOf())}catch(e){}render();
 (function(){var s=document.getElementById('splash');if(!s)return;var w=Math.max(0,2600-(Date.now()-(window.__spT0||0)));setTimeout(function(){s.classList.add('out');setTimeout(function(){s.remove()},600)},w)})();
