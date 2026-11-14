@@ -1539,6 +1539,18 @@ button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
 .gresh b{color:#fff}
 .gmsg{background:rgba(10,6,25,.6);backdrop-filter:blur(3px)}
 @media (max-width:560px){.gstage{height:min(54vh,460px);min-height:320px}.gwrap{border-radius:20px}}
+.gmsg .gmbtns{display:flex;gap:8px;justify-content:center;margin-top:10px}
+@media (max-width:899px){
+  body.kb .bnav{display:none}
+  body.gfocus{overflow:hidden}
+  body.gfocus main#app{z-index:80;position:relative}
+  body.gfocus .bnav{display:none}
+  body.gfocus .gplay{position:fixed;left:0;right:0;top:var(--vvt,0px);height:var(--vvh,100dvh);z-index:70;display:flex;flex-direction:column;gap:8px;margin:0;padding:calc(8px + env(safe-area-inset-top,0px)) 10px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,#120b28,#2a1640)}
+  body.gfocus .gplay .ghud{margin:0;flex:none}
+  body.gfocus .gplay .gstage{flex:1 1 auto;height:auto;min-height:0}
+  body.gfocus .gplay .ginput{margin:0;flex:none}
+  body.kb.gfocus .gplay{padding-top:8px;padding-bottom:8px}
+}
 </style>
 <header class="bar">
   <div class="wrap">
@@ -3437,7 +3449,7 @@ function gBoom(o,x,y){if(!G)return;G.hit++;G.combo++;G.best=Math.max(G.best,G.co
 const st_=el=>G.st.appendChild(el);
 function gHint(){if(!G||G.paused)return;const o=[...G.live].filter(x=>!x.frozen).sort((a,b)=>b.y-a.y)[0];if(!o)return;G.combo=0;
   if(!o.el.querySelector('.ghintx')){const h=document.createElement('span');h.className='ghintx';h.textContent=gAns(o.w);o.el.appendChild(h)}gHud()}
-function gPause(p){if(!G||G.ending)return;G.paused=p;const m=G.root.querySelector('#gMsg');m.hidden=!p;m.innerHTML=p?'<b>Tạm dừng</b><span>Chạm để chơi tiếp</span>':'';G.st.classList.toggle('paused',p);if(!p){G.last=performance.now();G.root.querySelector('#gIn').focus()}}
+function gPause(p){if(!G||G.ending)return;G.paused=p;const m=G.root.querySelector('#gMsg');m.hidden=!p;m.innerHTML=p?'<b>Tạm dừng</b><span>Chạm để chơi tiếp</span><div class="gmbtns"><button class="btn sm pri">▶ Chơi tiếp</button><button class="btn sm" data-gsetup>✕ Thoát ván</button></div>':'';G.st.classList.toggle('paused',p);if(!p){G.last=performance.now();G.root.querySelector('#gIn').focus()}}
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&G&&!G.paused)gPause(true)});
 function gEnd(win){if(!G)return;const g=G;g.dead=true;cancelAnimationFrame(g.raf);const r=g.root;
   const acc=g.shots?Math.round(g.hit/g.shots*100):0;const k=gBestKey();const prev=store.game[k]||{s:0};
@@ -4005,6 +4017,18 @@ const GSKYLINE=`<svg viewBox="0 0 400 96" preserveAspectRatio="xMidYMax slice" a
 <path d="M0 96 V80 H120 V96Z"/><path d="M118 96 V70 L150 60 L182 70 V96Z"/><path d="M176 96 V82 H260 V96Z"/><path d="M250 96 V76 L270 70 L290 76 V96Z"/><path d="M340 96 V78 H400 V96Z"/></g>
 <g fill="#ffcf6a" opacity=".8"><rect x="134" y="76" width="4" height="6"/><rect x="160" y="76" width="4" height="6"/><rect x="312" y="62" width="3" height="5"/><rect x="320" y="62" width="3" height="5"/><rect x="36" y="80" width="3" height="5"/></g></svg>`;
 const GLAUNCHER=`<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="gLw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#b97b0b"/></linearGradient></defs><circle cx="32" cy="40" r="20" fill="#3a1638" stroke="url(#gLw)" stroke-width="3"/><path d="M14 30 Q32 14 50 30" fill="none" stroke="url(#gLw)" stroke-width="4" stroke-linecap="round"/><path d="M14 30 L32 36 L50 30" fill="none" stroke="#fff3c4" stroke-width="1.4"/><rect x="30" y="6" width="4" height="34" rx="2" fill="#8a5a2b"/><path d="M32 0 L38 10 H26Z" fill="#ff5a3d"/><circle cx="32" cy="40" r="7" fill="url(#gLw)"/><text x="32" y="44" text-anchor="middle" font-size="9" font-weight="700" fill="#5a1d0a">镖</text></svg>`;
+
+/* ---------- điện thoại: bàn phím ảo & chế độ chơi toàn màn hình ---------- */
+(function(){const vv=window.visualViewport;const set=()=>{const h=vv?vv.height:innerHeight,t=vv?vv.offsetTop:0;document.documentElement.style.setProperty('--vvh',h+'px');document.documentElement.style.setProperty('--vvt',t+'px')};
+  set();if(vv){vv.addEventListener('resize',set);vv.addEventListener('scroll',set)}addEventListener('resize',set);
+  const isTxt=el=>el&&(el.tagName==='TEXTAREA'||(el.tagName==='INPUT'&&/^(text|search|email|password|)$/i.test(el.type||'')));
+  document.addEventListener('focusin',e=>{if(isTxt(e.target))document.body.classList.add('kb')});
+  document.addEventListener('focusout',e=>{if(isTxt(e.target))setTimeout(()=>{if(!isTxt(document.activeElement))document.body.classList.remove('kb')},120)});
+  const a=gStart;gStart=function(...x){a.apply(this,x);document.body.classList.add('gfocus');setTimeout(set,50)};
+  const b=gEnd;gEnd=function(...x){document.body.classList.remove('gfocus');b.apply(this,x)};
+  const c=gStop;gStop=function(){document.body.classList.remove('gfocus');c()};
+  const r=render;render=function(){document.body.classList.remove('gfocus');r()};
+})();
 
 /* ================= THÔNG BÁO · NHẮC HỌC · CÓ GÌ MỚI ================= */
 const APP_VER='3.1';
