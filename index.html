@@ -1454,6 +1454,38 @@ button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
 .rkli-s{font-size:12px;font-weight:700;white-space:nowrap;color:var(--muted)}.rkli.cur .rkli-s{color:var(--c2)}.rkli.done .rkli-s{color:#1f9e74}
 @media (max-width:520px){.rkli{grid-template-columns:auto 1fr;padding:10px}.rkli-s{grid-column:2}}
 </style>
+<style id="ftcss2">
+.fsent{padding:16px;border-radius:18px;background:var(--surface-2);text-align:center;margin-bottom:12px}
+.fzh{font-size:26px;line-height:1.6}.fvi{font-size:14.5px;color:var(--muted);margin-top:4px}.fvi.big{font-size:19px;color:var(--ink);font-weight:600}
+.fblank{text-decoration:none;display:inline-block;min-width:1.2em;border-bottom:3px solid var(--hc);color:var(--hc);padding:0 2px}.fblank.ok{color:#1f9e74;border-color:#1f9e74}.fblank.no{color:#e5533d;border-color:#e5533d}
+.gpyl{display:block;font-size:13px}
+.rpq{display:flex;gap:10px;align-items:flex-start}
+.rpav{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--hc);color:#fff;font-weight:700;font-size:18px}
+.rpbub{flex:1;min-width:0;background:var(--surface-2);border-radius:4px 18px 18px 18px;padding:10px 14px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.rpbub small{color:var(--muted);font-size:12px}.rpbub .zh{font-size:22px}.rpvi{font-size:13.5px;color:var(--muted)}
+.rpq .spk{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:18px;cursor:pointer}
+.rpopts{display:flex;flex-direction:column;gap:8px}
+.rpo{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:12px 14px;border-radius:16px 16px 4px 16px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.rpo .zh{font-size:19px}.rpo small{font-size:12.5px;color:var(--muted)}
+.rpo.ok{border-color:#1f9e74;background:color-mix(in srgb,#1f9e74 12%,var(--surface))}.rpo.no{border-color:#e5533d;background:color-mix(in srgb,#e5533d 12%,var(--surface));animation:shake .35s}
+.sbline{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;min-height:52px;margin:6px 0 12px}
+.sbw{padding:8px 12px;border-radius:12px;font-size:20px;font-family:var(--zh-font,inherit)}.sbw.on{background:color-mix(in srgb,#1f9e74 14%,var(--surface));border:2px solid #1f9e74}.sbw.cur{border:2px dashed var(--line);color:var(--muted)}
+.sbt{min-width:58px;height:54px;padding:0 12px;border-radius:14px;border:2px solid var(--line);background:var(--surface);cursor:pointer;color:var(--ink)}.sbt .zh{font-size:22px}.sbt:disabled{opacity:.25}.sbt.no{border-color:#e5533d;animation:shake .35s}
+.bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.bgc{aspect-ratio:1;border-radius:14px;border:2px solid var(--line);background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--ink);padding:4px;transition:transform .15s}
+.bgc .zh{font-size:clamp(16px,5vw,24px);line-height:1.1}.bgc small{font-size:10.5px;color:var(--muted)}
+.bgc.on{background:color-mix(in srgb,var(--hc) 20%,var(--surface));border-color:var(--hc);transform:scale(.95)}
+.bgc.win{background:var(--hc);color:#fff;animation:memOk .5s}.bgc.win small{color:#fff}
+.bgc.no{border-color:#e5533d;animation:shake .35s}
+.ctq{text-align:center;font-size:15px;margin-bottom:8px}.ctq b{font-size:19px;color:var(--hc)}
+.ctfield{position:relative;height:min(46vh,380px);border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#e9f6ff,#fff3e0);touch-action:manipulation}
+@media (prefers-color-scheme:dark){.ctfield{background:linear-gradient(180deg,#14223a,#2a1d14)}}
+.ctlanes{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr)}.ctlanes i{border-right:1px dashed rgba(120,120,140,.25)}.ctlanes i:last-child{border:0}
+.ctbasket{position:absolute;bottom:8px;width:64px;height:56px;font-size:46px;display:grid;place-items:center;transition:left .12s ease-out;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+.ctit{position:absolute;width:76px;height:54px;border-radius:14px;display:grid;place-items:center;background:var(--surface);border:2px solid var(--line);box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.ctit .zh{font-size:22px}.ctit.got{background:#1f9e74;color:#fff;transform:scale(1.2);transition:.25s}.ctit.bad{background:#e5533d;color:#fff;transition:.25s}
+.ctbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.ctbtns .btn{justify-content:center;font-size:22px;padding:14px}
+</style>
 <style id="ntcss">
 .ntbtn{position:relative}
 .ntbtn i{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;padding:0 4px;border-radius:99px;background:#e5533d;color:#fff;font-style:normal;font-size:10.5px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 2px var(--surface)}
@@ -1934,7 +1966,7 @@ function renderHub(){
       ['prtr','🔁','Dịch câu','翻译','Trung ⇄ Việt: trắc nghiệm hoặc tự dịch.',pc('tr')?pc('tr')+' lượt':'','#e5533d'],
       ['prpara','📜','Đoạn văn','短文',`${typeof PARAS!=='undefined'?PARAS.length:''} đoạn văn theo chủ đề để đọc, nghe và dịch.`,pc('para')?pc('para')+' lượt':'','#1f9e74']]],
     ['Giải trí','游戏',[
-      ['game','🎮','Khu trò chơi','游戏','7 trò: lật thẻ, đúng/sai, nghe chọn chữ, nối từ, ghép chữ, săn thanh điệu, phi tiêu.',(()=>{const n=mgPlays();return n?n+' ván':''})(),'#f0a000']]]];
+      ['game','🎮','Khu trò chơi','游戏','14 trò: điền từ, đối đáp, dịch nhanh, xếp câu, số & giờ, bingo nghe, hứng chữ, phi tiêu…',(()=>{const n=mgPlays();return n?n+' ván':''})(),'#f0a000']]]];
   app.innerHTML=`<div class="pghead"><div><div class="eyebrow">练习 · Ôn luyện HSK ${HSKLV}</div><h1>Ôn luyện</h1><p class="muted">Chọn kỹ năng muốn luyện. Mỗi mục đều lấy từ và câu trong 15 bài của giáo trình.</p></div></div>
   ${G.map(([t,z,items])=>`<section class="hubg"><h2>${t} <span class="zh">${z}</span></h2><div class="hubgrid">${items.map(([v,ic,n,zh,d,m,c])=>`<button class="htile" data-go="${v}" style="--hc:${c}"><span class="hic">${ic}</span><span><b>${n}<span class="zh">${zh}</span></b><span class="hd">${d}</span></span>${m?`<span class="hm">${m}</span>`:'<span class="chev">›</span>'}</button>`).join('')}</div></section>`).join('')}`;
 }
@@ -3880,13 +3912,21 @@ document.addEventListener('click',e=>{const t=e.target;
 
 /* ---------- 5. Khu trò chơi ---------- */
 const MGAMES=[
-  ['lantern','🏮','Phi tiêu đèn lồng','飞镖','Gõ nghĩa hoặc pinyin để hạ đèn lồng đang rơi.','#e5533d'],
-  ['memory','🃏','Lật thẻ ghép đôi','翻牌','Lật hai thẻ: chữ Hán và nghĩa trùng nhau thì được giữ lại.','#8b5cf6'],
-  ['flash','⚡','Đúng hay sai 45 giây','闪电判断','Nghĩa này đúng hay sai? Chọn thật nhanh, nối dài combo.','#f0a000'],
-  ['listen','🎧','Nghe chọn chữ','听音选字','Nghe phát âm, chọn đúng chữ Hán trong 4 đáp án.','#1f9e74'],
-  ['link','🔗','Nối từ siêu tốc','连连看','Nối 5 chữ Hán với 5 nghĩa, qua 3 vòng nhanh nhất có thể.','#3478f6'],
-  ['build','🧱','Ghép chữ thành từ','拼字成词','Chạm các chữ Hán theo đúng thứ tự để thành từ.','#e5533d'],
-  ['tone','🎵','Săn thanh điệu','声调猎人','Chọn pinyin có dấu thanh đúng của từ.','#14b8a6']];
+  ['fill','✏️','Điền từ vào câu','选词填空','Câu thật trong bài khoá bị khuyết một từ — chọn từ đúng để điền.','#e5533d','use'],
+  ['reply','💬','Đối đáp hội thoại','对话接龙','Người kia vừa nói câu này — bạn đáp lại thế nào cho đúng?','#3478f6','use'],
+  ['trans','🚀','Dịch siêu tốc 60 giây','快速翻译','Đọc câu tiếng Việt, chọn câu tiếng Trung đúng nghĩa thật nhanh.','#8b5cf6','use'],
+  ['sbuild','🧩','Xếp câu 60 giây','连词成句','Xếp các từ thành câu hoàn chỉnh, càng nhiều câu càng nhiều điểm.','#f0a000','use'],
+  ['number','🔢','Số, giá tiền & giờ','数字时间','Đọc hoặc nghe số, giá tiền, giờ, ngày tháng bằng tiếng Trung rồi chọn đáp án.','#14b8a6','use'],
+  ['bingo','🎱','Bingo nghe','听力宾果','Nghe đọc từ, chạm đúng ô trên bảng. Nối được một hàng là thắng!','#1f9e74','ear'],
+  ['listen','🎧','Nghe chọn chữ','听音选字','Nghe phát âm, chọn đúng chữ Hán trong 4 đáp án.','#1f9e74','ear'],
+  ['tone','🎵','Săn thanh điệu','声调猎人','Chọn pinyin có dấu thanh đúng của từ.','#14b8a6','ear'],
+  ['catch','🧺','Hứng chữ','接字游戏','Chữ Hán rơi xuống 3 làn — di chuyển giỏ hứng đúng từ mang nghĩa đang hiện.','#e5533d','fast'],
+  ['lantern','🏮','Phi tiêu đèn lồng','飞镖','Gõ nghĩa hoặc pinyin để hạ đèn lồng đang rơi.','#e5533d','fast'],
+  ['flash','⚡','Đúng hay sai 45 giây','闪电判断','Nghĩa này đúng hay sai? Chọn thật nhanh, nối dài combo.','#f0a000','fast'],
+  ['memory','🃏','Lật thẻ ghép đôi','翻牌','Lật hai thẻ: chữ Hán và nghĩa trùng nhau thì được giữ lại.','#8b5cf6','word'],
+  ['link','🔗','Nối từ siêu tốc','连连看','Nối 5 chữ Hán với 5 nghĩa, qua 3 vòng nhanh nhất có thể.','#3478f6','word'],
+  ['build','🧱','Ghép chữ thành từ','拼字成词','Chạm các chữ Hán theo đúng thứ tự để thành từ.','#e5533d','word']];
+const MGROUPS=[['use','Vận dụng câu','用'],['ear','Nghe','听'],['fast','Phản xạ nhanh','快'],['word','Ghi nhớ từ','记']];
 let mg={l:'all'};try{mg.l=JSON.parse(localStorage.getItem('hsk-mg')||'{}').l||'all'}catch(e){}
 const mgSave=()=>{try{localStorage.setItem('hsk-mg',JSON.stringify({l:mg.l}))}catch(e){}};
 const mgPlays=()=>Object.values(store.mg||{}).reduce((a,x)=>a+(x.p||0),0)+stc('gPlay');
@@ -3900,16 +3940,16 @@ function mgEnd(id,score,xp,extra=''){store.mg=store.mg||{};const r=store.mg[id]|
 let MGT=null;const mgStop=()=>{clearInterval(MGT);MGT=null;clearTimeout(mgStop.t)};
 function renderGame(){mgStop();const g=route.g||'';
   if(!g){const n=mgPool().length;
-    app.innerHTML=`<div class="pghead"><div><div class="eyebrow">游戏 · Khu trò chơi</div><h1>Trò chơi</h1><p class="muted">Chơi mà học: mỗi ván lấy từ trong các bài bạn chọn, được cộng XP và tính vào bảng xếp hạng tuần.</p></div></div>
+    app.innerHTML=`<div class="pghead"><div><div class="eyebrow">游戏 · Khu trò chơi</div><h1>Trò chơi</h1><p class="muted">14 trò chơi để học mà chơi: mỗi ván lấy từ và câu trong các bài bạn chọn, được cộng XP và tính vào bảng xếp hạng tuần.</p></div></div>
     <div class="glbl">Phạm vi từ</div><div class="chips gchips"><button class="chip" aria-pressed="${mg.l==='all'}" data-mgl="all">Tất cả 15 bài</button>${LESSONS.map(x=>`<button class="chip" aria-pressed="${mg.l==x.id}" data-mgl="${x.id}">Bài ${x.id}</button>`).join('')}</div>
     <p class="muted" style="font-size:13px;margin:6px 0 4px">${n} từ trong phạm vi đang chọn${n<8?' — hơi ít, các trò sẽ lấy thêm từ ở bài khác.':''}</p>
-    <div class="mggrid">${MGAMES.map(([id,ic,t,z,d,c])=>{const r=(store.mg||{})[id];const best=id==='lantern'?Math.max(0,...Object.values(store.game||{}).map(x=>x.s||0)):(r&&r.b)||0;
-      return `<button class="mgtile" data-go="game" data-gsel="${id}" style="--hc:${c}"><span class="mgic">${ic}</span><b>${t}</b><span class="zh">${z}</span><small>${d}</small><span class="mgbest">${best?'🏆 '+best.toLocaleString('vi'):'Chưa chơi'}</span></button>`}).join('')}</div>`;return}
+    ${MGROUPS.map(([gk,gt,gz])=>`<section class="hubg"><h2>${gt} <span class="zh">${gz}</span></h2><div class="mggrid">${MGAMES.filter(x=>x[6]===gk).map(([id,ic,t,z,d,c])=>{const r=(store.mg||{})[id];const best=id==='lantern'?Math.max(0,...Object.values(store.game||{}).map(x=>x.s||0)):(r&&r.b)||0;
+      return `<button class="mgtile" data-go="game" data-gsel="${id}" style="--hc:${c}"><span class="mgic">${ic}</span><b>${t}</b><span class="zh">${z}</span><small>${d}</small><span class="mgbest">${best?'🏆 '+best.toLocaleString('vi'):'Chưa chơi'}</span></button>`}).join('')}</div></section>`).join('')}`;return}
   const G=MGAMES.find(x=>x[0]===g);if(!G){route.g='';return renderGame()}
   if(g==='lantern'){app.innerHTML=`<div id="gRoot"></div>`;const r=$('#gRoot');r.innerHTML=gameShell(mg.l==='all'?null:mg.l);gameMount(r);return}
   app.innerHTML=`<section class="card mgwrap" style="--hc:${G[5]}"><div class="mghead"><span class="mgic sm">${G[1]}</span><div><b>${G[2]}</b><small>${G[4]}</small></div><span class="mgscope">${mg.l==='all'?'15 bài':'Bài '+mg.l}</span></div><div id="mgStage"></div></section>`;
   mgStart(g)}
-function mgStart(g){mgStop();({memory:gMemory,flash:gFlash,listen:gListen,link:gLink,build:gBuild,tone:gTone}[g]||(()=>{}))()}
+function mgStart(g){mgStop();({memory:gMemory,flash:gFlash,listen:gListen,link:gLink,build:gBuild,tone:gTone,fill:gFill,reply:gReply,trans:gTrans,sbuild:gSBuild,number:gNumber,bingo:gBingo,catch:gCatch}[g]||(()=>{}))()}
 function pickWords(n,filter){let P=mgPool().filter(filter||(()=>1));if(P.length<n){const s=new Set(P.map(w=>w.zh));P=P.concat(shuffle(mgAll().filter(w=>!s.has(w.zh)&&(filter?filter(w):1))))}return shuffle(P.slice(0,Math.max(n,P.length))).slice(0,n)}
 function distract(w,n,key,filter){const seen=new Set([w[key]]);const out=[];for(const x of shuffle(mgAll())){if(out.length>=n)break;if(filter&&!filter(x))continue;if(!seen.has(x[key])){seen.add(x[key]);out.push(x)}}return out}
 /* 5a. Lật thẻ */
@@ -4030,9 +4070,138 @@ const GLAUNCHER=`<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradie
   const r=render;render=function(){document.body.classList.remove('gfocus');r()};
 })();
 
+/* ================= 7 TRÒ CHƠI VẬN DỤNG MỚI ================= */
+const hanN=s=>[...String(s)].filter(c=>/[一-鿿]/.test(c)).length;
+function mgLines(min=3,max=22){const L=(mg.l==='all'?ALL_LINES:ALL_LINES.filter(l=>l.lesson===+mg.l)).filter(l=>l.vi&&hanN(l.zh)>=min&&hanN(l.zh)<=max);const s=new Set();const out=L.filter(l=>!s.has(l.zh)&&s.add(l.zh));
+  if(out.length<12){ALL_LINES.forEach(l=>{if(l.vi&&hanN(l.zh)>=min&&hanN(l.zh)<=max&&!s.has(l.zh)){s.add(l.zh);out.push(l)}})}return out}
+const heartsH=n=>'❤️'.repeat(Math.max(0,n))+'🤍'.repeat(Math.max(0,3-n));
+const pyLine=l=>l.py?`<span class="py gpyl">${colorPy(l.py)}</span>`:'';
+/* 1. Điền từ vào câu */
+function gFill(){const R=10;let i=0,sc=0,ok=0,lives=3;const st=$('#mgStage');
+  const words=mgAll().filter(w=>hanN(w.zh)>=1);const lines=shuffle(mgLines(4,20));const Q=[];
+  const pool=mgPool();for(const l of lines){if(Q.length>=R)break;const cand=shuffle((pool.length>=6?pool:words).filter(w=>l.zh.includes(w.zh)&&w.zh!==l.zh&&hanN(w.zh)<hanN(l.zh)));if(cand.length){Q.push([l,cand.sort((a,b)=>hanN(b.zh)-hanN(a.zh))[0]])}}
+  const show=()=>{if(i>=Q.length||lives<=0){mgEnd('fill',sc,ok*2,`<p>${ok}/${Math.min(i,Q.length)} câu điền đúng</p>`);return}
+    const [l,w]=Q[i];let ds=distract(w,3,'zh',x=>hanN(x.zh)===hanN(w.zh)&&!l.zh.includes(x.zh));if(ds.length<3)ds=ds.concat(distract(w,3,'zh',x=>!l.zh.includes(x.zh)&&!ds.includes(x))).slice(0,3);const opts=shuffle([w,...ds]);const t0=Date.now();
+    st.innerHTML=`<div class="mghud"><span>Câu <b>${i+1}</b>/${Q.length}</span><span>${heartsH(lives)}</span><span>Điểm <b>${sc}</b></span></div>
+    <div class="fsent"><div class="zh fzh">${esc(l.zh).replace(esc(w.zh),'<u class="fblank">'+'＿'.repeat(hanN(w.zh))+'</u>')}</div><div class="fvi">${esc(l.vi)}</div></div>
+    <div class="lsopts">${opts.map(o=>`<button class="lso" data-fo="${esc(o.zh)}"><span class="zh">${esc(o.zh)}</span><small class="py">${esc(o.py)}</small></button>`).join('')}</div>`;
+    st.onclick=e=>{const b=e.target.closest('[data-fo]');if(!b||st._lock)return;st._lock=true;const good=b.dataset.fo===w.zh;
+      st.querySelectorAll('[data-fo]').forEach(x=>{if(x.dataset.fo===w.zh)x.classList.add('ok')});const bl=st.querySelector('.fblank');bl.textContent=w.zh;bl.classList.add(good?'ok':'no');
+      if(good){ok++;sc+=100+Math.max(0,60-Math.floor((Date.now()-t0)/250));sfx(true)}else{lives--;b.classList.add('no');sfx(false)}speak(l.zh);
+      setTimeout(()=>{st._lock=false;i++;show()},good?1500:2300)}};
+  show()}
+/* 2. Đối đáp hội thoại */
+function gReply(){const R=8;let i=0,sc=0,ok=0,lives=3;const st=$('#mgStage');
+  const pairs=[];const scope=mg.l==='all'?LESSONS:LESSONS.filter(L=>L.id===+mg.l);
+  const collect=Ls=>Ls.forEach(L=>L.texts.forEach(t=>{for(let k=0;k+1<t.lines.length;k++){const a=t.lines[k],b=t.lines[k+1];if(a.sp&&b.sp&&a.sp!==b.sp&&hanN(a.zh)>=2&&hanN(b.zh)>=2&&b.vi)pairs.push([a,b,L.id])}}));
+  collect(scope);if(pairs.length<R)collect(LESSONS.filter(L=>!scope.includes(L)));
+  const Q=shuffle(pairs).slice(0,R);const allB=pairs.map(p=>p[1]);
+  const show=()=>{if(i>=Q.length||lives<=0){mgEnd('reply',sc,ok*2,`<p>${ok}/${Math.min(i,Q.length)} lượt đáp đúng</p>`);return}
+    const [a,b]=Q[i];const ds=[];for(const x of shuffle(allB)){if(ds.length>=3)break;if(x.zh!==b.zh&&!ds.some(d=>d.zh===x.zh))ds.push(x)}const opts=shuffle([b,...ds]);
+    st.innerHTML=`<div class="mghud"><span>Lượt <b>${i+1}</b>/${Q.length}</span><span>${heartsH(lives)}</span><span>Điểm <b>${sc}</b></span></div>
+    <div class="rpq"><span class="rpav">${esc(initial(a.sp))}</span><div class="rpbub"><small>${esc(a.sp)} nói:</small><span class="zh">${esc(a.zh)}</span>${pyLine(a)}<button class="btn sm" data-rpvi>Xem nghĩa</button><span class="rpvi" hidden>${esc(a.vi)}</span></div><button class="spk" data-rpsay aria-label="Nghe">🔊</button></div>
+    <p class="muted" style="margin:10px 0 6px;font-size:13px">Bạn đáp lại:</p><div class="rpopts">${opts.map((o,k)=>`<button class="rpo" data-rpo="${k}"><span class="zh">${esc(o.zh)}</span></button>`).join('')}</div>`;
+    setTimeout(()=>speak(a.zh),250);
+    st.onclick=e=>{if(e.target.closest('[data-rpsay]')){speak(a.zh);return}if(e.target.closest('[data-rpvi]')){st.querySelector('.rpvi').hidden=false;return}
+      const o=e.target.closest('[data-rpo]');if(!o||st._lock)return;st._lock=true;const pick=opts[+o.dataset.rpo];const good=pick.zh===b.zh;
+      st.querySelectorAll('[data-rpo]').forEach(x=>{const oo=opts[+x.dataset.rpo];if(oo.zh===b.zh){x.classList.add('ok');x.insertAdjacentHTML('beforeend',`<small>${esc(b.vi)}</small>`)}});
+      if(good){ok++;sc+=120;sfx(true)}else{lives--;o.classList.add('no');sfx(false)}speak(b.zh);
+      setTimeout(()=>{st._lock=false;i++;show()},good?1800:2600)}};
+  show()}
+/* 3. Dịch siêu tốc */
+function gTrans(){let sc=0,cb=0,best=0,ok=0,n=0;const T=60000;let end=Date.now()+T;const L=shuffle(mgLines(3,16));let k=0,cur=null;const st=$('#mgStage');
+  st.innerHTML=`<div class="mghud"><span>⏱ <b id="mgT">60</b>s</span><span>Điểm <b id="mgS">0</b></span><span id="mgC" class="mgcombo"></span></div><div class="fltime"><i id="flBar"></i></div><div id="trQ"></div>`;
+  const next=()=>{const l=L[k++%L.length];const near=shuffle(L.filter(x=>x.zh!==l.zh&&Math.abs(hanN(x.zh)-hanN(l.zh))<=4)).slice(0,2);while(near.length<2){const x=L[Math.floor(Math.random()*L.length)];if(x.zh!==l.zh&&!near.includes(x))near.push(x)}
+    cur={l,opts:shuffle([l,...near])};
+    $('#trQ').innerHTML=`<div class="fsent tq"><div class="fvi big">${esc(l.vi)}</div></div><div class="rpopts">${cur.opts.map((o,j)=>`<button class="rpo" data-tro2="${j}"><span class="zh">${esc(o.zh)}</span></button>`).join('')}</div>`};
+  next();
+  st.onclick=e=>{const b=e.target.closest('[data-tro2]');if(!b||!cur)return;n++;const good=cur.opts[+b.dataset.tro2].zh===cur.l.zh;
+    if(good){ok++;cb++;best=Math.max(best,cb);sc+=20*(1+Math.floor(cb/4));sfx(true)}else{cb=0;end-=3000;sfx(false);toast(cur.l.zh)}
+    $('#mgS').textContent=sc;$('#mgC').textContent=cb>=3?'🔥 ×'+(1+Math.floor(cb/4)):'';next()};
+  MGT=setInterval(()=>{const left=Math.max(0,end-Date.now());const t=$('#mgT');if(!t){mgStop();return}t.textContent=Math.ceil(left/1000);$('#flBar').style.width=(left/T*100)+'%';
+    if(!left){mgStop();cur=null;mgEnd('trans',sc,Math.min(20,Math.ceil(sc/40)),`<p>${ok}/${n} câu dịch đúng · combo dài nhất ${best}</p>`)}},100)}
+/* 4. Xếp câu 60 giây */
+function gSBuild(){let sc=0,done=0,end=Date.now()+60000;const st=$('#mgStage');const L=shuffle(mgLines(4,14).filter(l=>{const t=segment(l.zh);return t.length>=3&&t.length<=8}));let k=0;
+  st.innerHTML=`<div class="mghud"><span>⏱ <b id="mgT">60</b>s</span><span>Điểm <b id="mgS">0</b></span><span>Câu: <b id="mgD">0</b></span></div><div class="fltime"><i id="flBar"></i></div><div id="sbQ"></div>`;
+  const next=()=>{const l=L[k++%L.length];const toks=segment(l.zh);let got=[];let mix=shuffle(toks.map((t,j)=>({t,j})));if(mix.every((x,j)=>x.j===j))mix=mix.reverse();
+    const draw=()=>{$('#sbQ').innerHTML=`<div class="fsent"><div class="fvi">${esc(l.vi)}</div></div><div class="sbline">${got.map(x=>`<span class="sbw on">${esc(x.t)}</span>`).join('')}${got.length<toks.length?'<span class="sbw cur">？</span>':''}</div><div class="bdtiles">${mix.map((x,j)=>`<button class="sbt" data-sb="${j}" ${got.includes(x)?'disabled':''}><span class="zh">${esc(x.t)}</span></button>`).join('')}</div>`};
+    draw();st.onclick=e=>{const b=e.target.closest('[data-sb]');if(!b||b.disabled)return;const x=mix[+b.dataset.sb];
+      if(x.t===toks[got.length]){got.push(x);sfx(true);if(got.length===toks.length){done++;sc+=toks.length*15;$('#mgS').textContent=sc;$('#mgD').textContent=done;speak(l.zh);draw();setTimeout(next,700);return}draw()}
+      else{sfx(false);end-=1500;b.classList.add('no');setTimeout(()=>b.classList.remove('no'),350)}}};
+  next();
+  MGT=setInterval(()=>{const left=Math.max(0,end-Date.now());const t=$('#mgT');if(!t){mgStop();return}t.textContent=Math.ceil(left/1000);$('#flBar').style.width=(left/600)+'%';
+    if(!left){mgStop();st.onclick=null;mgEnd('sbuild',sc,Math.min(20,done*2),`<p>Xếp đúng ${done} câu</p>`)}},100)}
+/* 5. Số, giá tiền & giờ */
+const ZD='零一二三四五六七八九';
+function n2zh(n){if(n<10)return ZD[n];if(n<20)return '十'+(n%10?ZD[n%10]:'');if(n<100)return ZD[Math.floor(n/10)]+'十'+(n%10?ZD[n%10]:'');
+  if(n<1000){const h=Math.floor(n/100),r=n%100;return ZD[h]+'百'+(r?(r<10?'零'+ZD[r]:(r<20?'一':'')+n2zh(r)):'')}
+  const t=Math.floor(n/1000),r=n%1000;return ZD[t]+'千'+(r?(r<100?'零'+n2zh(r):n2zh(r)):'')}
+function numQ(){const R=Math.random,ri=(a,b)=>a+Math.floor(R()*(b-a+1));const kind=['num','price','time','date','phone'][ri(0,HSKLV===2?4:3)];
+  if(kind==='num'){const n=ri(11,HSKLV===2?999:99);return {zh:n2zh(n),a:String(n),d:()=>String(Math.max(1,n+[-10,10,1,-1,9,-9,20,100][ri(0,HSKLV===2?7:6)])),hint:'Số'}}
+  if(kind==='price'){const y=ri(2,HSKLV===2?300:99),j=R()<.4?ri(1,9):0;return {zh:n2zh(y)+'块'+(j?n2zh(j):'')+(R()<.5?'钱':''),a:j?`${y},${j} tệ`:`${y} tệ`,d:()=>{const y2=Math.max(1,y+[-1,1,10,-10,2][ri(0,4)]);return j?`${y2},${j} tệ`:`${y2} tệ`},hint:'Giá tiền'}}
+  if(kind==='time'){const h=ri(1,12),m=[0,5,10,15,20,30,30,45,50][ri(0,8)];const zh=n2zh(h).replace(/^二$/,'两')+'点'+(m===30&&R()<.6?'半':m?(m<10?'零'+n2zh(m):n2zh(m))+'分':'');return {zh,a:`${h}:${String(m).padStart(2,'0')}`,d:()=>{const h2=((h+[1,-1,0,2][ri(0,3)]+11)%12)+1,m2=[0,15,30,45,5,50][ri(0,5)];return `${h2}:${String(m2).padStart(2,'0')}`},hint:'Giờ'}}
+  if(kind==='date'){const mo=ri(1,12),d=ri(1,28);return {zh:n2zh(mo)+'月'+n2zh(d)+'号',a:`${d}/${mo}`,d:()=>`${Math.max(1,Math.min(28,d+[1,-1,10,-10][ri(0,3)]))}/${R()<.5?mo:((mo%12)+1)}`,hint:'Ngày tháng'}}
+  const ph=String(ri(130,189))+String(ri(1000,9999))+String(ri(1000,9999));return {zh:[...ph].map(c=>c==='1'?'幺':ZD[+c]).join(''),a:ph.replace(/(\d{3})(\d{4})(\d{4})/,'$1 $2 $3'),d:()=>{const p=[...ph];const i=ri(3,10);p[i]=String((+p[i]+ri(1,8))%10);return p.join('').replace(/(\d{3})(\d{4})(\d{4})/,'$1 $2 $3')},hint:'Số điện thoại'}}
+function gNumber(){const R=10;let i=0,sc=0,ok=0,lives=3;const st=$('#mgStage');
+  const show=()=>{if(i>=R||lives<=0){mgEnd('number',sc,ok*2,`<p>${ok}/${Math.min(i,R)} câu đúng</p>`);return}
+    const q=numQ();const ear=i%3===2;const set=new Set([q.a]);let g=0;while(set.size<4&&g++<40)set.add(q.d());const opts=shuffle([...set]);
+    st.innerHTML=`<div class="mghud"><span>Câu <b>${i+1}</b>/${R}</span><span>${heartsH(lives)}</span><span>Điểm <b>${sc}</b></span></div>
+    <div class="tnq"><small class="muted">${q.hint}${ear?' · nghe và chọn':''}</small>${ear?'<button class="lsplay" data-nsay aria-label="Nghe">🔊</button>':`<span class="zh" style="font-size:38px">${q.zh}</span><button class="btn sm" data-nsay>🔊 Nghe</button>`}</div>
+    <div class="tnopts">${opts.map(o=>`<button class="tno" data-no="${esc(o)}">${esc(o)}</button>`).join('')}</div>`;
+    setTimeout(()=>speak(q.zh),250);
+    st.onclick=e=>{if(e.target.closest('[data-nsay]')){speak(q.zh);return}const b=e.target.closest('[data-no]');if(!b||st._lock)return;st._lock=true;const good=b.dataset.no===q.a;
+      st.querySelectorAll('[data-no]').forEach(x=>{if(x.dataset.no===q.a)x.classList.add('ok')});if(ear)st.querySelector('.tnq').insertAdjacentHTML('beforeend',`<span class="zh" style="font-size:30px">${q.zh}</span>`);
+      if(good){ok++;sc+=ear?150:100;sfx(true)}else{lives--;b.classList.add('no');sfx(false)}
+      setTimeout(()=>{st._lock=false;i++;show()},good?1000:1900)}};
+  show()}
+/* 6. Bingo nghe */
+function gBingo(){const N=4;const W=pickWords(N*N);const st=$('#mgStage');let calls=shuffle(W.map((_,j)=>j)),ci=0,marked=new Set(),wrong=0,cur=null,done=false;
+  const lines=[];for(let r=0;r<N;r++){lines.push([...Array(N)].map((_,c)=>r*N+c));lines.push([...Array(N)].map((_,c)=>c*N+r))}lines.push([...Array(N)].map((_,k)=>k*N+k));lines.push([...Array(N)].map((_,k)=>k*N+N-1-k));
+  st.innerHTML=`<div class="mghud"><span>Lượt gọi: <b id="bgC">0</b></span><span>Sai: <b id="bgW">0</b></span><button class="btn sm" data-bgsay>🔊 Nghe lại</button></div>
+  <div class="bgrid">${W.map((w,j)=>`<button class="bgc" data-bg="${j}"><span class="zh">${esc(w.zh)}</span><small class="py">${esc(w.py)}</small></button>`).join('')}</div><p class="muted" style="text-align:center;font-size:12.5px;margin-top:8px">Nghe từ được đọc rồi chạm đúng ô. Nối 4 ô thành hàng ngang, dọc hoặc chéo để BINGO!</p>`;
+  const call=()=>{while(ci<calls.length&&marked.has(calls[ci]))ci++;if(ci>=calls.length)return;cur=calls[ci++];$('#bgC').textContent=ci;setTimeout(()=>speak(W[cur].zh),300)};
+  call();
+  st.onclick=e=>{if(done)return;if(e.target.closest('[data-bgsay]')){if(cur!=null)speak(W[cur].zh);return}const b=e.target.closest('[data-bg]');if(!b)return;const j=+b.dataset.bg;if(marked.has(j))return;
+    if(j===cur){marked.add(j);b.classList.add('on');sfx(true);const win=lines.find(L=>L.every(x=>marked.has(x)));
+      if(win){done=true;win.forEach(x=>st.querySelector(`[data-bg="${x}"]`).classList.add('win'));const sc=Math.max(100,1200-ci*50-wrong*60);setTimeout(()=>mgEnd('bingo',sc,10,`<p>BINGO sau ${ci} lượt gọi · ${wrong} lần chạm sai</p>`),1200);return}
+      call()}else{wrong++;$('#bgW').textContent=wrong;sfx(false);b.classList.add('no');setTimeout(()=>b.classList.remove('no'),400)}}}
+/* 7. Hứng chữ */
+function gCatch(){const st=$('#mgStage');const P=pickWords(24);let target=null,lane=1,sc=0,lives=3,caught=0,items=[],spawnT=0,last=performance.now(),end=Date.now()+60000,speed=70,dead=false;
+  st.innerHTML=`<div class="mghud"><span>⏱ <b id="mgT">60</b>s</span><span id="ctL">${heartsH(3)}</span><span>Điểm <b id="mgS">0</b></span></div>
+  <div class="ctq">Hứng từ nghĩa là: <b id="ctT"></b></div>
+  <div class="ctfield" id="ctF"><div class="ctlanes"><i></i><i></i><i></i></div><div class="ctbasket" id="ctB">🧺</div></div>
+  <div class="ctbtns"><button class="btn big" data-ct="-1">◀</button><button class="btn big" data-ct="1">▶</button></div>`;
+  const F=$('#ctF'),B=$('#ctB');
+  const newTarget=()=>{target=P[Math.floor(Math.random()*P.length)];$('#ctT').textContent=viShort(target.vi)};newTarget();
+  const place=()=>{B.style.left=`calc(${(lane+.5)*33.333}% - 32px)`};place();
+  const move=d=>{lane=Math.max(0,Math.min(2,lane+d));place()};
+  st.onclick=e=>{const b=e.target.closest('[data-ct]');if(b){move(+b.dataset.ct);return}const f=e.target.closest('#ctF');if(f){const r=f.getBoundingClientRect();lane=Math.max(0,Math.min(2,Math.floor((e.clientX-r.left)/r.width*3)));place()}};
+  const kd=e=>{if(route.g!=='catch')return;if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1)};addEventListener('keydown',kd);
+  const spawn=()=>{const good=Math.random()<.42||!items.some(x=>x.w===target);const w=good?target:P[Math.floor(Math.random()*P.length)];const ln=Math.floor(Math.random()*3);if(items.some(x=>x.ln===ln&&x.y<60))return;
+    const el=document.createElement('div');el.className='ctit';el.innerHTML=`<span class="zh">${esc(w.zh)}</span>`;el.style.left=`calc(${(ln+.5)*33.333}% - 38px)`;F.appendChild(el);items.push({w,ln,y:-50,el})};
+  const stop=()=>{dead=true;removeEventListener('keydown',kd)};
+  const loop=now=>{if(dead)return;if(!F.isConnected){stop();return}const dt=Math.min(.05,(now-last)/1000);last=now;const H=F.clientHeight;
+    spawnT-=dt;if(spawnT<=0){spawn();spawnT=Math.max(.55,1.25-caught*.03)}
+    for(const it of [...items]){it.y+=speed*dt*(1+caught*.04);it.el.style.top=it.y+'px';
+      if(it.y>H-86&&it.y<H-40&&it.ln===lane){items=items.filter(x=>x!==it);it.el.classList.add(it.w===target?'got':'bad');setTimeout(()=>it.el.remove(),300);
+        if(it.w===target){caught++;sc+=50+caught*5;sfx(true);speak(it.w.zh);newTarget()}else{lives--;sfx(false);toast(it.w.zh+' = '+viShort(it.w.vi));$('#ctL').textContent=heartsH(lives)}
+        $('#mgS').textContent=sc}
+      else if(it.y>H){items=items.filter(x=>x!==it);it.el.remove()}}
+    const left=Math.max(0,end-Date.now());$('#mgT').textContent=Math.ceil(left/1000);
+    if(!left||lives<=0){stop();mgEnd('catch',sc,Math.min(20,caught),`<p>Hứng đúng ${caught} từ</p>`);return}
+    requestAnimationFrame(loop)};
+  requestAnimationFrame(loop)}
+
 /* ================= THÔNG BÁO · NHẮC HỌC · CÓ GÌ MỚI ================= */
-const APP_VER='3.1';
+const APP_VER='3.2';
 const CHANGELOG=[
+  {v:'3.2',d:'15/11/2026',t:'Thêm 7 trò chơi vận dụng — tổng cộng 14 trò',ic:'🎮',items:[
+    ['✏️','Điền từ vào câu: câu thật trong bài khoá bị khuyết một từ.'],
+    ['💬','Đối đáp hội thoại: chọn câu đáp đúng như khi nói chuyện thật.'],
+    ['🚀','Dịch siêu tốc 60 giây và 🧩 Xếp câu 60 giây.'],
+    ['🔢','Số, giá tiền, giờ, ngày tháng, số điện thoại bằng tiếng Trung.'],
+    ['🎱','Bingo nghe và 🧺 Hứng chữ — vừa vui vừa luyện phản xạ.'],
+    ['🏮','Phi tiêu đèn lồng giao diện mới, chơi toàn màn hình trên điện thoại.']]},
   {v:'3.1',d:'15/11/2026',t:'Bản cập nhật lớn: Trò chơi, Xếp hạng, Danh hiệu',ic:'🎉',items:[
     ['🎮','Khu trò chơi mới với 7 trò: lật thẻ, đúng/sai 45 giây, nghe chọn chữ, nối từ, ghép chữ, săn thanh điệu, phi tiêu.'],
     ['🏆','Bảng xếp hạng tuần cùng bạn bè, bục vinh danh top 3 và Đền vinh danh các tuần.'],
