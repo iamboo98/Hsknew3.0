@@ -9,4 +9,4 @@ window.HSK_FIREBASE = {
   appId: "1:922472131002:web:8219588956bdc10e8a9583"
 };
 /* Email quản trị viên (được duyệt tài khoản học viên). Thêm email vào đây và vào firestore.rules. */
-window.HSK_ADMIN_EMAILS = [];
+window.HSK_ADMIN_EMAILS = ["tuitenbo98@gmail.com"];
