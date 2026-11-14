@@ -1479,6 +1479,67 @@ button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
 .bar .logo{min-width:0}.bar .logo>span:last-child{min-width:0}.bar .logo small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:420px){.bar .logo small{max-width:34vw}.bar .lvsw button{min-width:24px}}
 </style>
+<style id="lncss">
+/* ===== Phi tiêu đèn lồng · giao diện mới ===== */
+.gwrap{padding:0;border:0;background:linear-gradient(180deg,#1a1033,#2a1640);color:#f6eedd;border-radius:24px;box-shadow:0 20px 50px rgba(30,10,40,.35)}
+.gwrap .gsetup{padding:18px}
+.gwrap .muted,.gwrap small{color:#c9b8d8}
+.gtitle{gap:14px;margin-bottom:4px}
+.gtitle>.zh{width:62px;height:62px;border-radius:20px;font-size:28px;background:radial-gradient(circle at 35% 30%,#ff8a6b,#e2262e 55%,#8e1028);box-shadow:0 0 0 3px rgba(242,181,32,.6),0 10px 24px rgba(226,38,46,.45)}
+.gtitle b{font-size:20px;color:#fff}
+.gwrap .glbl{color:#f2c75c}
+.gwrap .chip{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:#f6eedd}
+.gwrap .chip[aria-pressed="true"]{background:linear-gradient(135deg,#f2b520,#e2762e);border-color:transparent;color:#2a1209;font-weight:700}
+.gmode{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);color:#f6eedd}
+.gmode[aria-pressed="true"]{border-color:#f2b520;background:linear-gradient(160deg,rgba(242,181,32,.18),rgba(226,38,46,.12))}
+.gmode small,.gdemo{color:#c9b8d8}.gdemo .zh{color:#fff}.gdemo u{color:#f2c75c}
+.gwrap .btn.pri{background:linear-gradient(135deg,#f2b520,#e2552e);border-color:transparent;color:#2a1209;font-weight:800;box-shadow:0 8px 20px rgba(226,85,46,.4)}
+.gwrap .btn:not(.pri){background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#f6eedd}
+.gplay{padding:10px}
+.ghud{margin:0 0 8px;padding:8px 12px;border-radius:14px;background:rgba(255,255,255,.07);font-size:14px;color:#f6eedd}
+.glives i{color:#ff5a6a;font-size:19px;text-shadow:0 0 8px rgba(255,90,106,.6)}.glives i.off{color:rgba(255,255,255,.18);text-shadow:none}
+.gsc b{color:#ffd76a}.gcb{color:#ff9f43;background:rgba(255,159,67,.15);border-radius:99px;padding:2px 8px}.gcb:empty{display:none}.gleft{color:#c9b8d8}
+.ghud .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:#fff}
+.gstage{height:min(60vh,520px);min-height:340px;border-radius:20px;background:linear-gradient(180deg,#0b0a24 0%,#1d1446 38%,#4a2160 68%,#a3384a 88%,#e07a3c 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.gsky{background:none}
+.gsky .gmoon{position:absolute;right:12%;top:9%;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#fffbe6,#ffe7a3 60%,#f4c86a);box-shadow:0 0 30px 8px rgba(255,226,150,.35),0 0 90px 30px rgba(255,200,120,.15)}
+.gsky .gmoon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 62% 60%,rgba(214,170,90,.35) 0 7px,transparent 8px),radial-gradient(circle at 40% 70%,rgba(214,170,90,.25) 0 5px,transparent 6px)}
+.gsky .gst{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.8;animation:gTw 3s ease-in-out infinite}
+@keyframes gTw{50%{opacity:.15}}
+.gsky .gcl{position:absolute;height:16px;border-radius:99px;background:rgba(255,255,255,.07);filter:blur(1px);animation:gCl 40s linear infinite}
+@keyframes gCl{from{transform:translateX(-120%)}to{transform:translateX(520%)}}
+.gsky .gbl{position:absolute;width:10px;height:13px;border-radius:40% 40% 45% 45%;background:radial-gradient(circle at 40% 35%,#ffb36b,#e2552e);box-shadow:0 0 10px 3px rgba(255,140,60,.45);opacity:.55;animation:gRise 18s linear infinite}
+@keyframes gRise{from{transform:translateY(0)}to{transform:translateY(-420px)}}
+.gground{height:auto;bottom:0;background:none;clip-path:none}
+.gground svg{display:block;width:100%;height:auto}
+.glan{filter:drop-shadow(0 0 14px rgba(255,110,50,.55))}
+.glan .gtop{width:34px;height:8px;border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#ffe08a,#c98a12);position:relative}
+.glan .gtop::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:14px;background:#c98a12;transform:translateX(-50%)}
+.glan .gbody{position:relative;min-width:96px;max-width:180px;padding:12px 16px 12px;border:0;border-radius:50%/50%;background:radial-gradient(ellipse at 50% 40%,#ffdf8a 0%,#ff7a3d 22%,#e2262e 52%,#9e1028 100%);box-shadow:inset 0 -8px 14px rgba(80,0,10,.35),inset 0 6px 10px rgba(255,220,150,.25);overflow:hidden}
+.glan .gbody::before{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(90deg,transparent 0 13px,rgba(120,10,20,.28) 13px 15px);-webkit-mask:radial-gradient(ellipse at 50% 50%,#000 55%,transparent 72%);mask:radial-gradient(ellipse at 50% 50%,#000 55%,transparent 72%);pointer-events:none}
+.glan .gbody::after{content:"";position:absolute;left:18%;top:10%;width:30%;height:22%;border-radius:50%;background:rgba(255,255,255,.25);filter:blur(3px)}
+.glan .gbody .zh{position:relative;z-index:1;font-size:28px;color:#fffaf0;text-shadow:0 2px 3px rgba(90,0,10,.55)}
+.glan .gbody i{position:relative;z-index:1;color:#ffe9a8;font-size:12.5px;text-shadow:0 1px 2px rgba(90,0,10,.6)}
+.glan .gtas{width:34px;height:8px;border-radius:2px 2px 4px 4px;background:linear-gradient(180deg,#c98a12,#ffe08a);box-shadow:none;position:relative}
+.glan .gtas::after{content:"";position:absolute;left:50%;top:100%;width:8px;height:22px;transform:translateX(-50%);background:repeating-linear-gradient(90deg,#e2262e 0 2px,#ff5a3d 2px 3px);border-radius:0 0 4px 4px;-webkit-mask:linear-gradient(#000 60%,transparent);mask:linear-gradient(#000 60%,transparent)}
+.glan .ghintx{margin-top:26px;background:#fffaf0;color:#9e1028;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.glan.ghit{animation:gpop2 .45s ease-out forwards}@keyframes gpop2{40%{filter:brightness(2.2) drop-shadow(0 0 24px #ffd76a);scale:1.15}to{opacity:0;scale:1.5}}
+.glauncher{width:58px;height:58px;bottom:6px;background:none;box-shadow:none;transition:transform .15s}
+.glauncher svg{width:100%;height:100%;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
+.glauncher .zh{display:none}
+.gdart{width:52px;height:12px;filter:drop-shadow(0 0 6px rgba(255,215,106,.8))}
+.gboom i{width:9px;height:9px;box-shadow:0 0 8px var(--c)}
+.ginput{margin-top:10px}
+.ginput input{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.16);color:#fff;border-radius:16px}
+.ginput input::placeholder{color:#b9a6cb}
+.ginput input:focus{border-color:#f2b520;box-shadow:0 0 0 4px rgba(242,181,32,.2)}
+.gend{padding:18px}
+.gres .gstats>div{background:rgba(255,255,255,.07)}.gres .gstats b{color:#ffd76a}
+.gres .chip{background:rgba(255,255,255,.07);color:#f6eedd}
+.gresh b{color:#fff}
+.gmsg{background:rgba(10,6,25,.6);backdrop-filter:blur(3px)}
+@media (max-width:560px){.gstage{height:min(54vh,460px);min-height:320px}.gwrap{border-radius:20px}}
+</style>
 <header class="bar">
   <div class="wrap">
     <button class="backbtn" id="backBtn" aria-label="Quay lại" title="Quay lại" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -3272,7 +3333,7 @@ function gPrefix(w,inp,mode){if(mode==='py'){const a=pyKey(w.py).b,b=pyKey(inp).
 const gAns=w=>gcfg.mode==='py'?w.py:viAnswers(w.vi).slice(0,2).join(' / ');
 /* --- trạng thái --- */
 let G=null;
-function gWords(l){const ws=l==='all'?WORDS:WORDS.filter(w=>w.lesson===+l);const seen=new Set();return ws.filter(w=>!seen.has(w.zh+w.py)&&seen.add(w.zh+w.py))}
+function gWords(l){const ws=l==='all'?WORDS:WORDS.filter(w=>w.lesson===+l);const seen=new Set();return ws.filter(w=>!noMean(w)&&!seen.has(w.zh+w.py)&&seen.add(w.zh+w.py))}
 const gBestKey=()=>`${gcfg.l}-${gcfg.mode}`;
 function gameShell(preset){
   if(preset)gcfg.l=preset;
@@ -3291,7 +3352,7 @@ function gameShell(preset){
   </div>
   <div class="gplay" id="gPlay" hidden>
     <div class="ghud"><span class="glives" id="gLives"></span><span class="gsc">Điểm <b id="gScore">0</b></span><span class="gcb" id="gCombo"></span><span class="gleft" id="gLeft"></span><button class="btn sm" data-gpause aria-label="Tạm dừng">❚❚</button></div>
-    <div class="gstage" id="gStage"><div class="gsky"></div><div class="gground"></div><div class="glauncher" id="gLauncher"><span class="zh">镖</span></div><div class="gmsg" id="gMsg" hidden></div></div>
+    <div class="gstage" id="gStage"><div class="gsky">${gSkyHtml()}</div><div class="gground">${GSKYLINE}</div><div class="glauncher" id="gLauncher">${GLAUNCHER}</div><div class="gmsg" id="gMsg" hidden></div></div>
     <form class="ginput" id="gForm" autocomplete="off"><input id="gIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder="${GMODES[gcfg.mode].ph}"><button class="btn pri" type="submit">Bắn</button><button class="btn" type="button" data-ghint title="Hiện đáp án đèn thấp nhất (mất combo)">Gợi ý</button></form>
   </div>
   <div class="gend" id="gEnd" hidden></div>
@@ -3817,8 +3878,8 @@ const MGAMES=[
 let mg={l:'all'};try{mg.l=JSON.parse(localStorage.getItem('hsk-mg')||'{}').l||'all'}catch(e){}
 const mgSave=()=>{try{localStorage.setItem('hsk-mg',JSON.stringify({l:mg.l}))}catch(e){}};
 const mgPlays=()=>Object.values(store.mg||{}).reduce((a,x)=>a+(x.p||0),0)+stc('gPlay');
-function mgPool(){const ws=(mg.l==='all'?WORDS:WORDS.filter(w=>w.lesson===+mg.l)).filter(w=>!w.num&&/[一-鿿]/.test(w.zh)&&w.vi);const s=new Set();return ws.filter(w=>!s.has(w.zh)&&s.add(w.zh))}
-function mgAll(){const s=new Set();return WORDS.filter(w=>!w.num&&/[一-鿿]/.test(w.zh)&&w.vi&&!s.has(w.zh)&&s.add(w.zh))}
+function mgPool(){const ws=(mg.l==='all'?WORDS:WORDS.filter(w=>w.lesson===+mg.l)).filter(w=>!w.num&&/[一-鿿]/.test(w.zh)&&w.vi&&!noMean(w));const s=new Set();return ws.filter(w=>!s.has(w.zh)&&s.add(w.zh))}
+function mgAll(){const s=new Set();return WORDS.filter(w=>!w.num&&/[一-鿿]/.test(w.zh)&&w.vi&&!noMean(w)&&!s.has(w.zh)&&s.add(w.zh))}
 const viShort=v=>String(v).replace(/\([^)]*\)/g,'').split(/[,;]/)[0].trim()||v;
 function mgEnd(id,score,xp,extra=''){store.mg=store.mg||{};const r=store.mg[id]||{b:0,p:0};const rec=score>r.b;r.p++;if(rec)r.b=score;store.mg[id]=r;save();if(xp)addXP(xp);try{checkBadges()}catch(e){}
   if(rec&&score>0)try{confetti()}catch(e){}
@@ -3932,6 +3993,18 @@ function rankList(){const cur=rankIdx(store.xp||0);
     return `<div class="rkli ${st}" style="--c1:${x[2]};--c2:${x[3]}">${rankEmblem(st==='cur'?cur:k*3+(st==='done'?2:0),50)}<div class="rkli-t"><b>${x[0]} <span class="zh">${x[1]}</span></b><small>${[0,1,2].map(d=>`${RKDIV[d]}: ${RKXP[k*3+d].toLocaleString('vi')}`).join(' · ')} XP</small></div><span class="rkli-s">${st==='done'?'✓ Đã đạt':st==='cur'?'Đang ở đây':'🔒 '+lo.toLocaleString('vi')+' XP'}</span></div>`}).join('')}</div>`}
 /* bỏ hệ thống huy hiệu: không chấm, không hiện thông báo */
 checkBadges=function(){};
+
+/* ---------- phi tiêu: lọc từ không có nghĩa + cảnh mới ---------- */
+const noMean=w=>{const v=String(w.vi||'').trim();return !v||/^(dùng|đặt|trợ từ)/i.test(v)||/^\(lượng từ\)/i.test(v)};
+function gSkyHtml(){let h='<span class="gmoon"></span>';for(let i=0;i<28;i++)h+=`<span class="gst" style="left:${(i*37)%100}%;top:${(i*53)%55}%;animation-delay:${(i%7)*.4}s;transform:scale(${.6+(i%3)*.4})"></span>`;
+  h+='<span class="gcl" style="top:16%;width:90px"></span><span class="gcl" style="top:30%;width:60px;animation-delay:-18s;animation-duration:55s"></span>';
+  for(let i=0;i<5;i++)h+=`<span class="gbl" style="left:${8+i*19}%;bottom:${-10-i*12}%;animation-delay:${-i*3.5}s;animation-duration:${16+i*3}s"></span>`;return h}
+const GSKYLINE=`<svg viewBox="0 0 400 96" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path fill="#3a1638" d="M0 70 L20 64 L34 68 L52 52 L66 60 L80 56 L96 62 L112 48 L128 58 L150 54 L170 60 L190 50 L214 58 L236 52 L258 60 L282 50 L300 58 L322 52 L344 60 L366 54 L384 60 L400 56 V96 H0Z"/>
+<g fill="#22091f"><path d="M30 96 V74 H26 L40 66 L54 74 H50 V96Z"/><path d="M22 66 Q40 58 58 66 L52 66 Q40 61 28 66Z"/>
+<path d="M300 96 V58 H294 L316 46 L338 58 H332 V96Z"/><path d="M290 48 Q316 36 342 48 L334 48 Q316 41 298 48Z"/><path d="M306 46 V38 H326 V46Z"/><path d="M294 38 Q316 28 338 38 L330 38 Q316 32 302 38Z"/><rect x="314" y="22" width="4" height="8"/>
+<path d="M0 96 V80 H120 V96Z"/><path d="M118 96 V70 L150 60 L182 70 V96Z"/><path d="M176 96 V82 H260 V96Z"/><path d="M250 96 V76 L270 70 L290 76 V96Z"/><path d="M340 96 V78 H400 V96Z"/></g>
+<g fill="#ffcf6a" opacity=".8"><rect x="134" y="76" width="4" height="6"/><rect x="160" y="76" width="4" height="6"/><rect x="312" y="62" width="3" height="5"/><rect x="320" y="62" width="3" height="5"/><rect x="36" y="80" width="3" height="5"/></g></svg>`;
+const GLAUNCHER=`<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="gLw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#b97b0b"/></linearGradient></defs><circle cx="32" cy="40" r="20" fill="#3a1638" stroke="url(#gLw)" stroke-width="3"/><path d="M14 30 Q32 14 50 30" fill="none" stroke="url(#gLw)" stroke-width="4" stroke-linecap="round"/><path d="M14 30 L32 36 L50 30" fill="none" stroke="#fff3c4" stroke-width="1.4"/><rect x="30" y="6" width="4" height="34" rx="2" fill="#8a5a2b"/><path d="M32 0 L38 10 H26Z" fill="#ff5a3d"/><circle cx="32" cy="40" r="7" fill="url(#gLw)"/><text x="32" y="44" text-anchor="middle" font-size="9" font-weight="700" fill="#5a1d0a">镖</text></svg>`;
 
 /* ================= THÔNG BÁO · NHẮC HỌC · CÓ GÌ MỚI ================= */
 const APP_VER='3.1';
