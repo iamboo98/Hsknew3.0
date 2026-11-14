@@ -1446,6 +1446,13 @@ button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
 .bds.on{border-style:solid;border-color:#1f9e74;background:color-mix(in srgb,#1f9e74 12%,var(--surface));animation:memOk .3s}
 .bdtiles{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
 .bdt{width:58px;height:58px;border-radius:14px;border:2px solid var(--line);background:var(--surface);cursor:pointer;color:var(--ink)}.bdt .zh{font-size:28px}.bdt:disabled{opacity:.25}
+.rklist{display:flex;flex-direction:column;gap:8px}
+.rkli{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:10px 14px;border-radius:16px;border:1px solid var(--line);background:var(--surface)}
+.rkli.cur{border-color:var(--c2);background:linear-gradient(100deg,color-mix(in srgb,var(--c1) 22%,var(--surface)),var(--surface) 70%);box-shadow:0 6px 18px color-mix(in srgb,var(--c2) 18%,transparent)}
+.rkli.lock{opacity:.55}.rkli.lock svg{filter:grayscale(.85)}
+.rkli-t b{display:block;font-size:15.5px}.rkli-t .zh{font-weight:400;color:var(--muted);font-size:13px}.rkli-t small{font-size:12px;color:var(--muted)}
+.rkli-s{font-size:12px;font-weight:700;white-space:nowrap;color:var(--muted)}.rkli.cur .rkli-s{color:var(--c2)}.rkli.done .rkli-s{color:#1f9e74}
+@media (max-width:520px){.rkli{grid-template-columns:auto 1fr;padding:10px}.rkli-s{grid-column:2}}
 </style>
 <header class="bar">
   <div class="wrap">
@@ -1836,10 +1843,10 @@ function renderHub(){
 
 /* ---------- ME (hồ sơ, cài đặt, thành tựu) ---------- */
 function renderMe(){
-  renderAch();
+  app.innerHTML='';
   const ac=document.getElementById('acctBtn');const name=ac?(ac.title||'Học viên'):'Học viên';
   app.insertAdjacentHTML('afterbegin',`<div class="pghead"><div><div class="eyebrow">我 · Hồ sơ</div><h1>Tôi</h1></div></div>
-  <section class="card mehead"><span class="meava">${esc(ac?ac.textContent:'学')}</span><div style="min-width:0"><b>${esc(dispName())}</b><div class="muted" style="font-size:13.5px">${rankInfo(store.xp||0).full} · ${(store.xp||0).toLocaleString('vi')} XP · ${streak()} ngày liên tiếp</div><span class="mttl">${curTitle()[2]} ${esc(curTitle()[1])}</span></div></section>
+  <section class="card mehead"><span class="meava">${esc(ac?ac.textContent:'学')}</span><div style="min-width:0"><b>${esc(dispName())}</b><div class="muted" style="font-size:13.5px">${rankInfo(store.xp||0).full} · ${(store.xp||0).toLocaleString('vi')} XP · ${streak()} ngày liên tiếp</div></div></section>
   ${rankCard()}
   <div class="card melist">
     <div class="mrow"><span class="mi">📖</span><span class="mt">Cấp độ đang học<small>Mỗi cấp có tiến độ riêng</small></span><div class="seg"><button data-lv="1" aria-pressed="${HSKLV===1}">HSK 1</button><button data-lv="2" aria-pressed="${HSKLV===2}">HSK 2</button></div></div>
@@ -1848,8 +1855,7 @@ function renderMe(){
     <button class="mrow" data-me="backup"><span class="mi">💾</span><span class="mt">Sao lưu / Chuyển máy<small>Chuyển tiến độ sang điện thoại mới</small></span><span class="chev">›</span></button>
     ${ac?`<button class="mrow" data-me="acct"><span class="mi">👤</span><span class="mt">Tài khoản<small>Đồng bộ, đăng xuất</small></span><span class="chev">›</span></button>`:''}
   </div>
-  <h2 class="mesec">Danh hiệu đặc biệt</h2><p class="muted" style="margin:-4px 0 10px;font-size:13.5px">Mở khoá bằng thành tích, chọn một danh hiệu để hiện cạnh tên trên bảng xếp hạng.</p>${titlesGrid()}
-  <h2 class="mesec">Bộ sưu tập huy hiệu</h2>`);
+  <h2 class="mesec">Các bậc danh hiệu</h2><p class="muted" style="margin:-4px 0 10px;font-size:13.5px">Kiếm XP bằng cách học, làm bài tập và chơi trò chơi để thăng hạng.</p>${rankList()}`);
 }
 
 /* ---------- HOME ---------- */
@@ -1880,7 +1886,7 @@ function renderHome(){
         <button class="qk" data-cards-unl>Ôn thẻ nhớ <b>${unlearned}</b> từ</button>
         <button class="qk" data-go="quiz">Kiểm tra nhanh</button>
         <button class="qk" data-go="wbhome">Làm sách bài tập</button>
-        <button class="qk badgeq" data-go="ach">🏅 ${nBadges()}/${BADGES.length} huy hiệu</button>
+        <button class="qk badgeq" data-go="me" style="display:inline-flex;align-items:center;gap:6px">${(()=>{const r=rankInfo(store.xp||0);return rankEmblem(r.i,20)+" "+r.full})()}</button>
       </div>
     </div>
     <div class="card goal">
@@ -1907,10 +1913,7 @@ function renderHome(){
   <button class="card lbteaser" data-go="rank"><span class="lbic">🏆</span><span><b>Bảng xếp hạng tuần</b><small>Tuần này bạn có ${(weekMap(1)[wkKey(new Date())]||0).toLocaleString('vi')} XP · chốt bảng sau ${wkLeft()}</small></span><span class="chev">›</span></button>
 
   <div class="sec-title"><h2>Lộ trình 15 bài</h2><button class="qk" data-go="lessons">Xem tất cả →</button></div>
-  <div class="mpath">${units.map((u,i)=>`<div class="mpu" style="--uc:var(--u${i+1})"><small>Chặng ${i+1}</small><div class="dots">${u.map(id=>{const p=lessonPct(id);return `<button class="mpd ${p===100?'done':id===nx?'cur':''}" data-open="${id}" title="Bài ${id}: ${esc(LESSONS[id-1].vi)} · ${p}%"><i style="height:${p}%"></i><span>${p===100?'✓':id}</span></button>`}).join('')}</div></div>`).join('')}</div>
-
-  <div class="sec-title"><h2>Huy hiệu</h2><button class="qk" data-go="ach">Bộ sưu tập ${nBadges()}/${BADGES.length} →</button></div>
-  <div class="bdrow">${(()=>{badgeDefs();calcM();const on=BADGES.filter(b=>store.badges[b.k]).sort((x,y)=>store.badges[y.k].localeCompare(store.badges[x.k])||y.tier-x.tier);const next=BADGES.filter(b=>!store.badges[b.k]).map(b=>[b,achPct(b)]).sort((x,y)=>y[1]-x[1]).map(x=>x[0]);return [...on.slice(0,4),...next].slice(0,8).map(b=>medal(b)).join('')})()}</div>`;
+  <div class="mpath">${units.map((u,i)=>`<div class="mpu" style="--uc:var(--u${i+1})"><small>Chặng ${i+1}</small><div class="dots">${u.map(id=>{const p=lessonPct(id);return `<button class="mpd ${p===100?'done':id===nx?'cur':''}" data-open="${id}" title="Bài ${id}: ${esc(LESSONS[id-1].vi)} · ${p}%"><i style="height:${p}%"></i><span>${p===100?'✓':id}</span></button>`}).join('')}</div></div>`).join('')}</div>`;
 }
 function nextLesson(){const L=LESSONS.find(L=>lessonPct(L.id)<100);return L?L.id:1}
 
@@ -3728,7 +3731,7 @@ function weekMap(n=10){const out={};const cur=wkKey(new Date());const keep=new S
   Object.entries(store.days||{}).forEach(([k,v])=>{if(!v)return;const w=wkKey(new Date(k+'T12:00:00'));if(keep.has(w))out[w]=(out[w]||0)+v});return out}
 function wkLeft(){const e=monOf(new Date());e.setDate(e.getDate()+7);e.setHours(0,0,0,0);const ms=e-Date.now();const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5);return d?`${d} ngày ${h} giờ`:`${h} giờ ${Math.floor(ms%36e5/6e4)} phút`}
 function dispName(){return (store.nick||'').trim()||(window.HSKME&&window.HSKME()&&window.HSKME().displayName)||'Học viên'}
-window.boardPayload=function(){const t=curTitle();return {name:dispName().slice(0,30),title:t[1],ti:t[2],rank:rankIdx(store.xp||0),['l'+HSKLV]:{xp:store.xp||0,wk:weekMap(10)},ts:Date.now()}};
+window.boardPayload=function(){return {name:dispName().slice(0,30),title:rankInfo(store.xp||0).full,ti:'',rank:rankIdx(store.xp||0),['l'+HSKLV]:{xp:store.xp||0,wk:weekMap(10)},ts:Date.now()}};
 
 /* ---------- 4. Bảng xếp hạng ---------- */
 let BD={rows:null,err:'',tab:'now',t:0};
@@ -3743,12 +3746,12 @@ function boardFor(w){const me=window.HSKME&&window.HSKME();let rows=(BD.rows||[]
 function honorCheck(){const me=window.HSKME&&window.HSKME();if(!me||!BD.rows)return;const lw=wkShift(wkKey(new Date()),-1);const k='hon'+lw;if(store.st[k])return;
   const L=boardFor(lw);const pos=L.findIndex(r=>r.uid===me.uid);store.st[k]=pos>=0&&pos<3?pos+1:-1;
   if(pos>=0&&pos<3){store.st.wkPod=(store.st.wkPod||0)+1;if(pos===0)store.st.wkTop=(store.st.wkTop||0)+1;save();
-    const el=document.createElement('div');el.className='achpop';el.innerHTML=`<div class="achcard honcard"><div class="achrays"></div><div class="honmed">${['🥇','🥈','🥉'][pos]}</div><div class="achtxt"><small>Vinh danh tuần ${wkLabel(lw)}</small><b>${pos===0?'Thủ khoa tuần!':'Hạng '+(pos+1)+' tuần trước'}</b><span>${L[pos].w.toLocaleString('vi')} XP · Bạn nhận danh hiệu “${pos===0?'Thủ khoa tuần':'Top 3 tuần'}”.</span></div><button class="btn sm" data-achclose data-go="rank">Xem bảng vinh danh</button></div>`;
+    const el=document.createElement('div');el.className='achpop';el.innerHTML=`<div class="achcard honcard"><div class="achrays"></div><div class="honmed">${['🥇','🥈','🥉'][pos]}</div><div class="achtxt"><small>Vinh danh tuần ${wkLabel(lw)}</small><b>${pos===0?'Thủ khoa tuần!':'Hạng '+(pos+1)+' tuần trước'}</b><span>${L[pos].w.toLocaleString('vi')} XP · Tên bạn đã được khắc vào Đền vinh danh.</span></div><button class="btn sm" data-achclose data-go="rank">Xem bảng vinh danh</button></div>`;
     document.body.appendChild(el);try{confetti()}catch(e){}el.addEventListener('click',e=>{if(e.target===el||e.target.closest('[data-achclose]'))el.remove()})}else save()}
 const ava=r=>{const n=(r.name||'?').trim();return esc(n[0]?n[0].toUpperCase():'?')};
 function podium(L){const p=[L[1],L[0],L[2]];const h=[2,1,3];
-  return `<div class="podium">${p.map((r,j)=>r?`<div class="pod pd${h[j]}"><div class="pava" style="--c1:${rankInfo(RKXP[r.rank||0]).c1};--c2:${rankInfo(RKXP[r.rank||0]).c2}">${ava(r)}<span class="pcrown">${['🥈','👑','🥉'][j]}</span></div><b>${esc(r.name||'Học viên')}</b><small>${esc(r.ti||'')} ${esc(r.title||'')}</small><span class="pxp">${r.w.toLocaleString('vi')} XP</span><div class="pbase">${h[j]}</div></div>`:`<div class="pod pd${h[j]} empty"><div class="pava">?</div><b>Còn trống</b><div class="pbase">${h[j]}</div></div>`).join('')}</div>`}
-function brow(r,i,meId){return `<div class="brow ${r.uid===meId?'me':''}"><span class="bpos">${i+1}</span><span class="bava" style="--c1:${rankInfo(RKXP[r.rank||0]).c1};--c2:${rankInfo(RKXP[r.rank||0]).c2}">${ava(r)}</span><span class="bnm"><b>${esc(r.name||'Học viên')}${r.uid===meId?' <i>(bạn)</i>':''}</b><small>${rankEmblem(r.rank||0,16)} ${esc(RANKS[Math.floor((r.rank||0)/3)][0])} · ${esc(r.ti||'')} ${esc(r.title||'')}</small></span><span class="bxp">${r.w.toLocaleString('vi')}<small>XP</small></span></div>`}
+  return `<div class="podium">${p.map((r,j)=>r?`<div class="pod pd${h[j]}"><div class="pava" style="--c1:${rankInfo(RKXP[r.rank||0]).c1};--c2:${rankInfo(RKXP[r.rank||0]).c2}">${ava(r)}<span class="pcrown">${['🥈','👑','🥉'][j]}</span></div><b>${esc(r.name||'Học viên')}</b><small>${esc(rankInfo(RKXP[r.rank||0]).full)}</small><span class="pxp">${r.w.toLocaleString('vi')} XP</span><div class="pbase">${h[j]}</div></div>`:`<div class="pod pd${h[j]} empty"><div class="pava">?</div><b>Còn trống</b><div class="pbase">${h[j]}</div></div>`).join('')}</div>`}
+function brow(r,i,meId){return `<div class="brow ${r.uid===meId?'me':''}"><span class="bpos">${i+1}</span><span class="bava" style="--c1:${rankInfo(RKXP[r.rank||0]).c1};--c2:${rankInfo(RKXP[r.rank||0]).c2}">${ava(r)}</span><span class="bnm"><b>${esc(r.name||'Học viên')}${r.uid===meId?' <i>(bạn)</i>':''}</b><small>${rankEmblem(r.rank||0,16)} ${esc(rankInfo(RKXP[r.rank||0]).full)}</small></span><span class="bxp">${r.w.toLocaleString('vi')}<small>XP</small></span></div>`}
 async function renderRank(){
   const cur=wkKey(new Date()),lw=wkShift(cur,-1);const me=window.HSKME&&window.HSKME();const online=!!(window.HSKFS&&me);
   const tabs=[['now','Tuần này'],['last','Tuần trước'],['hall','Đền vinh danh']];
@@ -3764,9 +3767,9 @@ async function renderRank(){
   if(BD.err){body.innerHTML=`<section class="card box"><b>Chưa tải được bảng xếp hạng</b><p class="muted">${esc(BD.err)}</p></section>${hist}`;return}
   honorCheck();
   if(BD.tab==='hall'){const weeks=[...Array(10)].map((_,i)=>wkShift(cur,-1-i));const H=weeks.map(w=>[w,boardFor(w).slice(0,3)]).filter(x=>x[1].length);
-    body.innerHTML=H.length?`<div class="hall">${H.map(([w,L],i)=>`<section class="card hallw ${i===0?'latest':''}"><div class="hallh"><span>Tuần ${wkLabel(w)}</span>${i===0?'<em>Mới nhất</em>':''}</div><div class="hallc"><span class="hallcrown">👑</span><b>${esc(L[0].name||'Học viên')}</b><small>${esc(L[0].ti||'')} ${esc(L[0].title||'')}</small><span class="pxp">${L[0].w.toLocaleString('vi')} XP</span></div>${L.slice(1).map((r,j)=>`<div class="hallr"><span>${['🥈','🥉'][j]}</span><b>${esc(r.name||'Học viên')}</b><small>${r.w.toLocaleString('vi')} XP</small></div>`).join('')}</section>`).join('')}</div>`:`<section class="card box"><b>Đền vinh danh còn trống</b><p class="muted">Khi một tuần kết thúc, 3 người đứng đầu sẽ được khắc tên ở đây mãi mãi.</p></section>`;return}
+    body.innerHTML=H.length?`<div class="hall">${H.map(([w,L],i)=>`<section class="card hallw ${i===0?'latest':''}"><div class="hallh"><span>Tuần ${wkLabel(w)}</span>${i===0?'<em>Mới nhất</em>':''}</div><div class="hallc"><span class="hallcrown">👑</span><b>${esc(L[0].name||'Học viên')}</b><small>${esc(rankInfo(RKXP[L[0].rank||0]).full)}</small><span class="pxp">${L[0].w.toLocaleString('vi')} XP</span></div>${L.slice(1).map((r,j)=>`<div class="hallr"><span>${['🥈','🥉'][j]}</span><b>${esc(r.name||'Học viên')}</b><small>${r.w.toLocaleString('vi')} XP</small></div>`).join('')}</section>`).join('')}</div>`:`<section class="card box"><b>Đền vinh danh còn trống</b><p class="muted">Khi một tuần kết thúc, 3 người đứng đầu sẽ được khắc tên ở đây mãi mãi.</p></section>`;return}
   const w=BD.tab==='last'?lw:cur;const L=boardFor(w);const mi=me?L.findIndex(r=>r.uid===me.uid):-1;
-  body.innerHTML=`${BD.tab==='last'?`<p class="muted" style="margin:0 0 8px">Kết quả chung cuộc tuần ${wkLabel(lw)} — top 3 được vinh danh và nhận danh hiệu.</p>`:''}
+  body.innerHTML=`${BD.tab==='last'?`<p class="muted" style="margin:0 0 8px">Kết quả chung cuộc tuần ${wkLabel(lw)} — top 3 được khắc tên vào Đền vinh danh.</p>`:''}
   ${L.length?podium(L):''}
   ${mi>=0&&BD.tab==='now'?`<div class="card mypos"><b>Hạng của bạn: #${mi+1}</b><span class="muted">${mi>0?`Cần thêm <b>${(L[mi-1].w-L[mi].w+1).toLocaleString('vi')} XP</b> để vượt ${esc(L[mi-1].name||'người trên')}.`:'Bạn đang dẫn đầu! Giữ vững nhé.'}</span></div>`:''}
   <div class="card blist">${L.length?L.map((r,i)=>brow(r,i,me&&me.uid)).join(''):'<p class="muted" style="padding:14px;margin:0">Chưa ai có XP trong tuần này. Học ngay để giành vị trí số 1!</p>'}</div>${hist}`}
@@ -3886,17 +3889,23 @@ document.addEventListener('click',e=>{const s=e.target.closest('[data-go="game"]
 {const _r=render;render=function(){if(route.view!=='game')mgStop();_r()}}
 
 /* ---------- 6. Thẻ danh hiệu cho trang Tôi ---------- */
-function rankCard(){const r=rankInfo(store.xp||0);const t=curTitle();
+function rankCard(){const r=rankInfo(store.xp||0);
   return `<section class="rkcard" style="--c1:${r.c1};--c2:${r.c2}">
     <div class="rkl">${rankEmblem(r.i,92)}</div>
     <div class="rkr"><div class="rkeyb">Danh hiệu hiện tại</div><div class="rkname">${r.full} <span class="zh">${r.zh}</span></div>
-      <div class="rkttl">${t[2]} ${esc(t[1])}</div>
       <div class="rkbar"><i style="width:${(r.pct*100).toFixed(1)}%"></i></div>
       <div class="rkmeta"><span>${(store.xp||0).toLocaleString('vi')} XP</span><span>${r.top?'Bậc cao nhất':'Còn '+r.need.toLocaleString('vi')+' XP lên '+(rankInfo(RKXP[r.i+1]).full)}</span></div></div>
   </section>
   <div class="rkladder">${RANKS.map((x,k)=>{const reached=r.tier>=k;return `<div class="rkstep ${reached?'on':''} ${r.tier===k?'cur':''}" title="${x[0]} · từ ${RKXP[k*3].toLocaleString('vi')} XP">${rankEmblem(k*3+(r.tier===k?r.i%3:reached?2:0),38)}<small>${x[0]}</small></div>`}).join('')}</div>`}
 function titlesGrid(){const cur=curTitle()[0];
   return `<div class="ttlgrid">${TITLES.map(T=>{const on=titleOn(T);return `<button class="ttlc ${on?'on':''} ${cur===T[0]?'eq':''}" data-title="${T[0]}"><span class="ttlic">${on?T[2]:'🔒'}</span><b>${esc(T[1])}</b><small>${esc(T[3])}</small>${cur===T[0]?'<em>Đang dùng</em>':on?'<em class="tap">Chạm để dùng</em>':''}</button>`}).join('')}</div>`}
+
+/* danh sách bậc danh hiệu (trang Tôi) */
+function rankList(){const cur=rankIdx(store.xp||0);
+  return `<div class="rklist">${RANKS.map((x,k)=>{const lo=RKXP[k*3],hi=RKXP[k*3+3];const st=cur>=k*3+3?'done':Math.floor(cur/3)===k?'cur':'lock';
+    return `<div class="rkli ${st}" style="--c1:${x[2]};--c2:${x[3]}">${rankEmblem(st==='cur'?cur:k*3+(st==='done'?2:0),50)}<div class="rkli-t"><b>${x[0]} <span class="zh">${x[1]}</span></b><small>${[0,1,2].map(d=>`${RKDIV[d]}: ${RKXP[k*3+d].toLocaleString('vi')}`).join(' · ')} XP</small></div><span class="rkli-s">${st==='done'?'✓ Đã đạt':st==='cur'?'Đang ở đây':'🔒 '+lo.toLocaleString('vi')+' XP'}</span></div>`}).join('')}</div>`}
+/* bỏ hệ thống huy hiệu: không chấm, không hiện thông báo */
+checkBadges=function(){};
 
 fromHash();try{history.replaceState({d:0},"","#"+hashOf())}catch(e){}render();
 (function(){var s=document.getElementById('splash');if(!s)return;var w=Math.max(0,2600-(Date.now()-(window.__spT0||0)));setTimeout(function(){s.classList.add('out');setTimeout(function(){s.remove()},600)},w)})();
