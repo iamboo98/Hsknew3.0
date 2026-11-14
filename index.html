@@ -1208,37 +1208,101 @@ body.gated{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.gboom i,.gpts{animation-duration:.01s}}
 .lvsw{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line,#ddd);border-radius:999px;padding:2px 3px 2px 9px;font-size:12px;font-weight:600;color:var(--muted,#888)}.lvsw button{border:0;background:none;color:inherit;font:inherit;font-size:13px;min-width:26px;height:26px;border-radius:999px;cursor:pointer;padding:0}.lvsw button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink,#fff)}.seg button[data-lv][aria-pressed="true"]{background:var(--accent);color:var(--accent-ink,#fff)}body.noext [data-vsrc="ext"],body.noext [data-fcsrc="ext"],body.noext [data-go="wbext"]{display:none!important}.svy{width:100%;border-collapse:collapse;font-size:14px}.svy td,.svy th{border:1px solid var(--line,#ddd);padding:6px 8px;text-align:left;vertical-align:top}.svy th{background:var(--accent-soft,#f4f4f4);font-weight:600}@media (max-width:520px){.lvsw{padding-left:6px}.lvsw span{display:none}}.xchips{display:flex;flex-wrap:wrap;gap:8px}.xchip{display:inline-flex;flex-direction:column;align-items:center;border:1px solid var(--line,#ddd);background:var(--card,#fff);border-radius:12px;padding:6px 10px;cursor:pointer;font:inherit;color:inherit}.xchip .py{font-size:12px}.xchip .zh{font-size:18px}.xlearn{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.xl{padding:10px;display:flex;flex-direction:column;gap:6px;align-items:center}.xlab{display:flex;align-items:center;gap:6px}.xlres{display:flex;align-items:center;gap:6px;color:var(--accent)}.xdoi{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}.xin{max-width:110px;padding:6px 8px}.xres.ok,.tinp.ok{color:#1f8a4c;border-color:#1f8a4c}.xres.no{color:#c0392b}.tinp.no{border-color:#c0392b}.tans{margin-top:6px;font-size:13.5px}#bkPanel{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:16px}#bkPanel .bkc{background:var(--card,#fff);color:inherit;border-radius:16px;max-width:460px;width:100%;max-height:90vh;overflow:auto;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,.3)}#bkPanel h3{margin:0 0 6px}#bkPanel textarea{width:100%;box-sizing:border-box;min-height:84px;font:12px ui-monospace,monospace;border:1px solid var(--line,#ddd);border-radius:10px;padding:8px;background:var(--bg,#fafafa);color:inherit}#bkPanel .row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}#bkPanel .bkmsg{font-size:13px;margin-top:6px}</style>
 
+<style id="rdcss">
+/* ===== Redesign: app bar + section navigation ===== */
+.bar .wrap{display:flex;align-items:center;flex-wrap:nowrap;gap:10px;min-height:60px;padding-block:8px}
+.bar .tools{margin-left:auto;flex-wrap:nowrap;gap:6px}
+#rateBtn,#themeBtn{display:none!important}
+.backbtn{flex:none;width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;padding:0;cursor:pointer;transition:background .15s,transform .15s}
+.backbtn svg{width:22px;height:22px}
+.backbtn:hover{background:var(--surface-2)}.backbtn:active{transform:scale(.94)}
+.backbtn[hidden],.logo[hidden],.ttl[hidden]{display:none!important}
+.ttl{min-width:0;display:flex;flex-direction:column;line-height:1.2}
+.ttl b{font-size:16.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ttl small{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tnav{display:flex;gap:2px;margin:0 auto;background:var(--surface-2);border-radius:14px;padding:4px}
+.tnav button{border:0;background:none;display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:11px;font:inherit;font-weight:600;font-size:14px;color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.tnav button svg{width:18px;height:18px}
+.tnav button:hover{color:var(--ink)}
+.tnav button[aria-current="true"]{background:var(--surface);color:var(--accent);box-shadow:0 2px 8px rgba(80,60,30,.10)}
+.bnav{display:none}
+@media (max-width:899px){
+  .tnav{display:none}
+  .bar .wrap{min-height:56px;gap:8px}
+  .bnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--glass,var(--surface));-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-top:1px solid var(--line);padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px))}
+  .bnav button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px 4px;font:inherit;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border-radius:12px;position:relative}
+  .bnav button svg{width:23px;height:23px;transition:transform .2s}
+  .bnav button[aria-current="true"]{color:var(--accent)}
+  .bnav button[aria-current="true"]::before{content:"";position:absolute;top:2px;left:50%;width:46px;height:30px;transform:translateX(-50%);border-radius:999px;background:var(--accent-soft);z-index:-1}
+  .bnav button:active svg{transform:scale(.88)}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  body.sub .lvsw{display:none}
+  .logo small{display:block;font-size:10.5px}
+}
+@media (min-width:900px) and (max-width:1180px){.tnav button{padding:8px 11px}body.sub .tnav button span{display:none}body.sub .tnav button{padding:8px 12px}.hud .xp{display:none}.lvsw span{display:none}}
+@media (max-width:420px){.hud{padding:5px 9px 5px 7px}.bar .tools{gap:5px}}
+/* settings as a sheet */
+#settings{position:fixed;z-index:60;left:50%;top:50%;right:auto;transform:translate(-50%,-50%);width:min(420px,calc(100vw - 32px));max-height:min(86vh,720px);overflow:auto;box-shadow:0 0 0 100vmax rgba(20,15,10,.42),0 24px 60px rgba(0,0,0,.3)}
+@media (max-width:899px){#settings{top:auto;bottom:0;left:0;transform:none;width:100%;border-radius:22px 22px 0 0;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}}
+.sethead{display:flex;align-items:center;justify-content:space-between}
+.sethead b{font-size:17px}
+.setx{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);font-size:15px;cursor:pointer;padding:0}
+/* lesson tabs stick under the app bar */
+.tabs{position:sticky;top:calc(var(--hh,60px) + env(safe-area-inset-top,0px));z-index:6;-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+/* page headers of the new section screens */
+.pghead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:6px 0 18px}
+.pghead h1{margin:2px 0 4px;font-size:28px;letter-spacing:-.01em}
+.pghead p{margin:0}
+.pghead .zh{font-weight:400;color:var(--muted);font-size:.7em;margin-left:6px}
+@media (max-width:899px){.pghead h1{font-size:24px}}
+/* home: compact roadmap strip */
+.mpath{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.mpu{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 10px 12px;display:flex;flex-direction:column;gap:8px}
+.mpu small{font-size:11.5px;font-weight:700;color:var(--uc);letter-spacing:.03em;text-transform:uppercase}
+.mpu .dots{display:flex;gap:6px}
+.mpd{flex:1;aspect-ratio:1;max-width:44px;border-radius:12px;border:1.5px solid color-mix(in srgb,var(--uc) 45%,var(--line));background:var(--surface);color:var(--ink);font-weight:700;font-size:14px;display:grid;place-items:center;cursor:pointer;padding:0;position:relative;overflow:hidden}
+.mpd i{position:absolute;left:0;bottom:0;right:0;background:color-mix(in srgb,var(--uc) 22%,transparent)}
+.mpd span{position:relative}
+.mpd.done{background:var(--uc);border-color:var(--uc);color:#fff}
+.mpd.cur{box-shadow:0 0 0 3px color-mix(in srgb,var(--uc) 35%,transparent)}
+@media (max-width:899px){.mpath{grid-template-columns:1fr}.mpu{flex-direction:row;align-items:center;padding:8px 10px}.mpu small{width:64px;flex:none}.mpu .dots{flex:1}}
+/* hub */
+.hubg{margin-top:22px}
+.hubg>h2{display:flex;align-items:baseline;gap:8px;font-size:17px;margin:0 0 10px}
+.hubg>h2 .zh{font-weight:400;color:var(--muted);font-size:14px}
+.hubgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.htile{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;cursor:pointer;color:var(--ink);font:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+.htile:hover{transform:translateY(-1px);box-shadow:var(--shadow-h);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.htile .hic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:color-mix(in srgb,var(--hc) 15%,var(--surface))}
+.htile b{display:block;font-size:15.5px}
+.htile b .zh{font-weight:400;color:var(--muted);font-size:13px;margin-left:4px}
+.htile .hd{display:block;font-size:13px;color:var(--muted);margin-top:2px;line-height:1.35}
+.htile .hm{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.htile .chev{color:var(--muted);font-size:20px}
+/* me */
+.mehead{display:flex;align-items:center;gap:14px;padding:18px}
+.meava{width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:700;flex:none}
+.mehead b{font-size:18px}
+.melist{margin-top:12px;padding:6px;display:flex;flex-direction:column}
+.mrow{display:flex;align-items:center;gap:12px;padding:12px;border:0;background:none;border-radius:12px;text-align:left;font:inherit;color:var(--ink);width:100%}
+button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
+.mrow+.mrow{border-top:1px solid var(--line);border-radius:0}
+.mrow .mi{font-size:20px;width:28px;text-align:center}
+.mrow .mt{flex:1;min-width:0}.mrow .mt small{display:block;color:var(--muted);font-size:12.5px}
+.mrow .chev{color:var(--muted);font-size:20px}
+.mrow .seg{margin-left:auto}
+.mesec{margin:26px 0 8px;font-size:19px}
+</style>
 <header class="bar">
   <div class="wrap">
-    <button class="logo" data-go="home" aria-label="Trang chủ">
+    <button class="backbtn" id="backBtn" aria-label="Quay lại" title="Quay lại" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="logo" id="logoBtn" data-go="home" aria-label="Trang chủ">
       <span class="seal lg"><svg class="lgsvg" viewBox="0 0 128 128" aria-hidden="true"> <defs> <linearGradient id="LBh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5a3c"/><stop offset=".55" stop-color="#d9262e"/><stop offset="1" stop-color="#9e1430"/></linearGradient> <radialGradient id="LSh" cx=".5" cy=".45" r=".55"><stop offset="0" stop-color="#fff2b8"/><stop offset=".6" stop-color="#ffcf4a"/><stop offset="1" stop-color="#f29a12"/></radialGradient> <linearGradient id="LGh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e9a514"/></linearGradient> <linearGradient id="LJh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fd3a6"/><stop offset="1" stop-color="#0f8a69"/></linearGradient> <clipPath id="LCh"><rect width="128" height="128" rx="30"/></clipPath> </defs> <g clip-path="url(#LCh)"> <rect width="128" height="128" fill="url(#LBh)"/> <g fill="none" stroke="#ffd36b" stroke-opacity=".22" stroke-width="2"> <path d="M-6 20 L20 -6 M-6 46 L46 -6 M80 134 L134 80 M106 134 L134 106"/> </g> <circle cx="64" cy="58" r="44" fill="url(#LSh)"/> <circle cx="64" cy="58" r="44" fill="none" stroke="#fff4c7" stroke-opacity=".7" stroke-width="2.5"/> <g fill="#ffdf7e" opacity=".95"> <path d="M-4 116 q10-14 24-6 q8-12 22-4 q10-10 24 0 q12-9 24 1 q12-8 22 2 q8-6 20 2 V140 H-4Z"/> </g> <path d="M-4 124 q14-8 30-2 q16-8 32 0 q16-7 32 0 q16-7 42 0 V140 H-4Z" fill="#b8172d" opacity=".55"/> </g> <g class="lg-ear"><circle cx="38" cy="36" r="13" fill="#1d1d1f"/><circle cx="90" cy="36" r="13" fill="#1d1d1f"/><circle cx="38" cy="36" r="6" fill="#3a3a3d"/><circle cx="90" cy="36" r="6" fill="#3a3a3d"/></g> <ellipse cx="64" cy="64" rx="37" ry="33" fill="#fff"/> <ellipse cx="64" cy="64" rx="37" ry="33" fill="none" stroke="#1d1d1f" stroke-opacity=".08" stroke-width="2"/> <ellipse cx="49" cy="60" rx="10.5" ry="13" fill="#1d1d1f" transform="rotate(-28 49 60)"/> <ellipse cx="79" cy="60" rx="10.5" ry="13" fill="#1d1d1f" transform="rotate(28 79 60)"/> <circle class="lg-pupil" cx="51" cy="59" r="4.6" fill="#fff"/><circle class="lg-pupil" cx="77" cy="59" r="4.6" fill="#fff"/> <circle cx="52.5" cy="57.5" r="1.6" fill="#1d1d1f"/><circle cx="78.5" cy="57.5" r="1.6" fill="#1d1d1f"/> <ellipse cx="64" cy="73" rx="6" ry="4" fill="#1d1d1f"/> <path d="M57 79 q7 7 14 0" fill="none" stroke="#1d1d1f" stroke-width="2.6" stroke-linecap="round"/> <circle cx="39" cy="74" r="5.5" fill="#ff7d92" opacity=".75"/><circle cx="89" cy="74" r="5.5" fill="#ff7d92" opacity=".75"/> <g transform="translate(84 84) rotate(-8)"> <rect x="0" y="0" width="34" height="34" rx="9" fill="url(#LJh)" stroke="#fff" stroke-width="3"/> <text x="17" y="26" text-anchor="middle" font-family="'Ma Shan Zheng','Noto Serif SC','Noto Serif CJK SC','Songti SC',serif" font-size="24" font-weight="700" fill="#fff">汉</text> </g> <g transform="translate(14 88)"> <rect x="0" y="0" width="30" height="20" rx="6" fill="url(#LGh)" stroke="#fff" stroke-width="2.5"/> <text x="15" y="14.6" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="800" fill="#9e1430">HSK</text> </g> <path d="M104 14l2.4 5.2 5.2 2.4-5.2 2.4-2.4 5.2-2.4-5.2-5.2-2.4 5.2-2.4z" fill="#fff6d6"/> <path d="M18 20l1.5 3.3 3.3 1.5-3.3 1.5-1.5 3.3-1.5-3.3-3.3-1.5 3.3-1.5z" fill="#fff6d6" opacity=".8"/> </svg> </span>
       <span><b>HSK <span class="lvn">1</span> · 3.0</b><small id="bookName">Giáo trình New HSK 1</small></span>
     </button>
-    <div class="books" role="tablist" aria-label="Chọn sách">
-      <button data-book="gt" role="tab"><span class="zh">课本</span>Giáo trình</button>
-      <button data-book="wb" role="tab"><span class="zh">练习</span>Bài tập</button>
-      <button data-book="pr" role="tab"><span class="zh">实践</span>Luyện tập</button>
-    </div>
-    <nav class="nav" id="nav">
-      <button data-go="home" data-bk="gt">Bài học</button>
-      <button data-go="vocab" data-bk="gt">Từ vựng</button>
-      <button data-go="cards" data-bk="gt">Thẻ nhớ</button>
-      <button data-go="quiz" data-bk="gt">Kiểm tra</button>
-      <button data-go="write" data-bk="gt">Tập viết</button>
-      <button data-go="game" data-bk="gt">Trò chơi</button>
-      <button data-go="tones" data-bk="gt">Phát âm</button>
-      <button data-go="ach" data-bk="gt">Thành tựu</button>
-      <button data-go="wbhome" data-bk="wb">Mục lục</button>
-      <button data-go="wb" data-bk="wb">Bài tập theo bài</button>
-      <button data-go="wbmock" data-bk="wb">Thi thử HSK <span class="lvn">1</span></button>
-      <button data-go="wbext" data-bk="wb">Từ mở rộng</button>
-      <button data-go="prhome" data-bk="pr">Tổng quan</button>
-      <button data-go="prspeak" data-bk="pr">Luyện nói</button>
-      <button data-go="prmake" data-bk="pr">Đặt câu</button>
-      <button data-go="prorder" data-bk="pr">Sắp xếp câu</button>
-      <button data-go="prtr" data-bk="pr">Dịch câu</button>
-      <button data-go="prpara" data-bk="pr">Đoạn văn</button>
-    </nav>
+    <div class="ttl" id="pageTtl" hidden><b id="ttlMain"></b><small id="ttlSub"></small></div>
+    <nav class="tnav" id="topNav" aria-label="Mục chính"><button data-go="home" data-sec="home" title="Trang chủ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Trang chủ</span></button><button data-go="lessons" data-sec="lessons" title="Bài học"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2.5z"/><path d="M6 21h14v-4"/><path d="M8.5 7.5h7M8.5 11h5"/></svg><span>Bài học</span></button><button data-go="hub" data-sec="hub" title="Ôn luyện"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg><span>Ôn luyện</span></button><button data-go="wbhome" data-sec="wbhome" title="Bài tập"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4"/><path d="m9 13 2 2 4-4"/></svg><span>Bài tập</span></button><button data-go="me" data-sec="me" title="Tôi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>Tôi</span></button></nav>
     <div class="row tools">
       <div class="lvsw" role="group" aria-label="Chọn cấp độ HSK"><span>HSK</span><button data-lv="1" title="Học HSK 1">1</button><button data-lv="2" title="Học HSK 2">2</button></div>
       <button class="hud" data-go="ach" title="Chuỗi ngày học và điểm kinh nghiệm"><span class="fl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3.5-1.5 5.2-1.5 7.7 0 1.4 1 2.3 2.1 2.3 1.3 0 2.2-1 2.2-2.6 0-.7-.2-1.4-.5-2C17 9 19 11.6 19 15a7 7 0 0 1-14 0c0-4.3 3.3-6.8 5-9 .8-1 1.6-2.4 2-4z"/></svg><b id="hudStreak">0</b></span><span class="xp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17l-6.1 3.5 1.5-6.8L2.2 9l6.9-.7z"/></svg><span id="hudXp">0</span></span></button>
@@ -1246,8 +1310,11 @@ body.gated{overflow:hidden}
       <button class="hbtn" id="themeBtn" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện sáng/tối"></button>
       <button class="gear" id="gearBtn" aria-label="Cài đặt" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
     </div>
-    <div class="settings" id="settings" hidden>
-      <b>Cài đặt</b>
+  </div>
+</header>
+<nav class="bnav" id="botNav" aria-label="Mục chính"><button data-go="home" data-sec="home" title="Trang chủ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Trang chủ</span></button><button data-go="lessons" data-sec="lessons" title="Bài học"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2.5z"/><path d="M6 21h14v-4"/><path d="M8.5 7.5h7M8.5 11h5"/></svg><span>Bài học</span></button><button data-go="hub" data-sec="hub" title="Ôn luyện"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg><span>Ôn luyện</span></button><button data-go="wbhome" data-sec="wbhome" title="Bài tập"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4"/><path d="m9 13 2 2 4-4"/></svg><span>Bài tập</span></button><button data-go="me" data-sec="me" title="Tôi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>Tôi</span></button></nav>
+<div class="settings" id="settings" hidden>
+      <div class="sethead"><b>Cài đặt</b><button class="setx" id="setClose" aria-label="Đóng cài đặt">✕</button></div>
       <div class="srow"><span>Cấp độ</span><div class="seg"><button data-lv="1">HSK 1</button><button data-lv="2">HSK 2</button></div></div>
       <div class="srow" style="flex-wrap:wrap;gap:6px"><span>Tiến độ</span><button class="btn sm" id="bkOpen" type="button">💾 Sao lưu / Chuyển máy</button></div>
       <div class="srow"><span>Giao diện</span><div class="seg"><button data-set="theme" data-v="auto">Tự động</button><button data-set="theme" data-v="light">Sáng</button><button data-set="theme" data-v="dark">Tối</button></div></div>
@@ -1258,8 +1325,6 @@ body.gated{overflow:hidden}
       <div class="srow"><span>Màu thanh điệu</span><div class="seg"><button data-set="tone" data-v="1">Bật</button><button data-set="tone" data-v="0">Tắt</button></div></div>
       <div class="srow"><span>Mục tiêu mỗi ngày</span><div class="seg"><button data-set="goal" data-v="30">30</button><button data-set="goal" data-v="60">60</button><button data-set="goal" data-v="100">100 XP</button></div></div>
     </div>
-  </div>
-</header>
 <div id="scene" aria-hidden="true"></div>
 <main class="wrap" id="app"></main>
 <div class="toast" id="toast" hidden></div>
@@ -1519,23 +1584,114 @@ function segment(s){
 /* ---------- router ---------- */
 let route={view:'home',lesson:1,tab:'overview'};
 const TABS=[['overview','Tổng quan'],['texts','Bài khoá'],['vocab','Từ mới'],['grammar','Ngữ pháp'],['write','Tập viết'],['game','Trò chơi'],['practice','Bài tập'],['summary','Tổng kết']];
-function go(view,extra={}){stopSpeak();route={...route,view,...extra};render();window.scrollTo({top:0});
-  try{const h=view==='lesson'?`bai-${route.lesson}`:view;history.replaceState(null,'','#'+h)}catch(e){}}
-function fromHash(){const h=(location.hash||'').slice(1);const m=h.match(/^bai-(\d+)$/);
-  if(m&&+m[1]>=1&&+m[1]<=15)route={view:'lesson',lesson:+m[1],tab:'overview'};
-  else if(['vocab','cards','quiz','tones','wb','wbhome','wbmock','wbext','prhome','prspeak','prmake','prorder','prtr','prpara','ach','write','game'].includes(h))route.view=h;}
+const ROOTS=['home','lessons','hub','wbhome','me'];
+const SECOF={home:'home',lessons:'lessons',lesson:'lessons',hub:'hub',vocab:'hub',cards:'hub',quiz:'hub',tones:'hub',write:'hub',game:'hub',prspeak:'hub',prmake:'hub',prorder:'hub',prtr:'hub',prpara:'hub',wbext:'hub',wbhome:'wbhome',wb:'wbhome',me:'me'};
+const VTITLE={vocab:['Từ vựng','词语表'],cards:['Thẻ nhớ','闪卡'],quiz:['Kiểm tra nhanh','小测验'],tones:['Phát âm','发音'],write:['Tập viết chữ Hán','写汉字'],game:['Trò chơi','游戏'],prspeak:['Luyện nói','跟读 · 说话'],prmake:['Đặt câu','造句'],prorder:['Sắp xếp câu','连词成句'],prtr:['Dịch câu','翻译'],prpara:['Đoạn văn','短文'],wbext:['Từ mở rộng','拓展词语']};
+const VIEWS=['home','lessons','hub','me','wbhome','vocab','cards','quiz','tones','write','game','prspeak','prmake','prorder','prtr','prpara','wbext'];
+function normView(v){return v==='ach'?'me':v==='prhome'?'hub':v}
+function hashOf(){return route.view==='lesson'?'bai-'+route.lesson:route.view==='wb'?'bt-'+wbr.l:route.view}
+let navDepth=0;
+function go(view,extra={},opt={}){stopSpeak();view=normView(view);if(view==='wbmock'){wbr.l='mock';view='wb'}
+  const prev=hashOf(),pv=route.view;route={...route,view,...extra};render();window.scrollTo({top:0});
+  const h=hashOf();try{if(opt.replace||h===prev||pv===view)history.replaceState({d:navDepth},'','#'+h);else{navDepth++;history.pushState({d:navDepth},'','#'+h)}}catch(e){}}
+function goBack(){const p=route.view==='lesson'?'lessons':route.view==='wb'?'wbhome':(SECOF[route.view]||'home');
+  if(navDepth>0&&history.state&&history.state.d>0)history.back();else go(p,{},{replace:true})}
+addEventListener('popstate',e=>{navDepth=(e.state&&e.state.d)||0;stopSpeak();fromHash();render();window.scrollTo({top:0})});
+function fromHash(){const h=decodeURIComponent((location.hash||'').slice(1));let m=h.match(/^bai-(\d+)$/);
+  if(m&&+m[1]>=1&&+m[1]<=15){if(route.view!=='lesson'||route.lesson!==+m[1])route.tab='overview';route.view='lesson';route.lesson=+m[1];return}
+  m=h.match(/^bt-(\d+|mock)$/);if(m){wbr.l=m[1]==='mock'?'mock':Math.min(15,Math.max(1,+m[1]));route.view='wb';return}
+  if(h==='wbmock'||h==='wb'){if(h==='wbmock')wbr.l='mock';route.view='wb';return}
+  const v=normView(h);route.view=VIEWS.includes(v)?v:'home'}
+document.addEventListener('click',e=>{
+  if(e.target.closest('#backBtn')){goBack();return}
+  if(e.target.closest('#setClose')){const p=$('#settings');if(p)p.hidden=true;return}
+  const me=e.target.closest('[data-me]');if(me){const k=me.dataset.me;setTimeout(()=>{if(k==='settings'){const p=$('#settings');if(p)p.hidden=false}else if(k==='backup')$('#bkOpen')?.click();else if(k==='acct')$('#acctBtn')?.click()},0);return}
+});
+addEventListener('keydown',e=>{if(e.key==='Escape'){const p=$('#settings');if(p&&!p.hidden){p.hidden=true;return}}});
 
 function render(){
   if(route.view==='wbmock'){wbr.l='mock';route.view='wb'}
-  const bk=route.view.startsWith('wb')?'wb':route.view.startsWith('pr')?'pr':'gt';
-  setScene(route.view==='wb'&&wbr.l==='mock'?'wbmock':route.view);document.body.classList.toggle('bk-wb',bk==='wb');document.body.classList.toggle('bk-pr',bk==='pr');
+  route.view=normView(route.view);
+  const v=route.view;const bk=v.startsWith('wb')?'wb':v.startsWith('pr')?'pr':'gt';
+  setScene(v==='wb'&&wbr.l==='mock'?'wbmock':v==='hub'?'prhome':v==='me'?'ach':v==='lessons'?'lesson':v);
+  document.body.classList.toggle('bk-wb',bk==='wb');document.body.classList.toggle('bk-pr',bk==='pr');
+  const sec=SECOF[v]||'home',isRoot=ROOTS.includes(v);
+  document.body.classList.toggle('sub',!isRoot);
+  document.querySelectorAll('[data-sec]').forEach(b=>b.setAttribute('aria-current',String(b.dataset.sec===sec)));
+  let t='',st='';
+  if(v==='lesson'){const L=LESSONS[route.lesson-1];t='Bài '+L.id+' · '+L.zh;st=L.vi}
+  else if(v==='wb'){t=wbr.l==='mock'?'Thi thử HSK '+HSKLV:'Bài tập · Bài '+wbr.l;st=wbr.l==='mock'?'模拟测试 · đề hoàn chỉnh':LESSONS[wbr.l-1].vi}
+  else if(VTITLE[v]){t=VTITLE[v][0];st=VTITLE[v][1]}
+  $('#backBtn').hidden=isRoot;$('#logoBtn').hidden=!isRoot;$('#pageTtl').hidden=isRoot;
+  $('#ttlMain').textContent=t;$('#ttlSub').textContent=st;
+  $('#bookName').textContent={home:'Giáo trình New HSK '+HSKLV,lessons:'课本 · Giáo trình',hub:'练习 · Ôn luyện',wbhome:'学练手册 · Bài tập',me:'Hồ sơ & cài đặt'}[v]||'';
+  try{document.title=(isRoot?'HSK '+HSKLV+' · 3.0':t+' · HSK '+HSKLV)}catch(e){}
   requestAnimationFrame(()=>document.documentElement.style.setProperty('--hh',document.querySelector('.bar').offsetHeight+'px'));
-  document.querySelectorAll('.books button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.book===bk)));
-  $('#bookName').textContent=bk==='wb'?'Sổ tay học & luyện tập':bk==='pr'?'Nói · Viết · Dịch':'Giáo trình New HSK '+HSKLV+'';
-  document.querySelectorAll('#nav button').forEach(b=>{b.hidden=b.dataset.bk!==bk;const cur=route.view==='wb'?(wbr.l==='mock'?'wbmock':'wb'):route.view;b.setAttribute('aria-current',String(b.dataset.go===cur||(route.view==='lesson'&&b.dataset.go==='home')))});
   document.body.classList.toggle('notone',!store.tone);
   const ap=$('#app');const vk=route.view+'|'+(route.lesson||'')+'|'+(route.view==='wb'?wbr.l:'');if(render._last!==vk){render._last=vk;ap.classList.remove('pg-in');void ap.offsetWidth;ap.classList.add('pg-in');clearTimeout(render._t);render._t=setTimeout(()=>ap.classList.remove('pg-in'),700)}
-  ({home:renderHome,lesson:renderLesson,vocab:renderVocab,cards:renderCards,quiz:renderQuiz,tones:renderTones,wb:renderWB,wbhome:renderWBHome,wbext:()=>{vsrc='ext';renderVocab()},prhome:renderPrHome,prspeak:renderPrSpeak,prmake:renderPrMake,prorder:renderPrOrder,prtr:renderPrTr,prpara:renderPrTr,ach:renderAch,write:renderWrite,game:renderGame}[route.view]||renderHome)();
+  ({home:renderHome,lessons:renderLessons,hub:renderHub,me:renderMe,lesson:renderLesson,vocab:renderVocab,cards:renderCards,quiz:renderQuiz,tones:renderTones,wb:renderWB,wbhome:renderWBHome,wbext:()=>{vsrc='ext';renderVocab()},prhome:renderPrHome,prspeak:renderPrSpeak,prmake:renderPrMake,prorder:renderPrOrder,prtr:renderPrTr,prpara:renderPrTr,ach:renderAch,write:renderWrite,game:renderGame}[route.view]||renderHome)();
+}
+
+/* ---------- LESSONS (lộ trình) ---------- */
+const UNITS=[[1,2,3],[4,5,6],[7,8,9],[10,11,12],[13,14,15]];
+function renderLessons(){
+  const learned=WORDS.filter(isLearned).length;const nx=nextLesson();const units=UNITS;
+  const done=LESSONS.filter(L=>lessonPct(L.id)===100).length;
+  app.innerHTML=`<div class="pghead"><div><div class="eyebrow">课本 · Giáo trình New HSK ${HSKLV}</div><h1>Lộ trình 15 bài</h1><p class="muted">${done}/15 bài hoàn thành · ${learned}/${WORDS.length} từ đã biết</p></div><button class="btn pri" data-open="${nx}">${lessonPct(nx)>0?'Học tiếp':'Bắt đầu'} bài ${nx} →</button></div>
+  <div class="path">
+  ${units.map((u,i)=>`<div class="ustep" style="--uc:var(--u${i+1})"><span class="upill">Chặng ${i+1}</span><small>Bài ${u[0]}–${u[2]}</small><span class="ln"></span></div>
+    ${u.map(id=>{const L=LESSONS[id-1];const p=lessonPct(id);const cls=p===100?'done':id===nx?'cur':'';return `
+    <button class="pnode ${cls}" data-open="${id}" style="--uc:var(--u${i+1})">
+      <span class="dot">${p===100?'✓':id}</span>
+      <span style="min-width:0"><span class="zh">${esc(L.zh)}</span><span class="vi" style="display:block">${esc(L.vi)}</span></span>
+      <span class="pmeta">${id===nx?'<span class="curtag">Bài tiếp theo</span>':`<span>${p}%</span>`}<span class="minibar"><i style="width:${p}%"></i></span></span>
+    </button>`}).join('')}`).join('')}
+  </div>
+
+
+  <details class="cast-d" style="margin-top:36px"><summary>Nhân vật trong sách</summary>
+  <div class="cast" style="margin-top:12px">${CAST.map(([zh,vi,d])=>`<div class="card person"><span class="ava">${initial(zh)}</span><div><b><span class="zh">${zh}</span> · ${vi}</b><p>${d}</p></div></div>`).join('')}</div></details>`;
+}
+
+/* ---------- HUB (ôn luyện) ---------- */
+function renderHub(){
+  const learned=WORDS.filter(isLearned).length;const unl=WORDS.length-learned;
+  const pc=k=>{try{return prCount(k)}catch(e){return 0}};
+  const G=[
+    ['Từ vựng','词汇',[
+      ['vocab','📚','Danh sách từ','词语表',`Tra cứu ${WORDS.length} từ của 15 bài, nghe phát âm, đánh dấu đã biết.`,`${learned}/${WORDS.length}`,'#1f9e74'],
+      ['cards','🃏','Thẻ nhớ','闪卡','Lật thẻ để nhớ từ, ôn lại những từ chưa thuộc.',`${unl} chưa biết`,'#f0a000'],
+      ['quiz','✅','Kiểm tra nhanh','小测验','Trắc nghiệm nghĩa, pinyin, nghe chọn từ theo bài.','','#3478f6'],
+      ['wbext','🧩','Từ mở rộng','拓展词语','Từ ngoài giáo trình gặp trong sách bài tập và đề thi.',typeof EXT!=='undefined'&&EXT.length?EXT.length+' từ':'','#8b5cf6']]],
+    ['Nghe – Nói','听说',[
+      ['tones','🎵','Phát âm','发音','Thanh điệu, thanh mẫu, vận mẫu và luyện nghe phân biệt.','','#e5533d'],
+      ['prspeak','🎙️','Luyện nói','跟读','Nghe câu mẫu, nói theo và được chấm phát âm.',pc('speak')?pc('speak')+' lượt':'','#1f9e74']]],
+    ['Đọc – Viết','读写',[
+      ['write','✍️','Tập viết chữ Hán','写汉字','Xem thứ tự nét và tô theo từng chữ.','','#f0a000'],
+      ['prmake','📝','Đặt câu','造句','Dùng từ mới tự đặt câu, được chấm và sửa.',pc('make')?pc('make')+' lượt':'','#3478f6'],
+      ['prorder','🔀','Sắp xếp câu','连词成句','Chạm các từ theo đúng trật tự để thành câu.',pc('order')?pc('order')+' lượt':'','#8b5cf6']]],
+    ['Dịch','翻译',[
+      ['prtr','🔁','Dịch câu','翻译','Trung ⇄ Việt: trắc nghiệm hoặc tự dịch.',pc('tr')?pc('tr')+' lượt':'','#e5533d'],
+      ['prpara','📜','Đoạn văn','短文',`${typeof PARAS!=='undefined'?PARAS.length:''} đoạn văn theo chủ đề để đọc, nghe và dịch.`,pc('para')?pc('para')+' lượt':'','#1f9e74']]],
+    ['Giải trí','游戏',[
+      ['game','🏮','Trò chơi','游戏','Hạ đèn lồng bằng cách gõ đúng nghĩa hoặc pinyin.','','#f0a000']]]];
+  app.innerHTML=`<div class="pghead"><div><div class="eyebrow">练习 · Ôn luyện HSK ${HSKLV}</div><h1>Ôn luyện</h1><p class="muted">Chọn kỹ năng muốn luyện. Mỗi mục đều lấy từ và câu trong 15 bài của giáo trình.</p></div></div>
+  ${G.map(([t,z,items])=>`<section class="hubg"><h2>${t} <span class="zh">${z}</span></h2><div class="hubgrid">${items.map(([v,ic,n,zh,d,m,c])=>`<button class="htile" data-go="${v}" style="--hc:${c}"><span class="hic">${ic}</span><span><b>${n}<span class="zh">${zh}</span></b><span class="hd">${d}</span></span>${m?`<span class="hm">${m}</span>`:'<span class="chev">›</span>'}</button>`).join('')}</div></section>`).join('')}`;
+}
+
+/* ---------- ME (hồ sơ, cài đặt, thành tựu) ---------- */
+function renderMe(){
+  renderAch();
+  const ac=document.getElementById('acctBtn');const name=ac?(ac.title||'Học viên'):'Học viên';
+  app.insertAdjacentHTML('afterbegin',`<div class="pghead"><div><div class="eyebrow">我 · Hồ sơ</div><h1>Tôi</h1></div></div>
+  <section class="card mehead"><span class="meava">${esc(ac?ac.textContent:'学')}</span><div style="min-width:0"><b>${esc(name)}</b><div class="muted" style="font-size:13.5px">Cấp ${level()} · ${store.xp} XP · ${streak()} ngày liên tiếp</div></div></section>
+  <div class="card melist">
+    <div class="mrow"><span class="mi">📖</span><span class="mt">Cấp độ đang học<small>Mỗi cấp có tiến độ riêng</small></span><div class="seg"><button data-lv="1" aria-pressed="${HSKLV===1}">HSK 1</button><button data-lv="2" aria-pressed="${HSKLV===2}">HSK 2</button></div></div>
+    <button class="mrow" data-me="settings"><span class="mi">⚙️</span><span class="mt">Cài đặt<small>Giao diện, cỡ chữ, tốc độ đọc, giọng đọc, mục tiêu</small></span><span class="chev">›</span></button>
+    <button class="mrow" data-me="backup"><span class="mi">💾</span><span class="mt">Sao lưu / Chuyển máy<small>Chuyển tiến độ sang điện thoại mới</small></span><span class="chev">›</span></button>
+    ${ac?`<button class="mrow" data-me="acct"><span class="mi">👤</span><span class="mt">Tài khoản<small>Đồng bộ, đăng xuất</small></span><span class="chev">›</span></button>`:''}
+  </div>
+  <h2 class="mesec">Thành tựu</h2>`);
 }
 
 /* ---------- HOME ---------- */
@@ -1565,7 +1721,7 @@ function renderHome(){
       <div class="quick">
         <button class="qk" data-cards-unl>Ôn thẻ nhớ <b>${unlearned}</b> từ</button>
         <button class="qk" data-go="quiz">Kiểm tra nhanh</button>
-        <button class="qk" data-book="wb">Làm sách bài tập</button>
+        <button class="qk" data-go="wbhome">Làm sách bài tập</button>
         <button class="qk badgeq" data-go="ach">🏅 ${nBadges()}/${BADGES.length} huy hiệu</button>
       </div>
     </div>
@@ -1590,22 +1746,11 @@ function renderHome(){
     <span style="margin-left:auto">${spkBtn(w.zh,'Nghe từ')}</span>
   </div>
 
-  <div class="sec-title"><h2>Lộ trình 15 bài</h2><span class="muted" style="font-size:14px">${learned}/${WORDS.length} từ đã biết</span></div>
-  <div class="path">
-  ${units.map((u,i)=>`<div class="ustep" style="--uc:var(--u${i+1})"><span class="upill">Chặng ${i+1}</span><small>Bài ${u[0]}–${u[2]}</small><span class="ln"></span></div>
-    ${u.map(id=>{const L=LESSONS[id-1];const p=lessonPct(id);const cls=p===100?'done':id===nx?'cur':'';return `
-    <button class="pnode ${cls}" data-open="${id}" style="--uc:var(--u${i+1})">
-      <span class="dot">${p===100?'✓':id}</span>
-      <span style="min-width:0"><span class="zh">${esc(L.zh)}</span><span class="vi" style="display:block">${esc(L.vi)}</span></span>
-      <span class="pmeta">${id===nx?'<span class="curtag">Bài tiếp theo</span>':`<span>${p}%</span>`}<span class="minibar"><i style="width:${p}%"></i></span></span>
-    </button>`}).join('')}`).join('')}
-  </div>
+  <div class="sec-title"><h2>Lộ trình 15 bài</h2><button class="qk" data-go="lessons">Xem tất cả →</button></div>
+  <div class="mpath">${units.map((u,i)=>`<div class="mpu" style="--uc:var(--u${i+1})"><small>Chặng ${i+1}</small><div class="dots">${u.map(id=>{const p=lessonPct(id);return `<button class="mpd ${p===100?'done':id===nx?'cur':''}" data-open="${id}" title="Bài ${id}: ${esc(LESSONS[id-1].vi)} · ${p}%"><i style="height:${p}%"></i><span>${p===100?'✓':id}</span></button>`}).join('')}</div></div>`).join('')}</div>
 
   <div class="sec-title"><h2>Huy hiệu</h2><button class="qk" data-go="ach">Bộ sưu tập ${nBadges()}/${BADGES.length} →</button></div>
-  <div class="bdrow">${(()=>{badgeDefs();calcM();const on=BADGES.filter(b=>store.badges[b.k]).sort((x,y)=>store.badges[y.k].localeCompare(store.badges[x.k])||y.tier-x.tier);const next=BADGES.filter(b=>!store.badges[b.k]).map(b=>[b,achPct(b)]).sort((x,y)=>y[1]-x[1]).map(x=>x[0]);return [...on.slice(0,4),...next].slice(0,8).map(b=>medal(b)).join('')})()}</div>
-
-  <details class="cast-d" style="margin-top:36px"><summary>Nhân vật trong sách</summary>
-  <div class="cast" style="margin-top:12px">${CAST.map(([zh,vi,d])=>`<div class="card person"><span class="ava">${initial(zh)}</span><div><b><span class="zh">${zh}</span> · ${vi}</b><p>${d}</p></div></div>`).join('')}</div></details>`;
+  <div class="bdrow">${(()=>{badgeDefs();calcM();const on=BADGES.filter(b=>store.badges[b.k]).sort((x,y)=>store.badges[y.k].localeCompare(store.badges[x.k])||y.tier-x.tier);const next=BADGES.filter(b=>!store.badges[b.k]).map(b=>[b,achPct(b)]).sort((x,y)=>y[1]-x[1]).map(x=>x[0]);return [...on.slice(0,4),...next].slice(0,8).map(b=>medal(b)).join('')})()}</div>`;
 }
 function nextLesson(){const L=LESSONS.find(L=>lessonPct(L.id)<100);return L?L.id:1}
 
@@ -3359,7 +3504,7 @@ panel.addEventListener('click',async e=>{const t=e.target;
 });
 })();
 
-fromHash();render();
+fromHash();try{history.replaceState({d:0},"","#"+hashOf())}catch(e){}render();
 (function(){var s=document.getElementById('splash');if(!s)return;var w=Math.max(0,1500-(Date.now()-(window.__spT0||0)));setTimeout(function(){s.classList.add('out');setTimeout(function(){s.remove()},600)},w)})();
 })();
 </script>
