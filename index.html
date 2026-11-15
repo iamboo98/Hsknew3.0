@@ -1654,6 +1654,14 @@ button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
 .exbk.no{border-color:color-mix(in srgb,#d9262e 50%,var(--line))}.exbk.no i{color:#d9262e}.exbk.doing{border-color:#3478f6;border-style:dashed}
 .exname{font-size:12.5px;font-weight:800;color:var(--muted);white-space:nowrap}
 </style>
+<style id="excss4">
+.exbk.book{grid-column:1/-1;flex-direction:row;align-items:center;gap:10px;border:2px solid #d9262e;background:linear-gradient(110deg,color-mix(in srgb,#d9262e 9%,var(--surface)),var(--surface))}
+.exbk.book b{font-size:16px}.exbk.book small{font-size:12.5px}
+.exopts.photos .exo{aspect-ratio:auto;padding:28px 6px 8px}.eximg{width:100%;height:auto;max-height:150px;object-fit:contain;border-radius:8px;background:#fff}
+.exopts.photos.shared{grid-template-columns:repeat(2,1fr)}
+.bkseek{cursor:pointer;height:8px}
+.exfmtd{margin:14px 0}.exfmtd summary{cursor:pointer;font-weight:700;padding:10px 0}
+</style>
 <header class="bar">
   <div class="wrap">
     <button class="backbtn" id="backBtn" aria-label="Quay lại" title="Quay lại" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -1951,7 +1959,7 @@ const VIEWS=['home','lessons','hub','me','wbhome','vocab','cards','quiz','tones'
 function normView(v){return v==='ach'?'me':v==='prhome'?'hub':v}
 function hashOf(){return route.view==='game'&&route.g?'game-'+route.g:route.view==='lesson'?'bai-'+route.lesson:route.view==='wb'?'bt-'+wbr.l:route.view}
 let navDepth=0;
-function go(view,extra={},opt={}){stopSpeak();view=normView(view);if(view==='wbmock'){wbr.l='mock';view='wb'}
+function go(view,extra={},opt={}){stopSpeak();view=normView(view);if(view==='wbmock'){view='exam'}
   const prev=hashOf(),pv=route.view;route={...route,view,...extra};render();window.scrollTo({top:0});
   const h=hashOf();try{if(opt.replace||h===prev||pv===view)history.replaceState({d:navDepth},'','#'+h);else{navDepth++;history.pushState({d:navDepth},'','#'+h)}}catch(e){}}
 function goBack(){if(route.view==='game'&&route.g){go('game',{g:''},{replace:true});return}const p=route.view==='lesson'?'lessons':route.view==='wb'?'wbhome':(SECOF[route.view]||'home');
@@ -1961,7 +1969,7 @@ function fromHash(){const h=decodeURIComponent((location.hash||'').slice(1));let
   if(m&&+m[1]>=1&&+m[1]<=15){if(route.view!=='lesson'||route.lesson!==+m[1])route.tab='overview';route.view='lesson';route.lesson=+m[1];return}
   m=h.match(/^game-([a-z]+)$/);if(m){route.view='game';route.g=m[1];return}if(h==='game')route.g='';
   m=h.match(/^bt-(\d+|mock)$/);if(m){wbr.l=m[1]==='mock'?'mock':Math.min(15,Math.max(1,+m[1]));route.view='wb';return}
-  if(h==='wbmock'||h==='wb'){if(h==='wbmock')wbr.l='mock';route.view='wb';return}
+  if(h==='wbmock'){route.view='exam';return}if(h==='wb'){route.view='wb';return}
   const v=normView(h);route.view=VIEWS.includes(v)?v:'home'}
 document.addEventListener('click',e=>{
   if(e.target.closest('#backBtn')){goBack();return}
@@ -1971,7 +1979,7 @@ document.addEventListener('click',e=>{
 addEventListener('keydown',e=>{if(e.key==='Escape'){const p=$('#settings');if(p&&!p.hidden){p.hidden=true;return}}});
 
 function render(){
-  if(route.view==='wbmock'){wbr.l='mock';route.view='wb'}
+  if(route.view==='wbmock')route.view='exam';if(route.view==='wb'&&wbr.l==='mock'){wbr.l=1;route.view='exam'}
   route.view=normView(route.view);
   const v=route.view;const bk=v.startsWith('wb')?'wb':v.startsWith('pr')?'pr':'gt';
   setScene(v==='wb'&&wbr.l==='mock'?'wbmock':v==='hub'?'prhome':v==='me'?'ach':v==='lessons'?'lesson':v);
@@ -4263,8 +4271,12 @@ function gCatch(){const st=$('#mgStage');const P=pickWords(24);let target=null,l
   requestAnimationFrame(loop)}
 
 /* ================= THÔNG BÁO · NHẮC HỌC · CÓ GÌ MỚI ================= */
-const APP_VER='3.3';
+const APP_VER='3.4';
 const CHANGELOG=[
+  {v:'3.4',d:'15/11/2026',t:'Thi thử: đề gốc trong sách và 30 đề luyện thêm',ic:'📗',items:[
+    ['📗','Đề gốc trong sách (ảnh thật) nay dùng một file nghe gốc liên tục cho cả phần Nghe, màn hình tự chuyển theo câu đang đọc.'],
+    ['➡️','Làm từng câu một: chọn đáp án là tự sang câu sau, bấm số câu trên phiếu trả lời để kiểm tra lại.'],
+    ['📚','Ngoài đề gốc có thêm Đề 01–30 và đề ngẫu nhiên, mỗi đề lưu điểm cao nhất.']]},
   {v:'3.3',d:'15/11/2026',t:'Thi thử chuẩn HSK 3.0 — đề mới mỗi lần',ic:'📝',items:[
     ['📝','Bài thi mô phỏng đúng cấu trúc HSK 3.0: HSK 1 gồm 40 câu (Nghe 20 · Đọc 20, 40 phút), HSK 2 gồm 60 câu (Nghe 25 · Đọc 25 · Viết 10, 60 phút).'],
     ['📚','Bộ 30 đề cố định cho mỗi cấp (Đề 01–30) kèm điểm cao nhất từng đề, cộng thêm đề ngẫu nhiên không giới hạn.'],
@@ -4470,13 +4482,13 @@ function buildExam(lv,seed){XR=xseed(seed);const F=EXF[lv];const Q=[];let n=0;co
   XR=Math.random;return Q}
 /* ---- bộ đề cố định ---- */
 const EXN=30;const exSeedOf=k=>HSKLV*100000+k*7919;
-function exName(seed){for(let k=1;k<=EXN;k++)if(exSeedOf(k)===seed)return 'Đề '+String(k).padStart(2,'0');return 'Đề ngẫu nhiên'}
+function exName(seed){if(seed==='book')return 'Đề gốc (sách)';for(let k=1;k<=EXN;k++)if(exSeedOf(k)===seed)return 'Đề '+String(k).padStart(2,'0');return 'Đề ngẫu nhiên'}
 /* ---- trạng thái ---- */
 let EX=null;let EXTM=null;
 const exKey=()=>'hsk-exam-'+HSKLV;
 function exLoad(){try{return JSON.parse(localStorage.getItem(exKey())||'null')}catch(e){return null}}
 function exSave(){try{if(EX&&!EX.done)localStorage.setItem(exKey(),JSON.stringify({seed:EX.seed,ans:EX.ans,flag:EX.flag,t0:EX.t0,plays:EX.plays,lt:EX.lt,i:EX.i}));else localStorage.removeItem(exKey())}catch(e){}}
-function exStart(seed,resume){seed=seed||Math.floor(Math.random()*2e9);const Q=buildExam(HSKLV,seed);EX={seed,Q,ans:{},flag:{},plays:{},i:0,t0:Date.now(),done:false,...(resume||{})};EX.Q=Q;exSave();exTick();renderExam()}
+function exStart(seed,resume){seed=seed||Math.floor(Math.random()*2e9);const Q=seed==='book'?buildBook():buildExam(HSKLV,seed);try{EXA.pause()}catch(e){}EX={seed,Q,ans:{},flag:{},plays:{},i:0,t0:Date.now(),done:false,...(resume||{})};EX.Q=Q;EX.book=seed==='book';EX._bkLast=null;exSave();exTick();renderExam()}
 function exLeft(){return Math.max(0,EXF[HSKLV].min*60000-(Date.now()-EX.t0))}
 function exTick(){clearInterval(EXTM);EXTM=setInterval(()=>{if(!EX||EX.done){clearInterval(EXTM);return}const el=document.getElementById('exClock');const l=exLeft();if(el){el.textContent=fmtMs(l);el.classList.toggle('warn',l<5*60000)}if(!l){exSubmit(true)}},1000)}
 const fmtMs=ms=>{const s=Math.ceil(ms/1000);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
@@ -4484,8 +4496,9 @@ async function exPlay(q){const k=q.n;EX.plays[k]=(EX.plays[k]||0);if(EX.plays[k]
   const b=document.getElementById('exPlayBtn');if(b){b.classList.add('playing');b.querySelector('small').textContent=`Còn ${2-EX.plays[k]} lượt nghe`}
   for(const [who,t] of q.audio){if(!EX||EX.Q[EX.i]!==q)break;await speak(t,{pitch:who==='男'?0.78:who==='女'?1.18:1,queue:false});await new Promise(r=>setTimeout(r,450))}
   if(b)b.classList.remove('playing')}
-function exScore(){const F=EXF[HSKLV];const res={};F.secs.forEach(s=>res[s.k]={c:0,n:0});EX.Q.forEach(q=>{const r=res[q.part.sec];r.n++;const a=EX.ans[q.n];if(q.kind==='input'?String(a||'').trim()===q.a:a===q.a)r.c++});
-  let tot=0;Object.values(res).forEach(r=>{r.pts=Math.round(r.c/r.n*100);tot+=r.pts});return {res,tot,max:F.secs.length*100,pass:tot>=F.pass}}
+function exOk(q,a){return q.kind==='input'?(q.acc&&q.acc.length?q.acc:[q.a]).includes(String(a||'').trim()):a===q.a}
+function exScore(){const F=EXF[HSKLV];const res={};F.secs.forEach(s=>res[s.k]={c:0,n:0});EX.Q.forEach(q=>{if(q.a==null)return;const r=res[q.part.sec];if(!r)return;r.n++;if(exOk(q,EX.ans[q.n]))r.c++});
+  let tot=0,max=0;Object.values(res).forEach(r=>{if(!r.n){r.pts=null;return}r.pts=Math.round(r.c/r.n*100);tot+=r.pts;max+=100});return {res,tot,max,pass:tot>=Math.round(max*0.6)}}
 function exSubmit(auto){if(!EX||EX.done)return;if(!auto){const un=EX.Q.filter(q=>EX.ans[q.n]==null||EX.ans[q.n]==='').length;if(un&&!confirm(`Còn ${un} câu chưa làm. Nộp bài luôn?`))return}
   EX.done=true;clearInterval(EXTM);const sc=exScore();EX.sc=sc;EX.dur=Date.now()-EX.t0;
   store.examHist=store.examHist||[];store.examHist.unshift({seed:EX.seed,d:Date.now(),tot:sc.tot,max:sc.max,pass:sc.pass,res:Object.fromEntries(Object.entries(sc.res).map(([k,r])=>[k,r.pts])),dur:EX.dur});store.examHist=store.examHist.slice(0,30);
@@ -4493,26 +4506,26 @@ function exSubmit(auto){if(!EX||EX.done)return;if(!auto){const un=EX.Q.filter(q=
 /* ---- giao diện ---- */
 function renderExam(){const F=EXF[HSKLV];
   if(!EX||EX.view==='lobby'){const cont=exLoad();const H=store.examHist||[];const best=H.length?Math.max(...H.map(h=>h.tot)):null;
-    app.innerHTML=`<div class="pghead"><div><div class="eyebrow">模拟考试 · Chuẩn HSK 3.0</div><h1>Thi thử ${F.name}</h1><p class="muted">Mỗi lần bấm là một đề mới, đúng cấu trúc đề thi ${F.name} theo chuẩn HSK 3.0, chấm điểm tự động.</p></div></div>
-    <section class="card exfmt"><div class="exfh"><b>Cấu trúc đề</b><span>${F.secs.reduce((a,s)=>a+s.parts.reduce((b,p)=>b+p[1],0),0)} câu · ${F.min} phút</span></div>
-      ${F.secs.map(s=>`<div class="exsec"><div class="exsech"><span class="exbad ${s.k}">${s.zh}</span><b>${s.t}</b><small>${s.parts.reduce((b,p)=>b+p[1],0)} câu</small></div><ol>${s.parts.map(p=>`<li><span class="zh">${p[2]}</span><small>${p[3]} · ${p[1]} câu</small></li>`).join('')}</ol></div>`).join('')}
-      <p class="muted exnote">Điểm mỗi phần quy về thang 100 · tổng ${F.secs.length*100} điểm · đạt từ <b>${F.pass}</b> điểm (60%). Phần nghe là một file liên tục cho cả phần (mỗi câu đọc 2 lần), chọn đáp án là tự sang câu sau, có phiếu trả lời để kiểm tra lại. Thang điểm là quy đổi để luyện tập, không phải điểm chính thức.</p></section>
+    app.innerHTML=`<div class="pghead"><div><div class="eyebrow">模拟考试 · Chuẩn HSK 3.0</div><h1>Thi thử ${F.name}</h1><p class="muted">${EXN+1} đề đúng cấu trúc ${F.name} chuẩn HSK 3.0: 1 đề gốc trong sách (ảnh thật, file nghe gốc) và ${EXN} đề luyện thêm. Chấm điểm tự động.</p></div></div>
     <div class="row exacts">${cont?`<button class="btn pri big" data-exgo="resume">▶ Làm tiếp bài đang dở</button>`:''}<button class="btn big" data-exgo="new">🎲 Đề ngẫu nhiên</button></div>
-    <h2 class="mesec">Bộ ${EXN} đề thi ${F.name}</h2><p class="muted" style="margin:-4px 0 10px;font-size:13.5px">Mỗi đề cố định, làm lại được nhiều lần để so điểm. Chọn đề bất kỳ để bắt đầu.</p>
-    <div class="exbank">${[...Array(EXN)].map((_,k)=>{const sd=exSeedOf(k+1);const hs=H.filter(h=>h.seed===sd);const b=hs.length?Math.max(...hs.map(h=>h.tot)):null;const pass=hs.some(h=>h.pass);const doing=cont&&cont.seed===sd;
+    <h2 class="mesec">Chọn đề thi</h2><p class="muted" style="margin:-4px 0 10px;font-size:13.5px">Mỗi đề cố định, làm lại được nhiều lần để so điểm.</p>
+    <div class="exbank">${(()=>{const hs=H.filter(h=>h.seed==='book');const b=hs.length?Math.max(...hs.map(h=>h.tot)):null;const doing=cont&&cont.seed==='book';return `<button class="exbk book ${doing?'doing':''}" data-exgo="book"><b>📗 Đề gốc</b><small>${doing?'Đang làm dở':b!=null?b+' điểm':'Trong sách · ảnh thật · file nghe gốc'}</small></button>`})()}${[...Array(EXN)].map((_,k)=>{const sd=exSeedOf(k+1);const hs=H.filter(h=>h.seed===sd);const b=hs.length?Math.max(...hs.map(h=>h.tot)):null;const pass=hs.some(h=>h.pass);const doing=cont&&cont.seed===sd;
       return `<button class="exbk ${b!=null?(pass?'ok':'no'):''} ${doing?'doing':''}" data-exgo="redo" data-seed="${sd}"><b>Đề ${String(k+1).padStart(2,'0')}</b><small>${doing?'Đang làm dở':b!=null?b+'/'+(F.secs.length*100)+' điểm':'Chưa làm'}</small>${b!=null?`<i>${pass?'✓ Đạt':'Chưa đạt'}</i>`:''}</button>`}).join('')}</div>
+    <details class="exfmtd"><summary>Cấu trúc đề thi ${F.name}</summary>    <section class="card exfmt"><div class="exfh"><b>Cấu trúc đề</b><span>${F.secs.reduce((a,s)=>a+s.parts.reduce((b,p)=>b+p[1],0),0)} câu · ${F.min} phút</span></div>
+      ${F.secs.map(s=>`<div class="exsec"><div class="exsech"><span class="exbad ${s.k}">${s.zh}</span><b>${s.t}</b><small>${s.parts.reduce((b,p)=>b+p[1],0)} câu</small></div><ol>${s.parts.map(p=>`<li><span class="zh">${p[2]}</span><small>${p[3]} · ${p[1]} câu</small></li>`).join('')}</ol></div>`).join('')}
+      <p class="muted exnote">Điểm mỗi phần quy về thang 100 · tổng ${F.secs.length*100} điểm · đạt từ <b>${F.pass}</b> điểm (60%). Phần nghe là một file liên tục cho cả phần (mỗi câu đọc 2 lần), chọn đáp án là tự sang câu sau, có phiếu trả lời để kiểm tra lại. Thang điểm là quy đổi để luyện tập, không phải điểm chính thức.</p></section></details>
     ${H.length?`<h2 class="mesec">Lịch sử thi thử</h2><div class="card exhist">${H.map((h,i)=>`<div class="exhr"><span class="exsc ${h.pass?'ok':'no'}">${h.tot}<small>/${h.max}</small></span><span class="exhm"><b>${exName(h.seed)} · ${h.pass?'Đạt':'Chưa đạt'}</b><small>${new Date(h.d).toLocaleString('vi')} · ${Math.round(h.dur/60000)} phút · ${Object.entries(h.res).map(([k,v])=>({listen:'Nghe',read:'Đọc',write:'Viết'})[k]+' '+v).join(' · ')}</small></span><button class="btn sm" data-exgo="redo" data-seed="${h.seed}">Làm lại đề này</button></div>`).join('')}</div><p class="muted" style="font-size:13px">Điểm cao nhất: <b>${best}</b></p>`:''}`;return}
   if(EX.view==='result'){const sc=EX.sc;const names={listen:'Nghe 听力',read:'Đọc 阅读',write:'Viết 书写'};
-    app.innerHTML=`<section class="card exres ${sc.pass?'ok':'no'}"><div class="exresh"><span class="exbig">${sc.tot}<small>/${sc.max}</small></span><div><b>${sc.pass?'🎉 Đạt — chúc mừng bạn!':'Chưa đạt — cố thêm chút nữa!'}</b><small>${exName(EX.seed)} · ${F.name} · cần ${F.pass} điểm · làm trong ${Math.round(EX.dur/60000)} phút</small></div></div>
-      <div class="exbars">${Object.entries(sc.res).map(([k,r])=>`<div class="exbar"><span>${names[k]}</span><div class="exbt"><i style="width:${r.pts}%"></i></div><b>${r.pts}</b><small>${r.c}/${r.n} câu</small></div>`).join('')}</div>
+    app.innerHTML=`<section class="card exres ${sc.pass?'ok':'no'}"><div class="exresh"><span class="exbig">${sc.tot}<small>/${sc.max}</small></span><div><b>${sc.pass?'🎉 Đạt — chúc mừng bạn!':'Chưa đạt — cố thêm chút nữa!'}</b><small>${exName(EX.seed)} · ${F.name} · cần ${Math.round(sc.max*0.6)} điểm · làm trong ${Math.round(EX.dur/60000)} phút</small></div></div>
+      <div class="exbars">${Object.entries(sc.res).map(([k,r])=>r.pts==null?`<div class="exbar"><span>${names[k]}</span><div class="exbt"></div><b>—</b><small>sách không có đáp án</small></div>`:`<div class="exbar"><span>${names[k]}</span><div class="exbt"><i style="width:${r.pts}%"></i></div><b>${r.pts}</b><small>${r.c}/${r.n} câu</small></div>`).join('')}</div>
       <div class="row"><button class="btn pri" data-exgo="new">Đề mới</button><button class="btn" data-exgo="redo" data-seed="${EX.seed}">Làm lại đề này</button><button class="btn" data-exgo="lobby">Về trang thi thử</button></div></section>
-      <h2 class="mesec">Xem lại bài làm</h2><div class="exrev">${EX.Q.map(q=>{const a=EX.ans[q.n];const ok=q.kind==='input'?String(a||'').trim()===q.a:a===q.a;const opts=q.kind==='shared'?q.shared:q.opts;const lab=i=>i==null||i===''?'—':(q.kind==='input'?i:(opts[i].t||opts[i].em||'')+(opts[i].lab?' ('+opts[i].lab+')':''));
+      <h2 class="mesec">Xem lại bài làm</h2><div class="exrev">${EX.Q.map(q=>{const a=EX.ans[q.n];const ok=exOk(q,a);const opts=q.kind==='shared'?q.shared:q.opts;const lab=i=>i==null||i===''?'—':(q.kind==='input'?i:(opts[i].t||opts[i].em||'')+(opts[i].lab?' ('+opts[i].lab+')':''));
         return `<div class="exri ${ok?'ok':'no'}"><span class="exrn">${q.n}</span><div><small>${q.part.ivi}</small><div class="zh">${esc(q.text||q.exp.split(' → ')[0])}</div><div class="exra">${ok?'✓':'✗ Bạn chọn: '+esc(lab(a))+' · '}Đáp án: <b>${esc(q.kind==='input'?q.a:lab(q.a))}</b></div><div class="muted exrx">${esc(q.exp)}</div></div></div>`}).join('')}</div>`;return}
   /* đang làm bài */
   const q=EX.Q[EX.i];const p=q.part;const secs=F.secs;const answered=EX.Q.filter(x=>EX.ans[x.n]!=null&&EX.ans[x.n]!=='').length;const isL=p.sec==='listen';
-  const optsH=(list,sh)=>`<div class="exopts ${list[0]&&list[0].em?'pics':''} ${sh?'shared':''}">${list.map((o,i)=>`<button class="exo ${EX.ans[q.n]===i?'sel':''}" data-exa="${i}"><span class="exl">${'ABCDEF'[i]}</span>${o.em?`<span class="exem">${o.em}</span>`:`<span class="zh">${esc(o.t)}</span>${o.py?`<small class="py">${esc(o.py)}</small>`:''}`}</button>`).join('')}</div>`;
+  const optsH=(list,sh)=>`<div class="exopts ${list[0]&&(list[0].em||list[0].img)?'pics':''} ${list[0]&&list[0].img?'photos':''} ${sh?'shared':''}">${list.map((o,i)=>`<button class="exo ${EX.ans[q.n]===i?'sel':''}" data-exa="${i}"><span class="exl">${'ABCDEF'[i]}</span>${o.img?`<img class="eximg" src="${o.img}" alt="">`:o.em?`<span class="exem">${o.em}</span>`:`<span class="zh">${esc(o.t)}</span>${o.py?`<small class="py">${esc(o.py)}</small>`:''}`}</button>`).join('')}</div>`;
   const LQ=EX.Q.filter(x=>x.part.sec==='listen');const lt=EX.lt||{pos:0};const curL=LQ[lt.pos]||LQ[0];
-  const player=isL?`<section class="card ltp ${LT.playing?'on':''}"><button class="ltbtn" data-exgo="lt">${LT.playing?'❚❚':'▶'}</button><div class="ltinfo"><b>${LT.playing?'Đang phát · Câu '+curL.n:lt.done?'Đã phát hết file nghe':lt.pos?'Tạm dừng ở câu '+curL.n:'File nghe phần Nghe (câu 1–'+LQ.length+')'}</b><small>${LT.playing?'Mỗi câu đọc 2 lần · chọn đáp án ở khung bên dưới':lt.done?'Bấm ▶ để nghe lại từ đầu':'Bấm ▶ để bắt đầu. Cả phần nghe là một file liên tục.'}</small><div class="ltbar"><i style="width:${((lt.done?LQ.length:lt.pos)/LQ.length*100).toFixed(1)}%"></i></div></div>${!LT.playing&&q.part.sec==='listen'&&curL!==q?`<button class="btn sm" data-exgo="ltfrom">Phát từ câu ${q.n}</button>`:''}</section>`:'';
+  const player=isL&&EX.book?bkPlayerH(q,LQ):isL?`<section class="card ltp ${LT.playing?'on':''}"><button class="ltbtn" data-exgo="lt">${LT.playing?'❚❚':'▶'}</button><div class="ltinfo"><b>${LT.playing?'Đang phát · Câu '+curL.n:lt.done?'Đã phát hết file nghe':lt.pos?'Tạm dừng ở câu '+curL.n:'File nghe phần Nghe (câu 1–'+LQ.length+')'}</b><small>${LT.playing?'Mỗi câu đọc 2 lần · chọn đáp án ở khung bên dưới':lt.done?'Bấm ▶ để nghe lại từ đầu':'Bấm ▶ để bắt đầu. Cả phần nghe là một file liên tục.'}</small><div class="ltbar"><i style="width:${((lt.done?LQ.length:lt.pos)/LQ.length*100).toFixed(1)}%"></i></div></div>${!LT.playing&&q.part.sec==='listen'&&curL!==q?`<button class="btn sm" data-exgo="ltfrom">Phát từ câu ${q.n}</button>`:''}</section>`:'';
   const sheet=(list)=>`<section class="card exsheet"><div class="exshh"><b>Phiếu trả lời</b><small>Chạm chữ cái để chọn · chạm số câu để xem lại câu đó</small></div><div class="exshg">${list.map(x=>{const nO=(x.kind==='shared'?x.shared:x.opts||[]).length;return `<div class="exshr ${x===q?'cur':''} ${x===curL&&LT.playing?'play':''}"><button class="exshn" data-exj="${EX.Q.indexOf(x)}">${x.n}</button>${x.kind==='input'?`<span class="exshi">${esc(EX.ans[x.n]||'—')}</span>`:[...Array(nO)].map((_,i)=>`<button class="exshb ${EX.ans[x.n]===i?'on':''}" data-sha="${x.n}|${i}">${'ABCDEF'[i]}</button>`).join('')}</div>`}).join('')}</div></section>`;
   app.innerHTML=`<div class="exbar0"><span class="exname">${exName(EX.seed).replace("Đề ngẫu nhiên","🎲")}</span><span class="exclock" id="exClock">${fmtMs(exLeft())}</span><div class="exsecs">${secs.map(s=>`<button class="${s.k===p.sec?'on':''}" data-exsec="${s.k}">${s.t}</button>`).join('')}</div><button class="btn sm" data-exgo="grid">${answered}/${EX.Q.length}</button><button class="btn sm pri" data-exgo="submit">Nộp</button></div>
   ${player}
@@ -4547,7 +4560,10 @@ document.addEventListener('click',e=>{if(route.view!=='exam')return;const t=e.ta
   const g=t.closest('[data-exgo]');if(g){const k=g.dataset.exgo;
     if(k==='new'){ltPause();stopSpeak();exStart();return}
     if(k==='resume'){const c=exLoad();if(c)exStart(c.seed,c);return}
-    if(k==='redo'){ltPause();stopSpeak();exStart(+g.dataset.seed);return}
+    if(k==='redo'){ltPause();stopSpeak();const sd=g.dataset.seed;exStart(sd==='book'?'book':+sd);return}
+    if(k==='book'){ltPause();stopSpeak();exStart('book');return}
+    if(k==='bk'){bkToggle();return}
+    if(k==='bkfrom'){const q=EX.Q[EX.i];if(q.au){EX._bkLast=null;bkPlay(q.au[1]-0.8).then(()=>renderExam())}return}
     if(k==='lobby'){ltPause();EX=null;renderExam();return}
     if(k==='lt'){if(LT.playing){ltPause();renderExam()}else ltRun();return}
     if(k==='ltfrom'){const L=EX.Q.filter(q=>q.part.sec==='listen');EX.lt={pos:Math.max(0,L.indexOf(EX.Q[EX.i]))};ltRun();return}
@@ -4563,6 +4579,46 @@ document.addEventListener('click',e=>{if(route.view!=='exam')return;const t=e.ta
 function exEntry(){const H=store.examHist||[];const c=exLoad();return `<button class="card exentry" data-go="exam"><span class="exeic">📝</span><span><b>Thi thử chuẩn HSK 3.0 · ${EXF[HSKLV].name}</b><small>${EXF[HSKLV].secs.reduce((a,s)=>a+s.parts.reduce((b,p)=>b+p[1],0),0)} câu · ${EXF[HSKLV].min} phút · đề mới mỗi lần · chấm điểm tự động${c?' · <em>đang làm dở</em>':H.length?' · cao nhất '+Math.max(...H.map(h=>h.tot))+' điểm':''}</small></span><span class="chev">›</span></button>`}
 
 function exWordPy(word){const w=WORDS.find(x=>x.zh===word);if(w)return w.py;const ps=[...word].map(c=>{const x=WORDS.find(y=>y.zh===c);return x?x.py:null});return ps.every(Boolean)?ps.join(' '):''}
+
+/* ================= ĐỀ GỐC TRONG SÁCH: ảnh thật + một file nghe gốc ================= */
+const EXA=new Audio();EXA.preload='auto';
+function buildBook(){const Q=[];
+  MOCK.test.forEach(sec=>{const items=sec.items||[];if(!items.length)return;
+    const part={pk:'book',izh:sec.p,ivi:sec.inst||'',sec:sec.k,from:+items[0].n,to:+items[items.length-1].n};
+    const shared=sec.shared?sec.shared.map((t,i)=>{const img=sec.sharedImg&&sec.sharedImg[i];const raw=String(t).replace(/^\S+\s+(?=[A-F]\.)/,'').replace(/^[A-F]\.\s*/,'');const [z,py]=raw.split('|');return img?{img,lab:String(t)}:{t:z,py:py||''}}):null;
+    items.forEach(it=>{const q={part,n:+it.n,book:true,a:it.a==null?null:+it.a,exp:(it.s||[]).join(' ')};
+      if(it.au)q.au=it.au;
+      if(it.inp){q.kind='input';q.acc=it.acc||[];q.a=q.acc[0]||null}
+      else if(shared){q.kind='shared';q.shared=shared}
+      else if(it.imgs){q.kind='pic';q.opts=it.imgs.map((img,i)=>({img,lab:(it.opts||[])[i]||''}))}
+      else{q.kind='mc';q.opts=(it.opts||[]).map(o=>{const [z,py]=String(o).split('|');return {t:z,py:py||''}})}
+      if(it.q){const [z,py]=String(it.q).split('|');q.text=z;q.py=py||''}
+      if(it.q2)q.q2=it.q2;
+      if(it.inp&&q.text&&!q.text.includes('（ ）'))q.text=q.text.replace(/（\s*）|\(\s*\)/,'（ ）');
+      if(it.inp){q.py=''}
+      if(sec.k==='listen')q.text=null;
+      if(!q.exp&&q.text)q.exp=q.text;
+      Q.push(q)})});
+  return Q}
+const bkTrack=()=>'wb/mock';
+let bkURL=null;
+async function bkPlay(from){try{if(!bkURL)bkURL=await audURL(bkTrack());if(EXA.src!==bkURL)EXA.src=bkURL;try{stopSpeak()}catch(e){}
+  if(from!=null){await new Promise(r=>{if(EXA.readyState>=1)return r();EXA.addEventListener('loadedmetadata',r,{once:true})});EXA.currentTime=Math.max(0,from)}
+  else if(EX.lt&&EX.lt.t)EXA.currentTime=EX.lt.t;
+  await EXA.play()}catch(e){toast('Không phát được file nghe. Kiểm tra kết nối mạng rồi thử lại.')}bkUI()}
+function bkToggle(){if(EXA.paused)bkPlay().then(()=>renderExam());else{EXA.pause();renderExam()}}
+function bkUI(){const b=document.getElementById('bkBtn');if(b)b.textContent=EXA.paused?'▶':'❚❚';const box=document.querySelector('.ltp');if(box)box.classList.toggle('on',!EXA.paused);
+  const d=EXA.duration||1,t=EXA.currentTime||0;const bar=document.getElementById('bkBar');if(bar)bar.style.width=(t/d*100).toFixed(2)+'%';const tl=document.getElementById('bkTime');if(tl)tl.textContent=fmtT(t)+' / '+fmtT(EXA.duration);
+  const nb=document.getElementById('bkNow');if(nb){const cq=bkCur();nb.textContent=EXA.paused?(t>1?'Tạm dừng':'File nghe gốc của đề'):(cq?'Đang phát · Câu '+cq.n:'Đang phát · phần hướng dẫn')}}
+function bkCur(){if(!EX)return null;const t=EXA.currentTime||0;let cur=null;EX.Q.forEach(q=>{if(q.au&&q.au[1]-1.5<=t)cur=q});return cur}
+EXA.addEventListener('timeupdate',()=>{if(!EX||!EX.book||EX.done)return;EX.lt=EX.lt||{};EX.lt.t=EXA.currentTime;bkUI();
+  const cq=bkCur();if(cq&&cq!==EX._bkLast){const prev=EX._bkLast;EX._bkLast=cq;const qi=EX.Q.indexOf(cq);if(route.view==='exam'&&EX.Q[EX.i].part.sec==='listen'&&(!prev||EX.i===EX.Q.indexOf(prev)||EX.i===qi-1)){EX.i=qi;renderExam()}exSave()}});
+EXA.addEventListener('ended',()=>{bkUI();if(EX&&EX.book&&!EX.done)toast('Đã hết file nghe. Kiểm tra lại đáp án rồi sang phần Đọc.')});
+EXA.addEventListener('pause',bkUI);EXA.addEventListener('play',bkUI);
+function bkPlayerH(q,LQ){const timed=LQ.some(x=>x.au);const cq=bkCur();
+  return `<section class="card ltp ${EXA.paused?'':'on'}"><button class="ltbtn" id="bkBtn" data-exgo="bk">${EXA.paused?'▶':'❚❚'}</button><div class="ltinfo"><b id="bkNow">${EXA.paused?'File nghe gốc của đề':'Đang phát'}</b><small>${timed?'Một file cho cả phần nghe · tự chuyển theo câu':'Một file cho cả phần nghe · nghe đến câu nào chọn câu đó'}</small><div class="ltbar bkseek" data-bkseek><i id="bkBar" style="width:${((EXA.currentTime||0)/(EXA.duration||1)*100).toFixed(2)}%"></i></div><small id="bkTime">0:00</small></div>${timed&&q.au&&EXA.paused?`<button class="btn sm" data-exgo="bkfrom">Phát từ câu ${q.n}</button>`:''}</section>`}
+document.addEventListener('click',e=>{const sk=e.target.closest('[data-bkseek]');if(!sk||!EX||!EX.book)return;const r=sk.getBoundingClientRect();const f=(e.clientX-r.left)/r.width;if(EXA.duration)bkPlay(f*EXA.duration)});
+{const _r=render;render=function(){if(route.view!=='exam'){try{EXA.pause()}catch(e){}if(LT.playing)ltPause()}_r()}}
 
 fromHash();try{history.replaceState({d:0},"","#"+hashOf())}catch(e){}render();
 (function(){var s=document.getElementById('splash');if(!s)return;var w=Math.max(0,2600-(Date.now()-(window.__spT0||0)));setTimeout(function(){s.classList.add('out');setTimeout(function(){s.remove()},600)},w)})();
