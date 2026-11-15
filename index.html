@@ -1646,6 +1646,14 @@ button.mrow{cursor:pointer}button.mrow:hover{background:var(--surface-2)}
 .exshb.on{background:var(--ink);border-color:var(--ink);color:var(--surface)}
 .exshi{font-size:18px;font-family:var(--zh-font,inherit);padding:0 6px}
 </style>
+<style id="excss3">
+.exbank{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:8px;margin-bottom:8px}
+.exbk{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;text-align:left;transition:transform .12s}
+.exbk:hover{transform:translateY(-1px)}.exbk b{font-size:15px}.exbk small{font-size:12px;color:var(--muted)}
+.exbk i{font-style:normal;font-size:11px;font-weight:700;margin-top:2px}.exbk.ok{border-color:#1f9e74;background:color-mix(in srgb,#1f9e74 8%,var(--surface))}.exbk.ok i{color:#1f9e74}
+.exbk.no{border-color:color-mix(in srgb,#d9262e 50%,var(--line))}.exbk.no i{color:#d9262e}.exbk.doing{border-color:#3478f6;border-style:dashed}
+.exname{font-size:12.5px;font-weight:800;color:var(--muted);white-space:nowrap}
+</style>
 <header class="bar">
   <div class="wrap">
     <button class="backbtn" id="backBtn" aria-label="Quay lại" title="Quay lại" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -4259,7 +4267,7 @@ const APP_VER='3.3';
 const CHANGELOG=[
   {v:'3.3',d:'15/11/2026',t:'Thi thử chuẩn HSK 3.0 — đề mới mỗi lần',ic:'📝',items:[
     ['📝','Bài thi mô phỏng đúng cấu trúc HSK 3.0: HSK 1 gồm 40 câu (Nghe 20 · Đọc 20, 40 phút), HSK 2 gồm 60 câu (Nghe 25 · Đọc 25 · Viết 10, 60 phút).'],
-    ['🎲','Mỗi lần bấm là một đề mới, có thể làm lại đúng đề cũ.'],
+    ['📚','Bộ 30 đề cố định cho mỗi cấp (Đề 01–30) kèm điểm cao nhất từng đề, cộng thêm đề ngẫu nhiên không giới hạn.'],
     ['🎧','Phần nghe là một file nghe liên tục như thi thật; chọn đáp án là tự sang câu sau; phiếu trả lời để kiểm tra lại.'],['⏱️','Đồng hồ đếm ngược, đánh dấu câu, lưu bài đang làm dở.'],
     ['📊','Chấm điểm tự động theo từng phần, xem lại đáp án và lời giải, lưu lịch sử điểm.']]},
   {v:'3.2',d:'15/11/2026',t:'Thêm 7 trò chơi vận dụng — tổng cộng 14 trò',ic:'🎮',items:[
@@ -4460,6 +4468,9 @@ function buildExam(lv,seed){XR=xseed(seed);const F=EXF[lv];const Q=[];let n=0;co
     else if(pk==='W2py'){w2Items(cnt).forEach(it=>add({part,kind:'input',text:it.sent,py:it.py,a:it.a,exp:`${it.full} — ${it.vi}`}))}
   }
   XR=Math.random;return Q}
+/* ---- bộ đề cố định ---- */
+const EXN=30;const exSeedOf=k=>HSKLV*100000+k*7919;
+function exName(seed){for(let k=1;k<=EXN;k++)if(exSeedOf(k)===seed)return 'Đề '+String(k).padStart(2,'0');return 'Đề ngẫu nhiên'}
 /* ---- trạng thái ---- */
 let EX=null;let EXTM=null;
 const exKey=()=>'hsk-exam-'+HSKLV;
@@ -4486,10 +4497,13 @@ function renderExam(){const F=EXF[HSKLV];
     <section class="card exfmt"><div class="exfh"><b>Cấu trúc đề</b><span>${F.secs.reduce((a,s)=>a+s.parts.reduce((b,p)=>b+p[1],0),0)} câu · ${F.min} phút</span></div>
       ${F.secs.map(s=>`<div class="exsec"><div class="exsech"><span class="exbad ${s.k}">${s.zh}</span><b>${s.t}</b><small>${s.parts.reduce((b,p)=>b+p[1],0)} câu</small></div><ol>${s.parts.map(p=>`<li><span class="zh">${p[2]}</span><small>${p[3]} · ${p[1]} câu</small></li>`).join('')}</ol></div>`).join('')}
       <p class="muted exnote">Điểm mỗi phần quy về thang 100 · tổng ${F.secs.length*100} điểm · đạt từ <b>${F.pass}</b> điểm (60%). Phần nghe là một file liên tục cho cả phần (mỗi câu đọc 2 lần), chọn đáp án là tự sang câu sau, có phiếu trả lời để kiểm tra lại. Thang điểm là quy đổi để luyện tập, không phải điểm chính thức.</p></section>
-    <div class="row exacts">${cont?`<button class="btn pri big" data-exgo="resume">▶ Làm tiếp bài đang dở</button>`:''}<button class="btn ${cont?'':'pri'} big" data-exgo="new">📝 Bắt đầu đề mới</button></div>
-    ${H.length?`<h2 class="mesec">Lịch sử thi thử</h2><div class="card exhist">${H.map((h,i)=>`<div class="exhr"><span class="exsc ${h.pass?'ok':'no'}">${h.tot}<small>/${h.max}</small></span><span class="exhm"><b>${h.pass?'Đạt':'Chưa đạt'}</b><small>${new Date(h.d).toLocaleString('vi')} · ${Math.round(h.dur/60000)} phút · ${Object.entries(h.res).map(([k,v])=>({listen:'Nghe',read:'Đọc',write:'Viết'})[k]+' '+v).join(' · ')}</small></span><button class="btn sm" data-exgo="redo" data-seed="${h.seed}">Làm lại đề này</button></div>`).join('')}</div><p class="muted" style="font-size:13px">Điểm cao nhất: <b>${best}</b></p>`:''}`;return}
+    <div class="row exacts">${cont?`<button class="btn pri big" data-exgo="resume">▶ Làm tiếp bài đang dở</button>`:''}<button class="btn big" data-exgo="new">🎲 Đề ngẫu nhiên</button></div>
+    <h2 class="mesec">Bộ ${EXN} đề thi ${F.name}</h2><p class="muted" style="margin:-4px 0 10px;font-size:13.5px">Mỗi đề cố định, làm lại được nhiều lần để so điểm. Chọn đề bất kỳ để bắt đầu.</p>
+    <div class="exbank">${[...Array(EXN)].map((_,k)=>{const sd=exSeedOf(k+1);const hs=H.filter(h=>h.seed===sd);const b=hs.length?Math.max(...hs.map(h=>h.tot)):null;const pass=hs.some(h=>h.pass);const doing=cont&&cont.seed===sd;
+      return `<button class="exbk ${b!=null?(pass?'ok':'no'):''} ${doing?'doing':''}" data-exgo="redo" data-seed="${sd}"><b>Đề ${String(k+1).padStart(2,'0')}</b><small>${doing?'Đang làm dở':b!=null?b+'/'+(F.secs.length*100)+' điểm':'Chưa làm'}</small>${b!=null?`<i>${pass?'✓ Đạt':'Chưa đạt'}</i>`:''}</button>`}).join('')}</div>
+    ${H.length?`<h2 class="mesec">Lịch sử thi thử</h2><div class="card exhist">${H.map((h,i)=>`<div class="exhr"><span class="exsc ${h.pass?'ok':'no'}">${h.tot}<small>/${h.max}</small></span><span class="exhm"><b>${exName(h.seed)} · ${h.pass?'Đạt':'Chưa đạt'}</b><small>${new Date(h.d).toLocaleString('vi')} · ${Math.round(h.dur/60000)} phút · ${Object.entries(h.res).map(([k,v])=>({listen:'Nghe',read:'Đọc',write:'Viết'})[k]+' '+v).join(' · ')}</small></span><button class="btn sm" data-exgo="redo" data-seed="${h.seed}">Làm lại đề này</button></div>`).join('')}</div><p class="muted" style="font-size:13px">Điểm cao nhất: <b>${best}</b></p>`:''}`;return}
   if(EX.view==='result'){const sc=EX.sc;const names={listen:'Nghe 听力',read:'Đọc 阅读',write:'Viết 书写'};
-    app.innerHTML=`<section class="card exres ${sc.pass?'ok':'no'}"><div class="exresh"><span class="exbig">${sc.tot}<small>/${sc.max}</small></span><div><b>${sc.pass?'🎉 Đạt — chúc mừng bạn!':'Chưa đạt — cố thêm chút nữa!'}</b><small>${F.name} · cần ${F.pass} điểm · làm trong ${Math.round(EX.dur/60000)} phút</small></div></div>
+    app.innerHTML=`<section class="card exres ${sc.pass?'ok':'no'}"><div class="exresh"><span class="exbig">${sc.tot}<small>/${sc.max}</small></span><div><b>${sc.pass?'🎉 Đạt — chúc mừng bạn!':'Chưa đạt — cố thêm chút nữa!'}</b><small>${exName(EX.seed)} · ${F.name} · cần ${F.pass} điểm · làm trong ${Math.round(EX.dur/60000)} phút</small></div></div>
       <div class="exbars">${Object.entries(sc.res).map(([k,r])=>`<div class="exbar"><span>${names[k]}</span><div class="exbt"><i style="width:${r.pts}%"></i></div><b>${r.pts}</b><small>${r.c}/${r.n} câu</small></div>`).join('')}</div>
       <div class="row"><button class="btn pri" data-exgo="new">Đề mới</button><button class="btn" data-exgo="redo" data-seed="${EX.seed}">Làm lại đề này</button><button class="btn" data-exgo="lobby">Về trang thi thử</button></div></section>
       <h2 class="mesec">Xem lại bài làm</h2><div class="exrev">${EX.Q.map(q=>{const a=EX.ans[q.n];const ok=q.kind==='input'?String(a||'').trim()===q.a:a===q.a;const opts=q.kind==='shared'?q.shared:q.opts;const lab=i=>i==null||i===''?'—':(q.kind==='input'?i:(opts[i].t||opts[i].em||'')+(opts[i].lab?' ('+opts[i].lab+')':''));
@@ -4500,7 +4514,7 @@ function renderExam(){const F=EXF[HSKLV];
   const LQ=EX.Q.filter(x=>x.part.sec==='listen');const lt=EX.lt||{pos:0};const curL=LQ[lt.pos]||LQ[0];
   const player=isL?`<section class="card ltp ${LT.playing?'on':''}"><button class="ltbtn" data-exgo="lt">${LT.playing?'❚❚':'▶'}</button><div class="ltinfo"><b>${LT.playing?'Đang phát · Câu '+curL.n:lt.done?'Đã phát hết file nghe':lt.pos?'Tạm dừng ở câu '+curL.n:'File nghe phần Nghe (câu 1–'+LQ.length+')'}</b><small>${LT.playing?'Mỗi câu đọc 2 lần · chọn đáp án ở khung bên dưới':lt.done?'Bấm ▶ để nghe lại từ đầu':'Bấm ▶ để bắt đầu. Cả phần nghe là một file liên tục.'}</small><div class="ltbar"><i style="width:${((lt.done?LQ.length:lt.pos)/LQ.length*100).toFixed(1)}%"></i></div></div>${!LT.playing&&q.part.sec==='listen'&&curL!==q?`<button class="btn sm" data-exgo="ltfrom">Phát từ câu ${q.n}</button>`:''}</section>`:'';
   const sheet=(list)=>`<section class="card exsheet"><div class="exshh"><b>Phiếu trả lời</b><small>Chạm chữ cái để chọn · chạm số câu để xem lại câu đó</small></div><div class="exshg">${list.map(x=>{const nO=(x.kind==='shared'?x.shared:x.opts||[]).length;return `<div class="exshr ${x===q?'cur':''} ${x===curL&&LT.playing?'play':''}"><button class="exshn" data-exj="${EX.Q.indexOf(x)}">${x.n}</button>${x.kind==='input'?`<span class="exshi">${esc(EX.ans[x.n]||'—')}</span>`:[...Array(nO)].map((_,i)=>`<button class="exshb ${EX.ans[x.n]===i?'on':''}" data-sha="${x.n}|${i}">${'ABCDEF'[i]}</button>`).join('')}</div>`}).join('')}</div></section>`;
-  app.innerHTML=`<div class="exbar0"><span class="exclock" id="exClock">${fmtMs(exLeft())}</span><div class="exsecs">${secs.map(s=>`<button class="${s.k===p.sec?'on':''}" data-exsec="${s.k}">${s.t}</button>`).join('')}</div><button class="btn sm" data-exgo="grid">${answered}/${EX.Q.length}</button><button class="btn sm pri" data-exgo="submit">Nộp</button></div>
+  app.innerHTML=`<div class="exbar0"><span class="exname">${exName(EX.seed).replace("Đề ngẫu nhiên","🎲")}</span><span class="exclock" id="exClock">${fmtMs(exLeft())}</span><div class="exsecs">${secs.map(s=>`<button class="${s.k===p.sec?'on':''}" data-exsec="${s.k}">${s.t}</button>`).join('')}</div><button class="btn sm" data-exgo="grid">${answered}/${EX.Q.length}</button><button class="btn sm pri" data-exgo="submit">Nộp</button></div>
   ${player}
   <section class="card exq"><div class="exph"><span class="exbad ${p.sec}">${({listen:'听力',read:'阅读',write:'书写'})[p.sec]}</span><span>第${p.from}—${p.to}题</span></div><div class="exinst"><span class="zh">${p.izh}</span><small>${p.ivi}</small></div>
     <div class="exn">Câu ${q.n}${EX.flag[q.n]?' · 🚩':''}${isL&&LT.playing&&curL===q?' <span class="ltnow">🔊 đang đọc</span>':''}</div>
